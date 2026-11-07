@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الفيروز إكسبريس - مسح الأوردرات</title>
+    <script src="https://unpkg.com/html5-qrcode"></script>
+    <style>
+        * { box-sizing: border-box; font-family: Tahoma, sans-serif; }
+        body { background-color: #f3f4f6; margin: 0; padding: 15px; direction: rtl; }
+        .container { max-width: 480px; margin: 0 auto; background: #ffffff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        h2 { text-align: center; color: #087b65; margin-bottom: 20px; }
+        .btn-scan { background-color: #087b65; color: white; border: none; padding: 12px; width: 100%; font-size: 16px; border-radius: 8px; cursor: pointer; font-weight: bold; margin-bottom: 15px; }
+        #reader { width: 100%; border-radius: 8px; margin-bottom: 15px; overflow: hidden; display: none; }
+        label { display: block; font-weight: bold; margin-top: 10px; margin-bottom: 5px; color: #333; font-size: 14px; }
+        input, select, textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; background: #fafafa; }
+        .btn-save { background-color: #2563eb; color: white; border: none; padding: 12px; width: 100%; font-size: 16px; border-radius: 8px; cursor: pointer; font-weight: bold; margin-top: 20px; }
+        #status-msg { text-align: center; margin-top: 15px; font-weight: bold; font-size: 14px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>الفيروز إكسبريس</h2>
+    <button class="btn-scan" onclick="startScanner()">📷 فتح الكاميرا لمسح QR</button>
+    <div id="reader"></div>
+
+    <form id="orderForm" onsubmit="submitData(event)">
+        <label>كود الأوردر / الشحنة</label>
+        <input type="text" id="orderId" readonly placeholder="سيتم تعبئته تلقائياً عند المسح" required>
+
+        <label>نوع الحركة</label>
+        <select id="actionType" required>
+            <option value="تسليم لشركة الشحن">تسليم لشركة الشحن</option>
+            <option value="تسليم للعميل">تسليم للعميل</option>
+            <option value="مرتجع">مرتجع</option>
+        </select>
+
+        <label>شركة الشحن</label>
+        <select id="shippingCompany">
+            <option value="Rocket Express">Rocket Express</option>
+            <option value="أخرى">أخرى</option>
+        </select>
+
+        <label>اسم المندوب</label>
+        <input type="text" id="repName" placeholder="أدخل اسم المندوب" required>
+
+        <label>عدد القطع المسلمة</label>
+        <input type="number" id="deliveredPieces" value="0">
+
+        <label>عدد القطع المرتجعة</label>
+        <input type="number" id="returnedPieces" value="0">
+
+        <label>المبلغ المحصل</label>
+        <input type="number" id="collectedAmount" value="0">
+
+        <label>اسم الموظف</label>
+        <input type="text" id="employeeName" placeholder="أدخل اسمك" required>
+
+        <label>ملاحظات</label>
+        <textarea id="notes" rows="2" placeholder="أي تفاصيل إضافية"></textarea>
+
+        <button type="submit" class="btn-save" id="saveBtn">حفظ الحركة وإرسال للشيت</button>
+    </form>
+    <div id="status-msg"></div>
+</div>
+
+<script>
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyXHjA5ZYdQu6pUCt5fWg3iS3V4oAU99u3sShGjyHz3qSjfVEGWYI_ywwVi2WMICv7Dlg/exec";
+    let html5QrCode;
+
+    function startScanner() {
+        const readerDiv = document.getElementById('reader');
+        readerDiv.style.display = 'block';
+        if (!html5QrCode) html5QrCode = new Html5Q.Html5Qrcode("reader");
+        html5QrCode.start(
+            { facingMode: "environment" },
+            { fps: 10, qrbox: { width: 250, height: 250 } },
+            (decodedText) => {
+                document.getElementById('orderId').value = decodedText;
+                stopScanner();
+                alert("تم قراءة الكود: " + decodedText);
+            },
+            (err) => {}
+        ).catch(err => alert("تعذر فتح الكاميرا"));
+    }
+
+    function stopScanner() {
+        if (html5QrCode && html5QrCode.isScanning) {
+            html5QrCode.stop().then(() => document.getElementById('reader').style.display = 'none');
+        } else {
+            document.getElementById('reader').style.display = 'none';
+        }
+    }
+
+    function submitData(e) {
+        e.preventDefault();
+        const saveBtn = document.getElementById('saveBtn');
+        const statusMsg = document.getElementById('status-msg');
+        saveBtn.disabled = true;
+        saveBtn.innerText = "جاري الحفظ وإرسال البيانات...";
+
+        const data = {
+            orderId: document.getElementById('orderId').value,
+            actionType: document.getElementById('actionType').value,
+            shippingCompany: document.getElementById('shippingCompany').value,
+            repName: document.getElementById('repName').value,
+            deliveredPieces: document.getElementById('deliveredPieces').value,
+            returnedPieces: document.getElementById('returnedPieces').value,
+            collectedAmount: document.getElementById('collectedAmount').value,
+            employeeName: document.getElementById('employeeName').value,
+            notes: document.getElementById('notes').value
+        };
+
+        fetch(SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        }).then(() => {
+            statusMsg.style.color = "#087b65";
+            statusMsg.innerText = "تم حفظ وإرسال الحركة إلى الشيت بنجاح!";
+            saveBtn.disabled = false;
+            saveBtn.innerText = "حفظ الحركة وإرسال للشيت";
+            document.getElementById('orderForm').reset();
+        }).catch(error => {
+            statusMsg.style.color = "red";
+            statusMsg.innerText = "حدث خطأ، حاول مرة أخرى.";
+            saveBtn.disabled = false;
+            saveBtn.innerText = "حفظ الحركة وإرسال للشيت";
+        });
+    }
+</script>
+</body>
+</html>
