@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مكتب الفيروز إكسبريس</title>
+    <script src="https://unpkg.com/html5-qrcode"></script>
+    <style>
+        * { box-sizing: border-box; font-family: Tahoma, sans-serif; }
+        body { background-color: #f3f4f6; margin: 0; padding: 15px; direction: rtl; }
+        .container { max-width: 500px; margin: 0 auto; background: #ffffff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        h2 { text-align: center; color: #087b65; margin-bottom: 15px; }
+        
+        /* شريط التنقل بين الصفحات */
+        .tab-buttons { display: flex; gap: 10px; margin-bottom: 20px; }
+        .tab-btn { flex: 1; padding: 12px; border: none; background: #e5e7eb; color: #374151; font-weight: bold; border-radius: 8px; cursor: pointer; font-size: 14px; }
+        .tab-btn.active { background: #087b65; color: white; }
+        
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        label { display: block; font-weight: bold; margin-top: 10px; margin-bottom: 5px; color: #333; font-size: 14px; }
+        input, select, textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; background: #fafafa; }
+        .btn-submit { background-color: #087b65; color: white; border: none; padding: 12px; width: 100%; font-size: 16px; border-radius: 8px; cursor: pointer; font-weight: bold; margin-top: 20px; }
+        .btn-scan { background-color: #2563eb; color: white; border: none; padding: 12px; width: 100%; font-size: 16px; border-radius: 8px; cursor: pointer; font-weight: bold; margin-bottom: 15px; }
+        #reader { width: 100%; border-radius: 8px; margin-bottom: 15px; overflow: hidden; display: none; }
+        .status-msg { text-align: center; margin-top: 15px; font-weight: bold; font-size: 14px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>مكتب الفيروز إكسبريس</h2>
+    
+    <!-- الزراير فوق للتنقل -->
+    <div class="tab-buttons">
+        <button class="tab-btn active" onclick="switchTab('newOrder')">➕ أوردر جديد</button>
+        <button class="tab-btn" onclick="switchTab('scanOrder')">📷 مسح حركة شحن</button>
+    </div>
+
+    <!-- 1. نموذج إضافة أوردر جديد (للبنات) -->
+    <div id="newOrder" class="tab-content active">
+        <form id="createOrderForm" onsubmit="submitNewOrder(event)">
+            <label>اسم العميل *</label>
+            <input type="text" id="custName" placeholder="الاسم ثلاثي" required>
+
+            <label>رقم الهاتف *</label>
+            <input type="tel" id="custPhone" placeholder="01xxxxxxxxx" required>
+
+            <label>رقم هاتف بديل</label>
+            <input type="tel" id="custPhone2" placeholder="اختياري">
+
+            <label>المحافظة *</label>
+            <input type="text" id="custGov" placeholder="مثال: الإسكندرية، القاهرة..." required>
+
+            <label>العنوان بالتفصيل *</label>
+            <textarea id="custAddress" rows="2" placeholder="الشارع، المنطقة، رقم العقار والملاحظات المميزة" required></textarea>
+
+            <label>محتويات الأوردر *</label>
+            <textarea id="orderContent" rows="2" placeholder="مثال: باكت براه بوش 3 قطع" required></textarea>
+
+            <label>عدد القطع *</label>
+            <input type="number" id="itemCount" value="1" min="1" required>
+
+            <label>قيمة الأوردر (بدون الشحن) *</label>
+            <input type="number" id="orderValue" placeholder="مثال: 300" required>
+
+            <label>مصاريف الشحن *</label>
+            <input type="number" id="shippingFee" placeholder="مثال: 65" required>
+
+            <label>شركة الشحن المقترحة</label>
+            <select id="suggestedShipping">
+                <option value="روكت للشحن">روكت للشحن</option>
+                <option value="محمد الريان">محمد الريان</option>
+                <option value="حسام العجمي">حسام العجمي</option>
+                <option value="مجموعة">مجموعة</option>
+            </select>
+
+            <label>ملاحظات</label>
+            <textarea id="orderNotes" rows="2" placeholder="أي ملاحظات خاصة بالتسليم"></textarea>
+
+            <button type="submit" class="btn-submit" id="saveOrderBtn">حفظ وتسجيل الأوردر</button>
+        </form>
+        <div id="new-status" class="status-msg"></div>
+    </div>
+
+    <!-- 2. نموذج مسح QR (للحركة والشحن) -->
+    <div id="scanOrder" class="tab-content">
+        <button class="btn-scan" onclick="startScanner()">📷 فتح الكاميرا للمسح</button>
+        <div id="reader"></div>
+
+        <form id="scanForm" onsubmit="submitScanData(event)">
+            <label>كود الأوردر</label>
+            <input type="text" id="orderId" readonly placeholder="سيتم تعبئته تلقائياً عند المسح" required>
+
+            <label>نوع الحركة</label>
+            <select id="actionType" required>
+                <option value="تسليم لشركة الشحن">تسليم لشركة الشحن</option>
+                <option value="تسليم للعميل">تسليم للعميل</option>
+                <option value="مرتجع">مرتجع</option>
+            </select>
+
+            <label>شركة الشحن</label>
+            <select id="shippingCompany">
+                <option value="روكت للشحن">روكت للشحن</option>
+                <option value="محمد الريان">محمد الريان</option>
+                <option value="حسام العجمي">حسام العجمي</option>
+            </select>
+
+            <label>عدد القطع المسلمة</label>
+            <input type="number" id="deliveredPieces" value="0">
+
+            <label>عدد القطع المرتجعة</label>
+            <input type="number" id="returnedPieces" value="0">
+
+            <label>المبلغ المحصل</label>
+            <input type="number" id="collectedAmount" value="0">
+
+            <label>اسم الموظف / المسؤول</label>
+            <input type="text" id="employeeName" placeholder="أدخل اسمك" required>
+
+            <button type="submit" class="btn-submit" id="saveScanBtn">حفظ حركة الشحن</button>
+        </form>
+        <div id="scan-status" class="status-msg"></div>
+    </div>
+</div>
+
+<script>
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyXHjA5ZYdQu6pUCt5fWg3iS3V4oAU99u3sShGjyHz3qSjfVEGWYI_ywwVi2WMICv7Dlg/exec";
+
+    function switchTab(tabId) {
+        document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        event.target.classList.add('active');
+        if(tabId !== 'scanOrder') stopScanner();
+    }
+
+    // حفظ أوردر جديد
+    function submitNewOrder(e) {
+        e.preventDefault();
+        const btn = document.getElementById('saveOrderBtn');
+        const status = document.getElementById('new-status');
+        btn.disabled = true;
+        btn.innerText = "جاري حفظ الأوردر...";
+
+        const payload = {
+            type: "NEW_ORDER",
+            custName: document.getElementById('custName').value,
+            custPhone: document.getElementById('custPhone').value,
+            custPhone2: document.getElementById('custPhone2').value,
+            custGov: document.getElementById('custGov').value,
+            custAddress: document.getElementById('custAddress').value,
+            orderContent: document.getElementById('orderContent').value,
+            itemCount: document.getElementById('itemCount').value,
+            orderValue: document.getElementById('orderValue').value,
+            shippingFee: document.getElementById('shippingFee').value,
+            suggestedShipping: document.getElementById('suggestedShipping').value,
+            orderNotes: document.getElementById('orderNotes').value
+        };
+
+        fetch(SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        }).then(() => {
+            status.style.color = "#087b65";
+            status.innerText = "تم تسجيل الأوردر بنجاح وإرساله للشيت!";
+            btn.disabled = false;
+            btn.innerText = "حفظ وتسجيل الأوردر";
+            document.getElementById('createOrderForm').reset();
+        }).catch(err => {
+            status.style.color = "red";
+            status.innerText = "حدث خطأ أثناء الحفظ، جرب مرة أخرى.";
+            btn.disabled = false;
+            btn.innerText = "حفظ وتسجيل الأوردر";
+        });
+    }
+
+    // قارئ QR
+    let html5QrCode;
+    function startScanner() {
+        const readerDiv = document.getElementById('reader');
+        readerDiv.style.display = 'block';
+        if (!html5QrCode) html5QrCode = new Html5Q.Html5Qrcode("reader");
+        html5QrCode.start(
+            { facingMode: "environment" },
+            { fps: 10, qrbox: { width: 250, height: 250 } },
+            (text) => {
+                document.getElementById('orderId').value = text;
+                stopScanner();
+                alert("تم قراءة الكود: " + text);
+            },
+            () => {}
+        ).catch(() => alert("تعذر فتح الكاميرا"));
+    }
+
+    function stopScanner() {
+        if (html5QrCode && html5QrCode.isScanning) {
+            html5QrCode.stop().then(() => document.getElementById('reader').style.display = 'none');
+        }
+    }
+
+    function submitScanData(e) {
+        e.preventDefault();
+        const btn = document.getElementById('saveScanBtn');
+        const status = document.getElementById('scan-status');
+        btn.disabled = true;
+        btn.innerText = "جاري الحفظ...";
+
+        const payload = {
+            type: "SCAN_UPDATE",
+            orderId: document.getElementById('orderId').value,
+            actionType: document.getElementById('actionType').value,
+            shippingCompany: document.getElementById('shippingCompany').value,
+            deliveredPieces: document.getElementById('deliveredPieces').value,
+            returnedPieces: document.getElementById('returnedPieces').value,
+            collectedAmount: document.getElementById('collectedAmount').value,
+            employeeName: document.getElementById('employeeName').value
+        };
+
+        fetch(SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        }).then(() => {
+            status.style.color = "#087b65";
+            status.innerText = "تم حفظ الحركة بنجاح!";
+            btn.disabled = false;
+            btn.innerText = "حفظ حركة الشحن";
+            document.getElementById('scanForm').reset();
+        }).catch(() => {
+            status.style.color = "red";
+            status.innerText = "حدث خطأ أثناء الحفظ.";
+            btn.disabled = false;
+            btn.innerText = "حفظ حركة الشحن";
+        });
+    }
+</script>
+</body>
+</html>
