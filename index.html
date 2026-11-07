@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الفيروز إكسبريس - مسح الأوردرات</title>
+  <!-- مكتبة مسح الـ QR باستخدام كاميرا الموبايل -->
+  <script src="https://unpkg.com/html5-qrcode"></script>
+  <style>
+    * { box-sizing: border-box; font-family: system-ui, -apple-system, sans-serif; }
+    body { background-color: #f3f4f6; margin: 0; padding: 15px; color: #1f2937; }
+    .container { max-width: 480px; margin: 0 auto; background: #ffffff; border-radius: 16px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+    h2 { text-align: center; color: #087b65; margin-top: 0; }
+    .btn-scan { background-color: #087b65; color: white; width: 100%; border: none; padding: 16px; border-radius: 12px; font-size: 18px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 15px; }
+    .btn-scan:active { background-color: #065f4e; }
+    #reader { width: 100%; border-radius: 12px; overflow: hidden; display: none; margin-bottom: 15px; border: 2px solid #087b65; }
+    .order-card { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; padding: 15px; display: none; }
+    label { display: block; font-weight: bold; margin-top: 12px; margin-bottom: 4px; font-size: 14px; color: #374151; }
+    input, select, textarea { width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 16px; outline: none; }
+    input:focus, select:focus, textarea:focus { border-color: #087b65; }
+    .btn-save { background-color: #2563eb; color: white; width: 100%; border: none; padding: 14px; border-radius: 10px; font-size: 16px; font-weight: bold; margin-top: 18px; cursor: pointer; }
+    .status-msg { text-align: center; font-weight: bold; margin-top: 12px; color: #059669; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>الفيروز إكسبريس</h2>
+  
+  <button class="btn-scan" onclick="startScanner()">
+    <span>📷</span> مسح أوردر جديد
+  </button>
+
+  <div id="reader"></div>
+
+  <div id="orderCard" class="order-card">
+    <div style="font-size: 18px; font-weight: bold; color: #087b65; margin-bottom: 10px;" id="dispOrderId">
+      رقم الأوردر: -
+    </div>
+
+    <label>نوع الحركة</label>
+    <select id="action">
+      <option value="تسليم كامل">تسليم كامل للعميل</option>
+      <option value="تسليم جزئي">تسليم جزئي للعميل</option>
+      <option value="مرتجع كامل">استلام مرتجع كامل</option>
+      <option value="مرتجع جزئي">استلام مرتجع جزئي</option>
+      <option value="تسليم لشركة الشحن">تسليم لشركة الشحن</option>
+      <option value="استبدال">استبدال</option>
+    </select>
+
+    <label>المبلغ المحصل</label>
+    <input type="number" id="amount" value="0" placeholder="أدخل المبلغ">
+
+    <label>اسم الموظف / المندوب</label>
+    <input type="text" id="employee" placeholder="اسمك أو اسم المندوب">
+
+    <label>ملاحظات</label>
+    <textarea id="notes" rows="2" placeholder="أي تفاصيل إضافية"></textarea>
+
+    <button class="btn-save" onclick="saveOrderData()">حفظ الحركة</button>
+    <div id="statusMsg" class="status-msg"></div>
+  </div>
+</div>
+
+<script>
+  let html5QrcodeScanner = null;
+  let currentOrderId = "";
+
+  function startScanner() {
+    document.getElementById("reader").style.display = "block";
+    document.getElementById("orderCard").style.display = "none";
+    document.getElementById("statusMsg").innerText = "";
+
+    if (!html5QrcodeScanner) {
+      html5QrcodeScanner = new Html5Qrcode("reader");
+    }
+
+    html5QrcodeScanner.start(
+      { facingMode: "environment" }, // الكاميرا الخلفية للموبايل
+      { fps: 10, qrbox: { width: 250, height: 250 } },
+      onScanSuccess,
+      onScanFailure
+    ).catch(err => {
+      alert("تعذر فتح الكاميرا: " + err);
+    });
+  }
+
+  function onScanSuccess(decodedText) {
+    currentOrderId = decodedText;
+    
+    // إيقاف الكاميرا بعد القراءة الناجحة
+    html5QrcodeScanner.stop().then(() => {
+      document.getElementById("reader").style.display = "none";
+      document.getElementById("dispOrderId").innerText = "رقم الأوردر: " + currentOrderId;
+      document.getElementById("orderCard").style.display = "block";
+    });
+  }
+
+  function onScanFailure(error) {
+    // تجاهل أخطاء القراءة المستمرة حتى يتم ضبط الكاميرا على QR صحيح
+  }
+
+  function saveOrderData() {
+    const payload = {
+      orderId: currentOrderId,
+      action: document.getElementById("action").value,
+      amount: document.getElementById("amount").value,
+      employee: document.getElementById("employee").value,
+      notes: document.getElementById("notes").value,
+      timestamp: new Date().toLocaleString("ar-EG")
+    };
+
+    // حفظ الحركة محلياً على الموبايل (Local Storage)
+    let logs = JSON.parse(localStorage.getItem("fz_orders_log") || "[]");
+    logs.push(payload);
+    localStorage.setItem("fz_orders_log", JSON.stringify(logs));
+
+    document.getElementById("statusMsg").innerText = "تم حفظ الحركة بنجاح!";
+    
+    setTimeout(() => {
+      document.getElementById("orderCard").style.display = "none";
+      document.getElementById("statusMsg").innerText = "";
+    }, 2000);
+  }
+</script>
+
+</body>
+</html>
