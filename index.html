@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ليجن ستور - الفيروز | دفا الشتاء</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: #f0f2f5; color: #333; line-height: 1.6; }
+        .container { max-width: 600px; margin: 0 auto; background: #ffffff; min-height: 100vh; box-shadow: 0 0 25px rgba(0,0,0,0.08); }
+        
+        /* الهيدر والبانر الإعلاني الاحترافي */
+        .header { background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); color: white; text-align: center; padding: 22px; font-size: 24px; font-weight: 800; letter-spacing: 0.5px; }
+        .hero-banner { background: linear-gradient(135deg, #ff416c, #ff4b2b); color: white; text-align: center; padding: 35px 20px; position: relative; overflow: hidden; }
+        .hero-banner h1 { font-size: 28px; margin-bottom: 12px; font-weight: 900; text-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+        .hero-banner p { font-size: 18px; margin-bottom: 20px; opacity: 0.95; }
+        .badge-grid { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
+        .badge-item { background: rgba(255, 255, 255, 0.25); backdrop-filter: blur(5px); padding: 8px 14px; border-radius: 30px; font-size: 14px; font-weight: bold; border: 1px solid rgba(255,255,255,0.4); }
+
+        .content-body { padding: 25px; }
+        .section-title { font-size: 18px; font-weight: 800; color: #0f2027; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; border-right: 4px solid #ff416c; padding-right: 10px; }
+
+        /* مربعات اختيار العرض (3 مربعات) */
+        .offers-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 20px; }
+        .offer-card { border: 2px solid #e1e8ed; border-radius: 12px; padding: 16px; cursor: pointer; transition: all 0.3s ease; background: #fafbfc; display: flex; justify-content: space-between; align-items: center; }
+        .offer-card:hover { border-color: #ff416c; background: #fff5f6; }
+        .offer-card.selected { border-color: #ff416c; background: #fff0f2; box-shadow: 0 4px 12px rgba(255, 65, 108, 0.15); }
+        .offer-info h3 { font-size: 17px; color: #2c3e50; font-weight: 700; margin-bottom: 4px; }
+        .offer-info p { font-size: 14px; color: #e74c3c; font-weight: bold; }
+        .offer-radio { width: 22px; height: 22px; accent-color: #ff416c; }
+
+        .form-group { margin-bottom: 22px; }
+        label { display: block; font-weight: 700; margin-bottom: 8px; color: #34495e; font-size: 15px; }
+        input[type="text"], input[type="number"], select { width: 100%; padding: 14px; border: 2px solid #e1e8ed; border-radius: 10px; font-size: 16px; outline: none; transition: 0.3s; background: #fdfdfe; }
+        input:focus, select:focus { border-color: #ff416c; background: #fff; box-shadow: 0 0 8px rgba(255, 65, 108, 0.15); }
+
+        /* كارد القطع المتعددة */
+        .item-selection { background: #f8f9fa; padding: 18px; border-radius: 12px; border: 1px solid #e2e8f0; margin-bottom: 15px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02); }
+        .item-selection h4 { color: #2c3e50; font-size: 16px; margin-bottom: 12px; border-bottom: 1px dashed #cbd5e1; padding-bottom: 6px; }
+
+        /* زر الواتساب الفخم */
+        .btn-whatsapp { display: block; width: 100%; background: linear-gradient(135deg, #25d366, #128c7e); color: white; text-align: center; padding: 18px; border: none; border-radius: 12px; font-size: 20px; font-weight: 800; cursor: pointer; text-decoration: none; box-shadow: 0 6px 20px rgba(37,211,102,0.35); transition: 0.3s; margin-top: 10px; }
+        .btn-whatsapp:active { transform: scale(0.98); }
+        .security-note { text-align: center; font-size: 13px; color: #7f8c8d; margin-top: 12px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- هيدر البراند -->
+    <div class="header">👑 ليجن ستور - الفيروز 👑</div>
+    
+    <!-- بانر إعلاني احترافي وبارز -->
+    <div class="hero-banner">
+        <h1>❄️ دفا الشتاء وشياكة ليجن ستور وصلت! 🔥</h1>
+        <p>مبطن ويدفيكي.. راحة ونعومة تامة طوال اليوم</p>
+        <div class="badge-grid">
+            <span class="badge-item"><i class="fas fa-feather"></i> قطن ليكرا ناعم</span>
+            <span class="badge-item"><i class="fas fa-weight"></i> تلبيس من 50 لـ 100 كجم</span>
+            <span class="badge-item"><i class="fas fa-shield-alt"></i> معاينة قبل الاستلام</span>
+        </div>
+    </div>
+
+    <div class="content-body">
+        <form id="orderForm">
+            
+            <!-- أولاً: 3 مربعات لاختيار العرض -->
+            <div class="form-group">
+                <label class="section-title"><i class="fas fa-tags"></i> اختر العرض المفضل لديك:</label>
+                <div class="offers-grid">
+                    
+                    <!-- العرض الأول -->
+                    <div class="offer-card" onclick="selectOffer(1)">
+                        <div class="offer-info">
+                            <h3>قطعة واحدة</h3>
+                            <p>السعر: 199 جنيه</p>
+                        </div>
+                        <input type="radio" name="offerType" value="1" class="offer-radio" id="opt1">
+                    </div>
+
+                    <!-- العرض الثاني -->
+                    <div class="offer-card" onclick="selectOffer(2)">
+                        <div class="offer-info">
+                            <h3>عرض قطعتين</h3>
+                            <p>السعر: 350 جنيه</p>
+                        </div>
+                        <input type="radio" name="offerType" value="2" class="offer-radio" id="opt2">
+                    </div>
+
+                    <!-- العرض الثالث -->
+                    <div class="offer-card selected" onclick="selectOffer(3)">
+                        <div class="offer-info">
+                            <h3>عرض 3 قطع أو أكثر (الأكثر توفيراً)</h3>
+                            <p>سعر القطعة: 150 جنيه فقط!</p>
+                        </div>
+                        <input type="radio" name="offerType" value="3" class="offer-radio" id="opt3" checked>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ثانياً: خانة اختيار عدد القطع المرن (تظهر لو العرض الثالث مختار) -->
+            <div class="form-group" id="customCountGroup">
+                <label><i class="fas fa-layer-group" style="color: #e74c3c;"></i> حدد عدد القطع المطلوب (مثلاً: 3، 5، 10 قطع):</label>
+                <input type="number" id="customPiecesCount" value="3" min="3" max="50" onchange="buildItemsList()" style="font-weight: bold; font-size: 18px; color: #e74c3c;">
+            </div>
+
+            <!-- ثالثاً: خانة الوزن -->
+            <div class="form-group">
+                <label class="section-title"><i class="fas fa-weight-scale"></i> وزن العميل بالكيلو (التلبيس مرن وريح جداً):</label>
+                <input type="number" id="weight" placeholder="اكتبي وزنك بالكيلو (مثلاً: 75)" required min="50" max="100">
+            </div>
+
+            <!-- تفاصيل الألوان والموديلات لكل قطعة ديناميكياً -->
+            <div class="form-group">
+                <label class="section-title"><i class="fas fa-palette"></i> تفاصيل الموديلات والألوان المطلوبة:</label>
+                <div id="itemsContainer"></div>
+            </div>
+
+            <!-- رابعاً: بيانات التوصيل -->
+            <div class="form-group" style="border-top: 2px dashed #e2e8f0; padding-top: 20px;">
+                <label><i class="fas fa-user"></i> الاسم بالكامل:</label>
+                <input type="text" id="custName" placeholder="الاسم الثلاثي" required>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-phone"></i> رقم الهاتف (للتواصل وتأكيد الشحن):</label>
+                <input type="text" id="custPhone" placeholder="رقم الموبايل الأساسي" required>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-map-marker-alt"></i> المحافظة والعنوان بالتفصيل:</label>
+                <input type="text" id="custAddress" placeholder="المحافظة - المدينة - الشارع - رقم الحتة" required>
+            </div>
+
+            <button type="button" class="btn-whatsapp" onclick="sendToWhatsApp()">
+                <i class="fab fa-whatsapp" style="font-size: 24px; vertical-align: middle;"></i> تأكيد الطلب عبر الواتساب الفوري 💬
+            </button>
+            
+            <div class="security
