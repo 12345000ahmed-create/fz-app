@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجر الفيروز الإلكتروني</title>
+    <style>
+        :root {
+            --primary: #c2185b;
+            --primary-dark: #880e4f;
+            --bg-color: #fce4ec;
+            --text-color: #333;
+            --white: #fff;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: Tahoma, sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-color); padding-bottom: 80px; }
+        header { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: var(--white); padding: 15px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        header h1 { font-size: 22px; margin-bottom: 5px; }
+        header p { font-size: 13px; opacity: 0.9; }
+        .container { max-width: 600px; margin: 15px auto; padding: 0 10px; }
+        .product-card { background: var(--white); border-radius: 12px; padding: 15px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .product-title { font-size: 18px; font-weight: bold; color: var(--primary-dark); margin-bottom: 10px; }
+        .pricing-table { background: #f8f9fa; border-radius: 8px; padding: 10px; margin: 10px 0; font-size: 14px; }
+        .pricing-option { display: flex; align-items: center; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #eee; cursor: pointer; }
+        .pricing-option:last-child { border-bottom: none; }
+        .colors-container, .sizes-container { display: flex; gap: 8px; margin: 10px 0; flex-wrap: wrap; }
+        .color-dot { width: 28px; height: 28px; border-radius: 50%; border: 2px solid #ddd; cursor: pointer; display: inline-block; }
+        .color-dot.selected { border-color: #000; transform: scale(1.1); box-shadow: 0 0 5px rgba(0,0,0,0.3); }
+        .size-btn { padding: 6px 12px; border: 1px solid #ccc; background: #fff; border-radius: 6px; cursor: pointer; font-size: 13px; }
+        .size-btn.selected { background: var(--primary); color: #fff; border-color: var(--primary); }
+        .btn-add { background: var(--primary); color: #fff; border: none; width: 100%; padding: 12px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 10px; }
+        .btn-add:active { background: var(--primary-dark); }
+        .cart-section { background: var(--white); border-radius: 12px; padding: 15px; margin-top: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .form-control { width: 100%; padding: 10px; margin: 6px 0 12px 0; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; }
+        .btn-checkout { background: #25d366; color: #fff; border: none; width: 100%; padding: 14px; border-radius: 8px; font-size: 17px; font-weight: bold; cursor: pointer; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>💎 مصنع ومكتب الفيروز 💎</h1>
+        <p>جودة عالية • راحة تامة • شحن لجميع المحافظات</p>
+    </header>
+
+    <div class="container" id="products-list">
+        <!-- المنتجات ستعرض هنا برمجياً -->
+    </div>
+
+    <div class="container">
+        <div class="cart-section">
+            <h3 style="margin-bottom: 10px; color: var(--primary-dark);">🛒 سلة الطلبات</h3>
+            <div id="cart-items" style="font-size: 14px; margin-bottom: 10px; color: #555;">السلة فارغة حالياً.</div>
+            <div id="cart-total" style="font-weight: bold; font-size: 16px; margin-bottom: 15px;">الإجمالي: 0 جنيه</div>
+
+            <h3 style="margin-bottom: 8px; color: var(--primary-dark); font-size: 16px;">📝 بيانات التوصيل</h3>
+            <input type="text" id="c-name" class="form-control" placeholder="الاسم بالكامل...">
+            <input type="tel" id="c-phone" class="form-control" placeholder="رقم الموبايل...">
+            <input type="text" id="c-gov" class="form-control" placeholder="المحافظة...">
+            <textarea id="c-address" class="form-control" placeholder="العنوان بالتفصيل (الشارع، رقم العمارة)..." rows="2"></textarea>
+
+            <button class="btn-checkout" onclick="sendWhatsApp()">📲 تأكيد الطلب عبر الواتساب</button>
+        </div>
+    </div>
+
+    <script>
+        const products = [
+            {
+                id: 1,
+                name: "شورت ديربي مضلع طويل",
+                options: [
+                    { label: "قطعتين", price: 160 },
+                    { label: "3 قطع", price: 210 },
+                    { label: "4 قطع", price: 260 },
+                    { label: "5 قطع أو أكثر (سعر القطعة)", price: 60, isPerPiece: true },
+                    { label: "10 قطع أو أكثر (سعر القطعة)", price: 55, isPerPiece: true }
+                ],
+                colors: [{ name: "أسود", hex: "#000" }, { name: "كحلي", hex: "#1b2a4a" }, { name: "بيج", hex: "#d8c2a3" }, { name: "بني", hex: "#4a3319" }, { name: "رصـاصي", hex: "#666" }, { name: "أزرق", hex: "#0066cc" }, { name: "أبيض", hex: "#fff" }],
+                sizes: ["M", "L", "XL", "2XL"]
+            },
+            {
+                id: 2,
+                name: "ليجن قلوب قطن ليكرا",
+                options: [
+                    { label: "قطعة واحدة", price: 199 },
+                    { label: "عرض قطعتين", price: 350 },
+                    { label: "عرض 3 قطع", price: 450 }
+                ],
+                colors: [{ name: "أسود", hex: "#000" }, { name: "بني", hex: "#4a3319" }, { name: "كحلي", hex: "#1b2a4a" }, { name: "رصاصي", hex: "#666" }, { name: "أزرق", hex: "#0066cc" }, { name: "بيج", hex: "#d8c2a3" }],
+                sizes: ["مقاس موحد (من 50 إلى 100 كجم)"]
+            },
+            {
+                id: 3,
+                name: "ليجن شتوي مبطن فرو ثقيل",
+                options: [
+                    { label: "قطعة واحدة", price: 220 },
+                    { label: "عرض قطعتين", price: 400 },
+                    { label: "عرض 3 قطع", price: 550 }
+                ],
+                colors: [{ name: "أسود", hex: "#000" }, { name: "كحلي", hex: "#1b2a4a" }, { name: "بني", hex: "#4a3319" }, { name: "رصاصي فاتح", hex: "#999" }, { name: "برجندي", hex: "#660033" }],
+                sizes: ["مقاِس موحد (يلبس حتى 100 كجم)"]
+            },
+            {
+                id: 4,
+                name: "برا بوش الفيروز (3 قطع بالعلبة)",
+                options: [
+                    { label: "علبة كاملة (3 قطع)", price: 250 }
+                ],
+                colors: [{ name: "تغليف مزيج (كحلي ورمادي وأحمر)", hex: "#222" }],
+                sizes: ["مقاس واحد (من 50 إلى 110 كجم)"]
+            }
+        ];
+
+        let selectedCart = { product: null, optionIdx: 0, color: "", size: "" };
+        let cartList = [];
+
+        function renderProducts() {
+            const listEl = document.getElementById('products-list');
+            listEl.innerHTML = products.map((p, pIdx) => `
+                <div class="product-card">
+                    <div class="product-title">${p.name}</div>
+                    <div class="pricing-table">
+                        <div style="font-weight:bold; margin-bottom:5px; color:#c2185b;">اختر العرض:</div>
+                        ${p.options.map((opt, oIdx) => `
+                            <label class="pricing-option">
+                                <span><input type="radio" name="p_${pIdx}" ${oIdx===0?'checked':''} onclick="setOpt(${pIdx}, ${oIdx})"> ${opt.label}</span>
+                                <strong style="color:#d81b60;">${opt.price} جنيه</strong>
+                            </label>
+                        `).join('')}
+                    </div>
+                    <div style="font-size:13px; font-weight:bold; margin-top:8px;">اختر اللون:</div>
+                    <div class="colors-container">
+                        ${p.colors.map((c, cIdx) => `
+                            <span class="color-dot ${cIdx===0?'selected':''}" style="background-color: ${c.hex};" onclick="setColor(${pIdx}, '${c.name}', this)"></span>
+                        `).join('')}
+                    </div>
+                    <div style="font-size:13px; font-weight:bold; margin-top:8px;">المقاس:</div>
+                    <div class="sizes-container">
+                        ${p.sizes.map((s, sIdx) => `
+                            <button class="size-btn ${sIdx===0?'selected':''}" onclick="setSize(${pIdx}, '${s}', this)">${s}</button>
+                        `).join('')}
+                    </div>
+                    <button class="btn-add" onclick="addToCart(${pIdx})">🛒 إضافة إلى السلة</button>
+                </div>
+            `).join('');
+
+            // تهيئة الاختيارات الافتراضية لأول منتج
+            products.forEach((p, idx) => {
+                selectedCart[idx] = {
+                    option: p.options[0],
+                    color: p.colors[0].name,
+                    size: p.sizes[0]
+                };
+            });
+        }
+
+        function setOpt(pIdx, oIdx) {
+            selectedCart[pIdx].option = products[pIdx].options[oIdx];
+        }
+        function setColor(pIdx, colorName, el) {
+            selectedCart[pIdx].color = colorName;
+            el.parentElement.querySelectorAll('.color-dot').forEach(d => d.classList.remove('selected'));
+            el.classList.add('selected');
+        }
+        function setSize(pIdx, sizeName, el) {
+            selectedCart[pIdx].size = sizeName;
+            el.parentElement.querySelectorAll('.size-btn').forEach(b => b.classList.remove('selected'));
+            el.classList.add('selected');
+        }
+
+        function addToCart(pIdx) {
+            const p = products[pIdx];
+            const sel = selectedCart[pIdx];
+            cartList.push({
+                name: p.name,
+                option: sel.option.label,
+                price: sel.option.price,
+                color: sel.color,
+                size: sel.size
+            });
+            updateCartUI();
+            alert("تمت الإضافة إلى السلة بنجاح! 👇 انزل لأسفل الصفحة لتأكيد الطلب.");
+        }
+
+        function updateCartUI() {
+            const itemsEl = document.getElementById('cart-items');
+            const totalEl = document.getElementById('cart-total');
+            if(cartList.length === 0) {
+                itemsEl.innerHTML = "السلة فارغة حالياً.";
+                totalEl.innerHTML = "الإجمالي: 0 جنيه";
+                return;
+            }
+            let total = 0;
+            itemsEl.innerHTML = cartList.map((item, i) => {
+                total += item.price;
+                return `<div style="padding:4px 0; border-bottom:1px dashed #ddd;">
+                    <b>${i+1}. ${item.name}</b><br>
+                    عرض: ${item.option} | اللون: ${item.color} | المقاس: ${item.size} — <b>${item.price} جنيه</b>
+                </div>`;
+            }).join('');
+            totalEl.innerHTML = `الإجمالي الكلي: ${total} جنيه`;
+        }
+
+        function sendWhatsApp() {
+            if(cartList.length === 0) {
+                alert("برجاء اختيار منتج وإضافته للسلة أولاً!");
+                return;
+            }
+            const name = document.getElementById('c-name').value.trim();
+            const phone = document.getElementById('c-phone').value.trim();
+            const gov = document.getElementById('c-gov').value.trim();
+            const address = document.getElementById('c-address').value.trim();
+
+            if(!name || !phone || !gov || !address) {
+                alert("برجاء استكمال بيانات الشحن (الاسم، الموبايل، المحافظة، والعنوان) قبل التأكيد.");
+                return;
+            }
+
+            let msg = `🛒 *طلب جديد من متجر الفيروز*%0A%0A`;
+            msg += `👤 *الاسم:* ${name}%0A`;
+            msg += `📱 *الموبايل:* ${phone}%0A`;
+            msg += `📍 *المحافظة:* ${gov}%0A`;
+            msg += `🏠 *العنوان:* ${address}%0A%0A`;
+            msg += `📦 *المنتجات المطلوبة:*%0A`;
+
+            let total = 0;
+            cartList.forEach((item, i) => {
+                total += item.price;
+                msg += `${i+1}. ${item.name} (${item.option})%0A   - اللون: ${item.color} | المقاس: ${item.size} | السعر: ${item.price}ج%0A`;
+            });
+
+            msg += `%0A💰 *الإجمالي الكلي:* ${total} جنيه`;
+
+            const url = `https://wa.me/201080239769?text=${encodeURIComponent(msg)}`;
+            window.open(url, '_blank');
+        }
+
+        window.onload = renderProducts;
+    </script>
+</body>
+</html>
