@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ليجن ستور - دفا الشتاء والشياكة</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f4f6f9; color: #333; line-height: 1.6; }
+        .container { max-width: 600px; margin: 0 auto; background: #fff; min-height: 100vh; box-shadow: 0 0 20px rgba(0,0,0,0.1); }
+        .header { background: linear-gradient(135deg, #1e3c72, #2a5298); color: white; text-align: center; padding: 18px; font-size: 22px; font-weight: bold; }
+        .hero-box { background: linear-gradient(135deg, #ff416c, #ff4b2b); color: white; text-align: center; padding: 30px 15px; }
+        .hero-box h1 { font-size: 26px; margin-bottom: 10px; font-weight: 800; }
+        .hero-box p { font-size: 18px; margin-bottom: 15px; opacity: 0.95; }
+        .features-list { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+        .feature-tag { background: rgba(255,255,255,0.2); padding: 6px 12px; border-radius: 20px; font-size: 14px; font-weight: bold; }
+        .offer-banner { background: #ffeaa7; color: #d63031; text-align: center; padding: 12px; font-weight: bold; font-size: 18px; border-bottom: 2px dashed #fab1a0; }
+        .form-section { padding: 20px; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; font-weight: bold; margin-bottom: 8px; color: #1e3c72; font-size: 15px; }
+        input[type="text"], input[type="number"], select { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; outline: none; transition: 0.3s; background: #fff; }
+        input:focus, select:focus { border-color: #2a5298; box-shadow: 0 0 5px rgba(42,82,152,0.2); }
+        .item-selection { background: #f8f9fa; padding: 15px; border-radius: 8px; border: 1px solid #e9ecef; margin-bottom: 15px; }
+        .btn-whatsapp { display: block; width: 100%; background: #25d366; color: white; text-align: center; padding: 16px; border: none; border-radius: 8px; font-size: 20px; font-weight: bold; cursor: pointer; text-decoration: none; box-shadow: 0 4px 12px rgba(37,211,102,0.3); transition: 0.2s; }
+        .btn-whatsapp:active { transform: scale(0.98); }
+        .price-box { background: #e8f4fd; border: 1px solid #bbe1fa; border-radius: 8px; padding: 12px; margin-bottom: 20px; text-align: center; font-size: 15px; color: #0f4c81; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">👑 ليجن ستور - الفيروز 👑</div>
+    
+    <!-- واجهة تصميمه جذابة واضحة وسريعة التحميل بدون صور خارجية معطوبة -->
+    <div class="hero-box">
+        <h1>❄️ دفا الشتاء وشياكة ليجن ستور وصلت! 🔥</h1>
+        <p>مبطن ويدفيكي.. راحة وشياكة طول اليوم بطانة ناعمة ودافئة</p>
+        <div class="features-list">
+            <span class="feature-tag">✨ تلبيس 50 إلى 100 كجم</span>
+            <span class="feature-tag">✨ معاينة قبل الاستلام</span>
+            <span class="feature-tag">✨ شحن لكل مصر</span>
+        </div>
+    </div>
+
+    <div class="offer-banner">
+        🔥 العروض الكبرى: القطعة 199ج | قطعتين 350ج | 3 قطع أو أكثر (سعر القطعة 150ج) 🔥
+    </div>
+
+    <div class="form-section">
+        <div class="price-box">
+            املأ بياناتك واختار عرضك.. والتوصيل لحد باب البيت! 🚚
+        </div>
+
+        <form id="orderForm">
+            <!-- 1. اختيار العرض -->
+            <div class="form-group">
+                <label><i class="fas fa-tag" style="color: #e74c3c;"></i> اختر العرض المناسب:</label>
+                <select id="offerSelect" onchange="updateItems()">
+                    <option value="1">قطعة واحدة بـ 199 جنيه</option>
+                    <option value="2">عرض قطعتين بـ 350 جنيه</option>
+                    <option value="3" selected>عرض 3 قطع أو أكثر (سعر القطعة 150 جنيه)</option>
+                </select>
+            </div>
+
+            <!-- 2. تحديد الوزن -->
+            <div class="form-group">
+                <label><i class="fas fa-weight-scale" style="color: #2980b9;"></i> الوزن بالكيلو (التلبيس مرن من 50 حتى 100 كجم):</label>
+                <input type="number" id="weight" placeholder="اكتبي وزنك هنا (مثلاً: 70)" required min="50" max="100">
+            </div>
+
+            <!-- مكان اختيار الألوان والموديلات ديناميكياً حسب العرض -->
+            <div id="itemsContainer"></div>
+
+            <!-- 3. بيانات التوصيل -->
+            <div class="form-group">
+                <label><i class="fas fa-user"></i> الاسم بالكامل:</label>
+                <input type="text" id="custName" placeholder="الاسم الثلاثي" required>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-phone"></i> رقم الهاتف (للتواصل وتأكيد الشحن):</label>
+                <input type="text" id="custPhone" placeholder="رقم الموبايل" required>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-map-marker-alt"></i> المحافظة والعنوان بالتفصيل:</label>
+                <input type="text" id="custAddress" placeholder="المحافظة - المدينة - الشارع - رقم الحتة" required>
+            </div>
+
+            <button type="button" class="btn-whatsapp" onclick="sendToWhatsApp()">
+                <i class="fab fa-whatsapp"></i> تأكيد الطلب عبر الواتساب 💬
+            </button>
+        </form>
+    </div>
+</div>
+
+<script>
+    const colorsPlain = ["أسود", "بني", "كحلي", "كافيه", "بيج", "رصاصي"];
+    
+    function updateItems() {
+        const count = parseInt(document.getElementById('offerSelect').value);
+        const container = document.getElementById('itemsContainer');
+        container.innerHTML = '';
+
+        for (let i = 1; i <= count; i++) {
+            const div = document.createElement('div');
+            div.className = 'item-selection';
+            div.innerHTML = `
+                <strong style="color: #2c3e50;">تفاصيل القطعة رقم (${i}):</strong>
+                <div style="margin-top: 8px;">
+                    <label style="font-size: 14px; color: #555;">الموديل:</label>
+                    <select id="model_${i}" onchange="updateColorOptions(${i})">
+                        <option value="مبطن سادة">مبطن سادة</option>
+                        <option value="مضلع مبطن">مضلع مبطن (أسود فقط)</option>
+                        <option value="نقشة ورق الشجر">نقشة ورق الشجر (أسود فقط)</option>
+                    </select>
+                </div>
+                <div style="margin-top: 8px;">
+                    <label style="font-size: 14px; color: #555;">اللون:</label>
+                    <select id="color_${i}">
+                        ${colorsPlain.map(c => `<option value="${c}">${c}</option>`).join('')}
+                    </select>
+                </div>
+            `;
+            container.appendChild(div);
+        }
+    }
+
+    function updateColorOptions(index) {
+        const model = document.getElementById(`model_${index}`).value;
+        const colorSelect = document.getElementById(`color_${index}`);
+        
+        if (model === "مضلع مبطن" || model === "نقشة ورق الشجر") {
+            colorSelect.innerHTML = '<option value="أسود">أسود فقط</option>';
+        } else {
+            colorSelect.innerHTML = colorsPlain.map(c => `<option value="${c}">${c}</option>`).join('');
+        }
+    }
+
+    function sendToWhatsApp() {
+        const name = document.getElementById('custName').value;
+        const phone = document.getElementById('custPhone').value;
+        const address = document.getElementById('custAddress').value;
+        const weight = document.getElementById('weight').value;
+        const offer = document.getElementById('offerSelect').options[document.getElementById('offerSelect').selectedIndex].text;
+        const count = parseInt(document.getElementById('offerSelect').value);
+
+        if (!name || !phone || !address || !weight) {
+            alert('برجاء ملء كافة البيانات المطلوبة والوزن قبل المتابعة.');
+            return;
+        }
+
+        let itemsText = '';
+        for (let i = 1; i <= count; i++) {
+            const m = document.getElementById(`model_${i}`).value;
+            const c = document.getElementById(`color_${i}`).value;
+            itemsText += `\n- القطعة ${i}: ${m} (اللون: ${c})`;
+        }
+
+        const message = `مرحباً، أود تأكيد طلب جديد من ليجن ستور (الفيروز):\n` +
+                        `📌 العرض: ${offer}\n` +
+                        `⚖️ وزن العميل: ${weight} كجم\n` +
+                        `🎨 تفاصيل القطع:${itemsText}\n\n` +
+                        `👤 الاسم: ${name}\n` +
+                        `📞 الهاتف: ${phone}\n` +
+                        `📍 العنوان: ${address}`;
+
+        const encodedMsg = encodeURIComponent(message);
+        window.location.href = `https://wa.me/201080239769?text=${encodedMsg}`;
+    }
+
+    // تشغيل الخيارات أول ما الصفحة تفتح
+    updateItems();
+</script>
+
+</body>
+</html>
