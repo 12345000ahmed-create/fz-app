@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ليجن ستور - الفيروز | دفا الشتاء</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: #f0f2f5; color: #333; line-height: 1.6; }
+        .container { max-width: 600px; margin: 0 auto; background: #ffffff; min-height: 100vh; box-shadow: 0 0 25px rgba(0,0,0,0.08); }
+        .header { background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); color: white; text-align: center; padding: 18px; font-size: 22px; font-weight: 800; }
+        
+        .banner-container { width: 100%; background: #000; text-align: center; line-height: 0; }
+        .banner-img { width: 100%; height: auto; display: block; object-fit: contain; }
+        
+        .content-body { padding: 20px; }
+        .section-title { font-size: 16px; font-weight: 800; color: #0f2027; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; border-right: 4px solid #ff416c; padding-right: 10px; }
+
+        .offers-grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin-bottom: 20px; }
+        .offer-card { border: 2px solid #e1e8ed; border-radius: 12px; padding: 14px; cursor: pointer; transition: 0.3s; background: #fafbfc; display: flex; justify-content: space-between; align-items: center; }
+        .offer-card.selected { border-color: #ff416c; background: #fff0f2; box-shadow: 0 4px 12px rgba(255, 65, 108, 0.15); }
+        .offer-info h3 { font-size: 16px; color: #2c3e50; font-weight: 700; }
+        .offer-info p { font-size: 14px; color: #e74c3c; font-weight: bold; }
+        .offer-radio { width: 20px; height: 20px; accent-color: #ff416c; }
+
+        .form-group { margin-bottom: 18px; }
+        label { display: block; font-weight: 700; margin-bottom: 6px; color: #34495e; font-size: 14px; }
+        input[type="text"], input[type="number"], select { width: 100%; padding: 12px; border: 2px solid #e1e8ed; border-radius: 8px; font-size: 15px; outline: none; background: #fff; }
+        input:focus, select:focus { border-color: #ff416c; }
+
+        .item-selection { background: #f8f9fa; padding: 14px; border-radius: 10px; border: 1px solid #e2e8f0; margin-bottom: 15px; }
+        .item-selection h4 { color: #2c3e50; font-size: 15px; margin-bottom: 10px; border-bottom: 1px dashed #cbd5e1; padding-bottom: 5px; }
+
+        /* تصميم أزرار الاختيارات السريعة */
+        .options-group-label { font-size: 13px; font-weight: 700; color: #555; margin-bottom: 6px; display: block; }
+        .buttons-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+        .choice-btn { background: #fff; border: 2px solid #cbd5e1; border-radius: 8px; padding: 8px 12px; font-size: 13px; font-weight: 600; color: #333; cursor: pointer; transition: 0.2s; }
+        .choice-btn.active { background: #ff416c; color: #fff; border-color: #ff416c; box-shadow: 0 2px 6px rgba(255, 65, 108, 0.25); }
+
+        .bill-box { background: #fff8f8; border: 2px dashed #ff416c; padding: 15px; border-radius: 10px; margin-bottom: 15px; }
+        .bill-row { display: flex; justify-content: space-between; font-size: 15px; margin-bottom: 8px; color: #2c3e50; font-weight: 600; }
+        .bill-total { border-top: 1px solid #e2e8f0; padding-top: 8px; font-size: 18px; color: #e74c3c; font-weight: 800; }
+
+        .btn-whatsapp { display: block; width: 100%; background: linear-gradient(135deg, #25d366, #128c7e); color: white; text-align: center; padding: 16px; border: none; border-radius: 10px; font-size: 19px; font-weight: 800; cursor: pointer; text-decoration: none; box-shadow: 0 4px 15px rgba(37,211,102,0.3); margin-top: 15px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">👑 ليجن ستور - الفيروز 👑</div>
+    
+    <div class="banner-container">
+        <img src="1794246725342.jpg" alt="ليجن ستور - الفيروز" class="banner-img">
+    </div>
+
+    <div class="content-body">
+        <form id="orderForm">
+            
+            <div class="form-group">
+                <label class="section-title"><i class="fas fa-tags"></i> اختر العرض المطلوب:</label>
+                <div class="offers-grid">
+                    <div class="offer-card" onclick="selectOffer(1)">
+                        <div class="offer-info">
+                            <h3>قطعة واحدة</h3>
+                            <p>السعر: 199 جنيه</p>
+                        </div>
+                        <input type="radio" name="offerType" value="1" class="offer-radio" id="opt1">
+                    </div>
+
+                    <div class="offer-card" onclick="selectOffer(2)">
+                        <div class="offer-info">
+                            <h3>عرض قطعتين</h3>
+                            <p>السعر: 350 جنيه</p>
+                        </div>
+                        <input type="radio" name="offerType" value="2" class="offer-radio" id="opt2">
+                    </div>
+
+                    <div class="offer-card selected" onclick="selectOffer(3)">
+                        <div class="offer-info">
+                            <h3>عرض 3 قطع أو أكثر (الأكثر توفيراً)</h3>
+                            <p>سعر القطعة: 150 جنيه فقط!</p>
+                        </div>
+                        <input type="radio" name="offerType" value="3" class="offer-radio" id="opt3" checked>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" id="customCountGroup">
+                <label><i class="fas fa-layer-group" style="color: #e74c3c;"></i> حدد عدد القطع المطلوبة:</label>
+                <input type="number" id="customPiecesCount" value="3" min="1" max="50" oninput="onCountChange()" style="font-weight: bold; font-size: 16px; color: #e74c3c;">
+            </div>
+
+            <div class="form-group">
+                <label class="section-title"><i class="fas fa-weight-scale"></i> الوزن بالكيلو (التلبيس من 50 حتى 100 كجم):</label>
+                <input type="number" id="weight" placeholder="اكتبي وزنك بالكيلو (مثلاً: 75)" required min="50" max="100">
+            </div>
+
+            <div class="form-group">
+                <label class="section-title"><i class="fas fa-palette"></i> حددي الموديل واللون لكل قطعة:</label>
+                <div id="itemsContainer"></div>
+            </div>
+
+            <div class="form-group" style="border-top: 2px dashed #e2e8f0; padding-top: 15px;">
+                <label><i class="fas fa-user"></i> الاسم بالكامل:</label>
+                <input type="text" id="custName" placeholder="الاسم الثلاثي" required>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-phone"></i> رقم الهاتف:</label>
+                <input type="text" id="custPhone" placeholder="رقم الموبايل" required>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-map-marker-alt"></i> اختر المحافظة / المنطقة:</label>
+                <select id="custGov" onchange="calculateTotal()" required>
+                    <option value="">-- اختار المحافظة --</option>
+                    <option value="القاهرة">القاهرة</option>
+                    <option value="الجيزة">الجيزة</option>
+                    <option value="الصف والعياط">الصف والعياط (90 جنيه)</option>
+                    <option value="الإسكندرية">الإسكندرية</option>
+                    <option value="القليوبية">القليوبية</option>
+                    <option value="الدقهلية">الدقهلية</option>
+                    <option value="الشرقية">الشرقية</option>
+                    <option value="الغربية">الغربية</option>
+                    <option value="المنوفية">المنوفية</option>
+                    <option value="البحيرة">البحيرة</option>
+                    <option value="كفر الشيخ">كفر الشيخ</option>
+                    <option value="دمياط">دمياط</option>
+                    <option value="بورسعيد">بورسعيد</option>
+                    <option value="الإسماعيلية">الإسماعيلية</option>
+                    <option value="السويس">السويس</option>
+                    <option value="الفيوم">الفيوم (90 جنيه)</option>
+                    <option value="بني سويف">بني سويف (90 جنيه)</option>
+                    <option value="المنيا">المنيا (90 جنيه)</option>
+                    <option value="أسيوط">أسيوط (90 جنيه)</option>
+                    <option value="سوهاج">سوهاج (90 جنيه)</option>
+                    <option value="قنا">قنا (90 جنيه)</option>
+                    <option value="أسوان">أسوان (90 جنيه)</option>
+                    <option value="الأقصر">الأقصر (90 جنيه)</option>
+                    <option value="البحر الأحمر">البحر الأحمر (120 جنيه)</option>
+                    <option value="مطروح">مطروح (120 جنيه)</option>
+                    <option value="الوادي الجديد">الوادي الجديد (120 جنيه)</option>
+                    <option value="شمال سيناء">شمال سيناء (120 جنيه)</option>
+                    <option value="جنوب سيناء">جنوب سيناء (120 جنيه)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-home"></i> تفاصيل العنوان (المدينة / الشارع / الحارة):</label>
+                <input type="text" id="custAddress" placeholder="اكتب العنوان بالتفصيل" required>
+            </div>
+
+            <div class="bill-box">
+                <div class="bill-row">
+                    <span>سعر المنتجات:</span>
+                    <span id="productsPriceText">0 جنيه</span>
+                </div>
+                <div class="bill-row">
+                    <span>مصاريف الشحن:</span>
+                    <span id="shippingPriceText">0 جنيه</span>
+                </div>
+                <div class="bill-row bill-total">
+                    <span>الإجمالي النهائي:</span>
+                    <span id="finalTotalPriceText">0 جنيه</span>
+                </div>
+            </div>
+
+            <button type="button" class="btn-whatsapp" onclick="sendToWhatsApp()">
+                <i class="fab fa-whatsapp"></i> تأكيد الطلب عبر الواتساب 💬
+            </button>
+        </form>
+    </div>
+</div>
+
+<script>
+    const colorsPlain = ["أسود", "بني", "كحلي", "كافيه", "بيج", "رصاصي"];
+    const modelsList = ["مبطن سادة", "مضلع مبطن", "نقشة ورق الشجر"];
+
+    // تخزين اختيارات العميل للقطع عشان متمسحش لو زود القطع
+    let itemSelectionsData = {};
+
+    function selectOffer(val) {
+        document.getElementById('opt1').checked = (val === 1);
+        document.getElementById('opt2').checked = (val === 2);
+        document.getElementById('opt3').checked = (val === 3);
+
+        document.querySelectorAll('.offer-card').forEach((card, idx) => {
+            if(idx + 1 === val) card.classList.add('selected');
+            else card.classList.remove('selected');
+        });
+
+        const countInput = document.getElementById('customPiecesCount');
+        const customGroup = document.getElementById('customCountGroup');
+
+        if (val === 1) {
+            countInput.value = 1;
+            customGroup.style.display = 'none';
+        } else if (val === 2) {
+            countInput.value = 2;
+            customGroup.style.display = 'none';
+        } else {
+            customGroup.style.display = 'block';
+            if(parseInt(countInput.value) < 3) countInput.value = 3;
+        }
+        syncItemsList();
+        calculateTotal();
+    }
+
+    function onCountChange() {
+        syncItemsList();
+        calculateTotal();
+    }
+
+    function syncItemsList() {
+        const offerVal = document.querySelector('input[name="offerType"]:checked').value;
+        let targetCount = 1;
+        if (offerVal == '2') targetCount = 2;
+        else if (offerVal == '3') {
+            targetCount = parseInt(document.getElementById('customPiecesCount').value) || 3;
+            if (targetCount < 1) targetCount = 1;
+        }
+
+        const container = document.getElementById('itemsContainer');
+        const currentItems = container.getElementsByClassName('item-selection');
+        let currentCount = currentItems.length;
+
+        // تهيئة الداتا لو مش موجودة
+        for (let i = 1; i <= targetCount; i++) {
+            if (!itemSelectionsData[i]) {
+                itemSelectionsData[i] = { model: "مبطن سادة", color: "أسود" };
+            }
+        }
+
+        if (currentCount < targetCount) {
+            for (let i = currentCount + 1; i <= targetCount; i++) {
+                const div = document.createElement('div');
+                div.className = 'item-selection';
+                div.id = `item_box_${i}`;
+                renderItemHTML(i, div);
+                container.appendChild(div);
+            }
+        } else if (currentCount > targetCount) {
+            for (let i = currentCount; i > targetCount; i--) {
+                const el = document.getElementById(`item_box_${i}`);
+                if (el) el.remove();
+            }
+        }
+    }
+
+    function renderItemHTML(index, containerDiv) {
+        const sel = itemSelectionsData[index];
+        
+        let modelsHtml = modelsList.map(m => {
+            let activeClass = (sel.model === m) ? 'active' : '';
+            return `<button type="button" class="choice-btn ${activeClass}" onclick="setSelectedItemModel(${index}, '${m}')">${m}</button>`;
+        }).join('');
+
+        let currentColors = (sel.model === "مضلع مبطن" || sel.model === "نقشة ورق الشجر") ? ["أسود"] : colorsPlain;
+        // لو الموديل اتحول لأسود فقط واللون القديم مش أسود، نظبطه أسود
+        if (currentColors.length === 1) sel.color = "أسود";
+
+        let colorsHtml = currentColors.map(c => {
+            let activeClass = (sel.color === c) ? 'active' : '';
+            return `<button type="button" class="choice-btn ${activeClass}" onclick="setSelectedItemColor(${index}, '${c}')">${c}</button>`;
+        }).join('');
+
+        containerDiv.innerHTML = `
+            <h4>القطعة رقم (${index})</h4>
+            <div style="margin-bottom: 8px;">
+                <span class="options-group-label">الموديل:</span>
+                <div class="buttons-grid" id="models_grid_${index}">${modelsHtml}</div>
+            </div>
+            <div>
+                <span class="options-group-label">اللون:</span>
+                <div class="buttons-grid" id="colors_grid_${index}">${colorsHtml}</div>
+            </div>
+        `;
+    }
+
+    function setSelectedItemModel(index, modelName) {
+        itemSelectionsData[index].model = modelName;
+        if (modelName === "مضلع مبطن" || modelName === "نقشة ورق الشجر") {
+            itemSelectionsData[index].color = "أسود";
+        }
+        // إعادة رسم خانة القطعة دي فقط لتحديث الأزرار النشطة
+        const box = document.getElementById(`item_box_${index}`);
+        if (box) renderItemHTML(index, box);
+    }
+
+    function setSelectedItemColor(index, colorName) {
+        itemSelectionsData[index].color = colorName;
+        const box = document.getElementById(`item_box_${index}`);
+        if (box) renderItemHTML(index, box);
+    }
+
+    function calculateTotal() {
+        const offerVal = document.querySelector('input[name="offerType"]:checked').value;
+        let count = 1;
+        let productsPrice = 0;
+
+        if (offerVal == '1') {
+            count = 1;
+            productsPrice = 199;
+        } else if (offerVal == '2') {
+            count = 2;
+            productsPrice = 350;
+        } else {
+            count = parseInt(document.getElementById('customPiecesCount').value) || 3;
+            if (count < 1) count = 1;
+            productsPrice = count * 150;
+        }
+
+        const gov = document.getElementById('custGov').value;
+        let shippingPrice = 75;
+
+        const group120 = ["البحر الأحمر", "مطروح", "الوادي الجديد", "شمال سيناء", "جنوب سيناء"];
+        const group90 = ["الصف والعياط", "الفيوم", "بني سويف", "المنيا", "أسيوط", "سوهاج", "قنا", "أسوان", "الأقصر"];
+
+        if (group120.includes(gov)) {
+            shippingPrice = 120;
+        } else if (group90.includes(gov)) {
+            shippingPrice = 90;
+        } else if (gov === "") {
+            shippingPrice = 0;
+        }
+
+        const finalTotal = gov === "" ? productsPrice : productsPrice + shippingPrice;
+
+        document.getElementById('productsPriceText').innerText = productsPrice + ' جنيه';
+        document.getElementById('shippingPriceText').innerText = shippingPrice + ' جنيه';
+        document.getElementById('finalTotalPriceText').innerText = finalTotal + ' جنيه';
+    }
+
+    function sendToWhatsApp() {
+        const name = document.getElementById('custName').value;
+        const phone = document.getElementById('custPhone').value;
+        const gov = document.getElementById('custGov').value;
+        const address = document.getElementById('custAddress').value;
+        const weight = document.getElementById('weight').value;
+        
+        const offerVal = document.querySelector('input[name="offerType"]:checked').value;
+        let totalCount = 1;
+        if (offerVal == '2') totalCount = 2;
+        else if (offerVal == '3') totalCount = parseInt(document.getElementById('customPiecesCount').value) || 3;
+
+        if (!name || !phone || !gov || !address || !weight) {
+            alert('برجاء استكمال كافة البيانات واختيار المحافظة.');
+            return;
+        }
+
+        let itemsText = '';
+        for (let i = 1; i <= totalCount; i++) {
+            const sel = itemSelectionsData[i] || { model: "مبطن سادة", color: "أسود" };
+            itemsText += `\n- القطعة ${i}: ${sel.model} [اللون: ${sel.color}]`;
+        }
+
+        let productsPrice = (offerVal == '1') ? 199 : (offerVal == '2') ? 350 : totalCount * 150;
+        const group120 = ["البحر الأحمر", "مطروح", "الوادي الجديد", "شمال سيناء", "جنوب سيناء"];
+        const group90 = ["الصف والعياط", "الفيوم", "بني سويف", "المنيا", "أسيوط", "سوهاج", "قنا", "أسوان", "الأقصر"];
+        let shippingPrice = group120.includes(gov) ? 120 : (group90.includes(gov) ? 90 : 75);
+        let finalTotal = productsPrice + shippingPrice;
+
+        const message = `طلب جديد من ليجن ستور (الفيروز):\n` +
+                        `⚖️ الوزن: ${weight} كجم\n` +
+                        `🎨 الطلبات:${itemsText}\n\n` +
+                        `💰 سعر المنتجات: ${productsPrice} جنيه\n` +
+                        `🚚 مصاريف الشحن: ${shippingPrice} جنيه (${gov})\n` +
+                        `🏷️ الإجمالي النهائي: ${finalTotal} جنيه\n\n` +
+                        `👤 الاسم: ${name}\n` +
+                        `📞 الهاتف: ${phone}\n` +
+                        `📍 المحافظة: ${gov}\n` +
+                        `🏠 تفاصيل العنوان: ${address}`;
+
+        window.location.href = `https://wa.me/201080239769?text=${encodeURIComponent(message)}`;
+    }
+
+    window.onload = function() { selectOffer(3); };
+</script>
+
+</body>
+</html>
