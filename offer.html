@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ليجن ستور - الفيروز | عروض الشتاء الكبرى</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: #f0f2f5; color: #333; line-height: 1.6; }
+        .container { max-width: 600px; margin: 0 auto; background: #ffffff; min-height: 100vh; box-shadow: 0 0 25px rgba(0,0,0,0.08); }
+        .header { background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); color: white; text-align: center; padding: 18px; font-size: 22px; font-weight: 800; }
+        
+        .banner-container { width: 100%; background: #000; text-align: center; line-height: 0; }
+        .banner-img { width: 100%; height: auto; display: block; object-fit: contain; }
+        
+        .specs-box { background: #fffdf4; border: 1.5px solid #f6e05e; padding: 14px; margin: 15px; border-radius: 10px; color: #744210; font-size: 13.5px; line-height: 1.8; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
+        .specs-box h4 { font-size: 15px; font-weight: 800; margin-bottom: 6px; color: #b7791f; display: flex; align-items: center; gap: 6px; }
+        .specs-box ul { list-style-type: none; padding-right: 5px; }
+        .specs-box li { margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
+        .specs-box li i { color: #d69e2e; font-size: 12px; }
+
+        .content-body { padding: 0 20px 20px 20px; }
+        
+        .product-card { background: #fff; border: 2px solid #e2e8f0; border-radius: 12px; padding: 15px; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
+        .product-title { font-size: 17px; font-weight: 800; color: #0f2027; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; border-right: 4px solid #ff416c; padding-right: 8px; }
+        .product-badge { background: #eef2ff; color: #4f46e5; font-size: 12.5px; font-weight: 700; padding: 4px 10px; border-radius: 6px; display: inline-block; margin-bottom: 12px; border: 1px solid #c7d2fe; }
+
+        .form-group { margin-bottom: 15px; }
+        label { display: block; font-weight: 700; margin-bottom: 6px; color: #34495e; font-size: 14px; }
+        input[type="text"], input[type="number"], select { width: 100%; padding: 12px; border: 2px solid #e1e8ed; border-radius: 8px; font-size: 15px; outline: none; background: #fff; }
+        input:focus, select:focus { border-color: #ff416c; }
+
+        .options-group-label { font-size: 13px; font-weight: 700; color: #555; margin-bottom: 6px; display: block; }
+        .buttons-grid { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+        .choice-btn { background: #fff; border: 2px solid #cbd5e1; border-radius: 6px; padding: 6px 10px; font-size: 12.5px; font-weight: 600; color: #333; cursor: pointer; transition: 0.2s; }
+        .choice-btn.active { background: #ff416c; color: #fff; border-color: #ff416c; box-shadow: 0 2px 6px rgba(255, 65, 108, 0.25); }
+
+        .bill-box { background: #fff8f8; border: 2px dashed #ff416c; padding: 15px; border-radius: 10px; margin-bottom: 15px; margin-top: 20px; }
+        .bill-row { display: flex; justify-content: space-between; font-size: 15px; margin-bottom: 8px; color: #2c3e50; font-weight: 600; }
+        .bill-total { border-top: 1px solid #e2e8f0; padding-top: 8px; font-size: 18px; color: #e74c3c; font-weight: 800; }
+
+        .btn-whatsapp { display: block; width: 100%; background: linear-gradient(135deg, #25d366, #128c7e); color: white; text-align: center; padding: 16px; border: none; border-radius: 10px; font-size: 19px; font-weight: 800; cursor: pointer; text-decoration: none; box-shadow: 0 4px 15px rgba(37,211,102,0.3); margin-top: 15px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">👑 ليجن ستور - الفيروز 👑</div>
+    
+    <div class="banner-container">
+        <img src="https://raw.githubusercontent.com/12345000ahmed-create/fz-app/main/1794292613599.jpg" alt="ليجن ستور - الفيروز" class="banner-img">
+    </div>
+
+    <div class="specs-box">
+        <h4><i class="fas fa-star"></i> مميزات الخدمة والضمان:</h4>
+        <ul>
+            <li><i class="fas fa-check-circle"></i> خامات ممتازة عالية الجودة لتناسب مختلف الأوزان بسلاسة.</li>
+            <li><i class="fas fa-check-circle"></i> <b>معاينة قبل الاستلام (افتحي واطمني بنفسك).</b></li>
+            <li><i class="fas fa-check-circle"></i> شحن سريع لجميع محافظات الجمهورية.</li>
+        </ul>
+    </div>
+
+    <div class="content-body">
+        <form id="orderForm">
+
+            <!-- المنتج الأول: ليجن القلوب -->
+            <div class="product-card">
+                <div class="product-title"><i class="fas fa-heart" style="color: #ff416c;"></i> 1. ليجن القلوب الفاخر</div>
+                <div class="product-badge"><i class="fas fa-ruler-vertical"></i> وان سايز ليكرا قطن (من 50 إلى 100 كجم)</div>
+                
+                <div class="form-group">
+                    <label>عدد القطع المطلوب من ليجن القلوب:</label>
+                    <input type="number" id="qty_hearts" value="0" min="0" max="20" onchange="calculateTotal()" onkeyup="calculateTotal()">
+                </div>
+                
+                <div class="form-group">
+                    <span class="options-group-label">اللون المطلوب:</span>
+                    <div class="buttons-grid" id="colors_hearts">
+                        <button type="button" class="choice-btn active" onclick="selectColor('hearts', 'أسود', this)">أسود</button>
+                        <button type="button" class="choice-btn" onclick="selectColor('hearts', 'بني', this)">بني</button>
+                        <button type="button" class="choice-btn" onclick="selectColor('hearts', 'كحلي', this)">كحلي</button>
+                        <button type="button" class="choice-btn" onclick="selectColor('hearts', 'رمادي', this)">رمادي</button>
+                        <button type="button" class="choice-btn" onclick="selectColor('hearts', 'أزرق', this)">أزرق</button>
+                        <button type="button" class="choice-btn" onclick="selectColor('hearts', 'بيج', this)">بيج</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- المنتج الثاني: ليجن المضلع -->
+            <div class="product-card">
+                <div class="product-title"><i class="fas fa-stream" style="color: #ff416c;"></i> 2. ليجن الديربي المضلع</div>
+                <div class="product-badge"><i class="fas fa-ruler-vertical"></i> وان سايز ليكرا قطن (من 50 إلى 100 كجم)</div>
+                
+                <div class="form-group">
+                    <label>عدد القطع المطلوب من ليجن المضلع:</label>
+                    <input type="number" id="qty_derby" value="1" min="0" max="20" onchange="calculateTotal()" onkeyup="calculateTotal()">
+                </div>
+
+                <div class="form-group">
+                    <span class="options-group-label">اللون المطلوب:</span>
+                    <div class="buttons-grid" id="colors_derby">
+                        <button type="button" class="choice-btn active" onclick="selectColor('derby', 'أسود', this)">أسود</button>
+                        <button type="button" class="choice-btn" onclick="selectColor('derby', 'أبيض', this)">أبيض</button>
+                        <button type="button" class="choice-btn" onclick="selectColor('derby', 'أزرق', this)">أزرق</button>
+                        <button type="button" class="choice-btn" onclick="selectColor('derby', 'كحلي', this)">كحلي</button>
+                        <button type="button" class="choice-btn" onclick="selectColor('derby', 'بني', this)">بني</button>
+                        <button type="button" class="choice-btn" onclick="selectColor('derby', 'بيج', this)">بيج</button>
+                        <button type="button" class="choice-btn" onclick="selectColor('derby', 'رمادي', this)">رمادي</button>
+                        <button type="button" class="choice-btn" onclick="selectColor('derby', 'فيروزي', this)">فيروزي</button>
+                        <button type="button" class="choice-btn" onclick="selectColor('derby', 'زيتي', this)">زيتي</button>
+                        <button type="button" class="choice-btn" onclick="selectColor('derby', 'أحمر', this)">أحمر</button>
+                        <button type="button" class="choice-btn" onclick="selectColor('derby', 'فوشيا', this)">فوشيا</button>
+                        <button type="button" class="choice-btn" onclick="selectColor('derby', 'برجندي', this)">برجندي</button>
+                        <button type="button" class="choice-btn" onclick="selectColor('derby', 'كشمير', this)">كشمير</button>
+                        <button type="button" class="choice-btn" onclick="selectColor('derby', 'بيبي بينك', this)">بيبي بينك</button>
+                        <button type="button" class="choice-btn" onclick="selectColor('derby', 'بيبي بلو', this)">بيبي بلو</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- المنتج الثالث: الشورت المضلع -->
+            <div class="product-card">
+                <div class="product-title"><i class="fas fa-cut" style="color: #ff416c;"></i> 3. شورت ديربي مضلع طويل</div>
+                <div class="product-badge"><i class="fas fa-ruler-vertical"></i> وان سايز ليكرا قطن (من 50 إلى 100 كجم)</div>
+                
+                <div class="form-group">
+                    <label>عدد القطع المطلوب من الشورت المضلع:</label>
+                    <input type="number" id="qty_shorts" value="0" min="0" max="20" onchange="calculateTotal()" onkeyup="calculateTotal()">
+                </div>
+
+                <div class="form-group">
+                    <span class="options-group-label">اللون المطلوب:</span>
+                    <div class="buttons-grid" id="colors_shorts">
+                        <button type="button" class="choice-btn active" onclick="selectColor('shorts', 'أسود', this)">أسود</button>
+                        <button type="button" class="choice-btn" onclick="selectColor('shorts', 'أبيض', this)">أبيض</button>
+                        <button type="button" class="choice-btn" onclick="selectColor('shorts', 'أزرق', this)">أزرق</button>
+                        <button type="button" class="choice-btn" onclick="selectColor('shorts', 'كحلي', this)">كحلي</button>
+                        <button type="button" class="choice-btn" onclick="selectColor('shorts', 'بني', this)">بني</button>
+                        <button type="button" class="choice-btn" onclick="selectColor('shorts', 'بيج', this)">بيج</button>
+                        <button type="button" class="choice-btn" onclick="selectColor('shorts', 'رمادي', this)">رمادي</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- بيانات العميل -->
+            <div class="form-group" style="border-top: 2px dashed #e2e8f0; padding-top: 15px;">
+                <label><i class="fas fa-user"></i> الاسم بالكامل:</label>
+                <input type="text" id="custName" placeholder="الاسم الثلاثي" required>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-phone"></i> رقم الهاتف:</label>
+                <input type="text" id="custPhone" placeholder="رقم الموبايل" required>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-map-marker-alt"></i> اختر المحافظة / المنطقة:</label>
+                <select id="custGov" onchange="calculateTotal()" required>
+                    <option value="">-- اختار المحافظة --</option>
+                    <option value="القاهرة">القاهرة</option>
+                    <option value="الجيزة">الجيزة</option>
+                    <option value="الصف والعياط">الصف والعياط (90 جنيه)</option>
+                    <option value="الإسكندرية">الإسكندرية</option>
+                    <option value="القليوبية">القليوبية</option>
+                    <option value="الدقهلية">الدقهلية</option>
+                    <option value="الشرقية">الشرقية</option>
+                    <option value="الغربية">الغربية</option>
+                    <option value="المنوفية">المنوفية</option>
+                    <option value="البحيرة">البحيرة</option>
+                    <option value="كفر الشيخ">كفر الشيخ</option>
+                    <option value="دمياط">دمياط</option>
+                    <option value="بورسعيد">بورسعيد</option>
+                    <option value="الإسماعيلية">الإسماعيلية</option>
+                    <option value="السويس">السويس</option>
+                    <option value="الفيوم">الفيوم (90 جنيه)</option>
+                    <option value="بني سويف">بني سويف (90 جنيه)</option>
+                    <option value="المنيا">المنيا (90 جنيه)</option>
+                    <option value="أسيوط">أسيوط (90 جنيه)</option>
+                    <option value="سوهاج">سوهاج (90 جنيه)</option>
+                    <option value="قنا">قنا (90 جنيه)</option>
+                    <option value="أسوان">أسوان (90 جنيه)</option>
+                    <option value="الأقصر">الأقصر (90 جنيه)</option>
+                    <option value="البحر الأحمر">البحر الأحمر (120 جنيه)</option>
+                    <option value="مطروح">مطروح (120 جنيه)</option>
+                    <option value="الوادي الجديد">الوادي الجديد (120 جنيه)</option>
+                    <option value="شمال سيناء">شمال سيناء (120 جنيه)</option>
+                    <option value="جنوب سيناء">جنوب سيناء (120 جنيه)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-home"></i> تفاصيل العنوان (المدينة / الشارع / الحارة):</label>
+                <input type="text" id="custAddress" placeholder="اكتب العنوان بالتفصيل" required>
+            </div>
+
+            <div class="bill-box">
+                <div class="bill-row">
+                    <span>سعر المنتجات:</span>
+                    <span id="productsPriceText">0 جنيه</span>
+                </div>
+                <div class="bill-row">
+                    <span>مصاريف الشحن:</span>
+                    <span id="shippingPriceText">0 جنيه</span>
+                </div>
+                <div class="bill-row bill-total">
+                    <span>الإجمالي النهائي:</span>
+                    <span id="finalTotalPriceText">0 جنيه</span>
+                </div>
+            </div>
+
+            <button type="button" class="btn-whatsapp" onclick="sendToWhatsApp()">
+                <i class="fab fa-whatsapp"></i> تأكيد الطلب عبر الواتساب 💬
+            </button>
+        </form>
+    </div>
+</div>
+
+<script>
+    let selectedColors = {
+        hearts: 'أسود',
+        derby: 'أسود',
+        shorts: 'أسود'
+    };
+
+    function selectColor(prodKey, colorVal, btnEl) {
+        selectedColors[prodKey] = colorVal;
+        const container = document.getElementById(`colors_${prodKey}`);
+        const btns = container.getElementsByClassName('choice-btn');
+        for (let b of btns) {
+            b.classList.remove('active');
+        }
+        btnEl.classList.add('active');
+    }
+
+    function calculateTotal() {
+        const heartsQty = parseInt(document.getElementById('qty_hearts').value) || 0;
+        const derbyQty = parseInt(document.getElementById('qty_derby').value) || 0;
+        const shortsQty = parseInt(document.getElementById('qty_shorts').value) || 0;
+
+        let productsPrice = 0;
+        productsPrice += calcHeartsPrice(heartsQty);
+        productsPrice += calcDerbyPrice(derbyQty);
+        productsPrice += calcShortsPrice(shortsQty);
+
+        const gov = document.getElementById('custGov').value;
+        let shippingPrice = 75;
+
+        const group120 = ["البحر الأحمر", "مطروح", "الوادي الجديد", "شمال سيناء", "جنوب سيناء"];
+        const group90 = ["الصف والعياط", "الفيوم", "بني سويف", "المنيا", "أسيوط", "سوهاج", "قنا", "أسوان", "الأقصر"];
+
+        if (group120.includes(gov)) {
+            shippingPrice = 120;
+        } else if (group90.includes(gov)) {
+            shippingPrice = 90;
+        } else if (gov === "") {
+            shippingPrice = 0;
+        }
+
+        const totalItems = heartsQty + derbyQty + shortsQty;
+        const finalTotal = (gov === "" || totalItems === 0) ? productsPrice : productsPrice + shippingPrice;
+
+        document.getElementById('productsPriceText').innerText = productsPrice + ' جنيه';
+        document.getElementById('shippingPriceText').innerText = shippingPrice + ' جنيه';
+        document.getElementById('finalTotalPriceText').innerText = finalTotal + ' جنيه';
+    }
+
+    function calcDerbyPrice(n) {
+        if (n <= 0) return 0;
+        if (n === 1) return 120;
+        if (n === 2) return 200;
+        if (n === 3) return 250;
+        if (n === 4 || n === 5) return n * 75;
+        if (n >= 6 && n < 10) return n * 70;
+        return n * 65;
+    }
+
+    function calcHeartsPrice(n) {
+        if (n <= 0) return 0;
+        if (n === 1) return 120;
+        if (n === 2) return 220;
+        if (n === 3) return 250;
+        if (n === 4) return 320;
+        if (n === 5) return 390;
+        return n * 75;
+    }
+
+    function calcShortsPrice(n) {
+        if (n <= 0) return 0;
+        if (n === 1) return 150;
+        if (n === 2) return 210;
+        if (n === 3) return 260;
+        return n * 60;
+    }
+
+    function sendToWhatsApp() {
+        const name = document.getElementById('custName').value;
+        const phone = document.getElementById('custPhone').value;
+        const gov = document.getElementById('custGov').value;
+        const address = document.getElementById('custAddress').value;
+
+        const heartsQty = parseInt(document.getElementById('qty_hearts').value) || 0;
+        const derbyQty = parseInt(document.getElementById('qty_derby').value) || 0;
+        const shortsQty = parseInt(document.getElementById('qty_shorts').value) || 0;
+
+        if (heartsQty + derbyQty + shortsQty === 0) {
+            alert('برجاء إدخال الكمية المطلوبة لمنتج واحد على الأقل.');
+            return;
+        }
+
+        if (!name || !phone || !gov || !address) {
+            alert('برجاء استكمال كافة البيانات واختيار المحافظة.');
+            return;
+        }
+
+        let itemsText = '';
+        if (heartsQty > 0) itemsText += `\n- ليجن القلوب: ${heartsQty} قطعة [لون: ${selectedColors.hearts}] (وان سايز قطن ليكرا 50-100ك)`;
+        if (derbyQty > 0) itemsText += `\n- ليجن الديربي المضلع: ${derbyQty} قطعة [لون: ${selectedColors.derby}] (وان سايز قطن ليكرا 50-100ك)`;
+        if (shortsQty > 0) itemsText += `\n- شورت ديربي مضلع: ${shortsQty} قطعة [لون: ${selectedColors.shorts}] (وان سايز قطن ليكرا 50-100ك)`;
+
+        let productsPrice = calcHeartsPrice(heartsQty) + calcDerbyPrice(derbyQty) + calcShortsPrice(shortsQty);
+        
+        const group120 = ["البحر الأحمر", "مطروح", "الوادي الجديد", "شمال سيناء", "جنوب سيناء"];
+        const group90 = ["الصف والعياط", "الفيوم", "بني سويف", "المنيا", "أسيوط", "سوهاج", "قنا", "أسوان", "الأقصر"];
+        let shippingPrice = group120.includes(gov) ? 120 : (group90.includes(gov) ? 90 : 75);
+        let finalTotal = productsPrice + shippingPrice;
+
+        const message = `طلب جديد من عروض الشتاء (الفيروز):\n` +
+                        `🎨 المنتجات المطلوبة:${itemsText}\n\n` +
+                        `💰 سعر المنتجات: ${productsPrice} جنيه\n` +
+                        `🚚 مصاريف الشحن: ${shippingPrice} جنيه (${gov})\n` +
+                        `🏷️ الإجمالي النهائي: ${finalTotal} جنيه\n\n` +
+                        `👤 الاسم: ${name}\n` +
+                        `📞 الهاتف: ${phone}\n` +
+                        `📍 المحافظة: ${gov}\n` +
+                        `🏠 تفاصيل العنوان: ${address}\n` +
+                        `📌 ملاحظة: معاينة قبل الاستلام.`;
+
+        window.location.href = `https://wa.me/201080239769?text=${encodeURIComponent(message)}`;
+    }
+</script>
+
+</body>
+</html>
