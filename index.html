@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101f3b">
+<title>VELORA | Elegance in Every Detail</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{--navy:#101f3b;--navy2:#1b3155;--gold:#c6a56a;--gold2:#e4cf9b;--cream:#faf8f2;--ink:#202838;--muted:#718096;--line:#e8e4da;--green:#159b62;--shadow:0 12px 35px rgba(16,31,59,.08)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f3f1eb;color:var(--ink);font-family:'Cairo',Tahoma,sans-serif;line-height:1.7}.page{max-width:760px;margin:auto;background:#fff;min-height:100vh;box-shadow:0 0 35px #101f3b10;padding-bottom:95px}
+header{background:linear-gradient(125deg,#0c1930,#1c3154);color:#fff;text-align:center;padding:20px 16px 17px;border-bottom:3px solid var(--gold)}
+.brand{font-family:Georgia,serif;font-size:34px;letter-spacing:4px;font-weight:bold;color:#f4e4bd;line-height:1.2}.tagline{font-size:11px;letter-spacing:2px;color:#e5d7b5;margin-top:3px}.brand-ar{font-size:13px;color:#fff;margin-top:5px;font-weight:700}
+.hero{background:#eee;text-align:center;line-height:0}.hero img{display:block;width:100%;height:auto;max-height:680px;object-fit:contain}
+.trust{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;padding:12px 14px;background:var(--cream)}.trust div{font-size:11px;text-align:center;color:var(--navy);font-weight:700;background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 3px}.trust i{display:block;color:var(--gold);font-size:17px;margin-bottom:3px}
+.specs{margin:16px;padding:15px;border:1px solid #e8d9b8;border-radius:15px;background:linear-gradient(135deg,#fffdf8,#faf5e9)}.specs h3{margin:0 0 8px;color:var(--navy);font-size:15px}.specs ul{padding:0 20px 0 0;margin:0;font-size:13px;color:#4b5563}.specs li{margin:3px 0}.specs li::marker{color:var(--gold)}
+main{padding:0 15px}.stepper{display:flex;gap:6px;margin:14px 0 18px}.step{flex:1;text-align:center;padding:8px 3px;border-radius:9px;background:#f3f4f6;color:#7b8492;font-size:11px;font-weight:700;border:1px solid transparent}.step.active{background:#f8f3e8;color:var(--navy);border-color:var(--gold)}.step.done{background:#edf7f1;color:#23744b}
+.panel{display:none}.panel.active{display:block}.section-heading{font-size:17px;color:var(--navy);font-weight:900;margin:4px 0 12px;display:flex;align-items:center;gap:8px}.section-heading i{color:var(--gold)}
+.offer-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.offer{position:relative;border:1.5px solid var(--line);border-radius:14px;padding:14px 10px;background:#fff;cursor:pointer;min-height:112px;text-align:center;transition:.2s}.offer.selected{border:2px solid var(--gold);background:#fffcf5;box-shadow:0 5px 18px #c6a56a20}.offer .badge{position:absolute;top:-9px;right:9px;background:var(--navy);color:#fff;border-radius:20px;padding:1px 9px;font-size:10px;font-weight:700}.offer .qty{font-size:14px;font-weight:800;color:var(--navy)}.offer .price{font-size:23px;font-weight:900;color:#a17b3d;line-height:1.5}.offer small{display:block;color:var(--muted);font-size:10px}.qty-box{margin:16px 0;padding:13px;border-radius:13px;background:var(--cream);border:1px solid var(--line)}.qty-row{display:flex;align-items:center;justify-content:space-between;gap:10px}.qty-controls{display:flex;align-items:center;gap:12px}.qty-controls button{width:38px;height:38px;border:0;border-radius:10px;background:var(--navy);color:#fff;font-size:22px;font-weight:700;cursor:pointer}.qty-controls output{font-size:21px;font-weight:900;min-width:25px;text-align:center}.price-live{margin-top:9px;color:var(--navy);font-weight:800;font-size:14px}.hint{font-size:11px;color:var(--muted);margin-top:5px}
+.item-card{border:1px solid var(--line);border-radius:13px;padding:13px;margin:10px 0;background:#fff}.item-card h4{margin:0 0 9px;color:var(--navy);font-size:14px}.field-label{display:block;font-size:12px;font-weight:800;color:#596579;margin:8px 0 5px}.chips{display:flex;flex-wrap:wrap;gap:7px}.chip{border:1px solid #d8dce3;border-radius:8px;background:#fff;padding:7px 10px;font-family:inherit;font-size:12px;color:#3b4658;cursor:pointer;outline:none;user-select:none;-webkit-tap-highlight-color:transparent}.chip.active{background:var(--navy)!important;border-color:var(--navy)!important;color:#fff!important;font-weight:700}.repeat-btn{width:100%;border:1px dashed var(--gold);background:#fffaf0;color:#765a2d;padding:10px;border-radius:9px;font-family:inherit;font-weight:800;margin:10px 0;cursor:pointer}
+.form-grid{display:grid;grid-template-columns:1fr;gap:12px}.field label{display:block;font-size:13px;font-weight:800;margin-bottom:5px;color:var(--navy)}.field input,.field select{width:100%;padding:12px;border:1.5px solid #dfe3e8;border-radius:10px;background:#fff;font:inherit;font-size:14px;outline:none}.field input:focus,.field select:focus{border-color:var(--gold);box-shadow:0 0 0 3px #c6a56a20}
+.invoice{border:1.5px solid var(--gold);border-radius:14px;padding:14px;background:#fffdf8;margin:15px 0}.invoice h3{margin:0 0 10px;color:var(--navy);font-size:16px}.invoice-line{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px dashed #e6dfd1;font-size:13px}.invoice-line:last-child{border:0}.invoice-total{font-size:18px;font-weight:900;color:#98713a;padding-top:10px}.invoice-items{font-size:12px;color:#596579;line-height:1.9;margin:8px 0}
+.actions{display:flex;gap:9px;margin:18px 0 10px}.btn{border:0;border-radius:11px;padding:13px 14px;font-family:inherit;font-weight:900;font-size:14px;cursor:pointer}.btn-primary{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;flex:1;box-shadow:0 5px 15px #101f3b20}.btn-secondary{background:#f1f2f4;color:var(--navy);min-width:92px}.btn-whatsapp{background:linear-gradient(135deg,#20bd69,#128c58);color:#fff;width:100%;font-size:16px}.contact-box{margin:20px 0 8px;padding:15px;border:1px solid #d8eadf;background:#f4fbf6;border-radius:13px;text-align:center}.contact-box strong{display:block;color:#145b38;font-size:14px}.contact-box p{font-size:11px;color:#647568;margin:3px 0 10px}.contact-link{display:block;text-decoration:none;background:#1ca85b;color:#fff;border-radius:10px;padding:11px;font-weight:900;font-size:14px}
+.footer-note{text-align:center;color:#89909b;font-size:10px;padding:12px}.sticky-bar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(760px,100%);background:#fff;border-top:1px solid var(--line);padding:10px 14px calc(10px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:12px;box-shadow:0 -5px 20px #101f3b12;z-index:20}.sticky-summary{flex:1;font-size:11px;color:var(--muted)}.sticky-summary b{display:block;color:var(--navy);font-size:15px}.sticky-bar button{border:0;border-radius:10px;background:var(--navy);color:#fff;padding:10px 20px;font-family:inherit;font-weight:900}
+@media(min-width:600px){main{padding:0 24px}.offer-grid{grid-template-columns:repeat(4,1fr)}.offer{padding:16px 7px}.offer .price{font-size:20px}.form-grid.two{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="brand">VELORA</div>
+  <div class="tagline">ELEGANCE IN EVERY DETAIL</div>
+  <div class="brand-ar">فيلورا | أناقتك في كل تفصيلة</div>
+</header>
+<div class="hero"><img src="1794246725342.jpg" alt="صورة المنتج الأصلية"></div>
+<div class="trust">
+  <div><i class="fa-solid fa-truck-fast"></i>شحن لجميع المحافظات</div>
+  <div><i class="fa-solid fa-box-open"></i>معاينة قبل الاستلام</div>
+  <div><i class="fa-brands fa-whatsapp"></i>تأكيد الطلب واتساب</div>
+</div>
+<section class="specs">
+  <h3><i class="fa-solid fa-crown" style="color:#b99554"></i> مواصفات ومميزات المنتج</h3>
+  <ul>
+    <li>خامة قطن ليكرا مرنة ومريحة.</li>
+    <li>تصميم ثقيل ومحكم لتغطية أفضل.</li>
+    <li>معالج ضد الوبر.</li>
+    <li>معالج ضد الانكماش.</li>
+    <li>مناسب للاستخدام اليومي.</li>
+  </ul>
+</section>
+<main>
+  <div class="stepper" aria-label="خطوات الطلب">
+    <div class="step active" id="stepMark1">1. العرض والعدد</div>
+    <div class="step" id="stepMark2">2. تفاصيل القطع</div>
+    <div class="step" id="stepMark3">3. التوصيل والفاتورة</div>
+  </div>
+
+  <section class="panel active" id="panel1">
+    <h2 class="section-heading"><i class="fa-solid fa-tags"></i> اختاري العرض المناسب</h2>
+    <div class="offer-grid">
+      <button type="button" class="offer" data-count="1" onclick="chooseOffer(1)">
+        <span class="qty">قطعة واحدة</span><div class="price">199 ج</div><small>السعر الإجمالي</small>
+      </button>
+      <button type="button" class="offer" data-count="2" onclick="chooseOffer(2)">
+        <span class="qty">قطعتان</span><div class="price">350 ج</div><small>السعر الإجمالي</small>
+      </button>
+      <button type="button" class="offer" data-count="3" onclick="chooseOffer(3)">
+        <span class="badge">الأكثر توفيرًا</span><span class="qty">من 3 إلى 5 قطع</span><div class="price">150 ج</div><small>سعر القطعة</small>
+      </button>
+      <button type="button" class="offer" data-count="6" onclick="chooseOffer(6)">
+        <span class="badge">أقوى عرض</span><span class="qty">6 قطع فأكثر</span><div class="price">140 ج</div><small>سعر القطعة</small>
+      </button>
+    </div>
+    <div class="qty-box">
+      <div class="qty-row"><strong>عدد القطع المطلوبة</strong>
+        <div class="qty-controls">
+          <button type="button" aria-label="زيادة العدد" onclick="changeQty(1)">+</button>
+          <output id="qtyValue">3</output>
+          <button type="button" aria-label="تقليل العدد" onclick="changeQty(-1)">−</button>
+        </div>
+      </div>
+      <div class="price-live" id="livePrice">إجمالي المنتجات: 450 جنيه</div>
+      <div class="hint">اختاري من قطعة واحدة حتى 50 قطعة. السعر يتحدث تلقائيًا حسب العرض.</div>
+    </div>
+    <div class="actions"><button class="btn btn-primary" type="button" onclick="goStep(2)">التالي: اختيار الموديل واللون <i class="fa-solid fa-arrow-left"></i></button></div>
+  </section>
+
+  <section class="panel" id="panel2">
+    <h2 class="section-heading"><i class="fa-solid fa-palette"></i> اختاري تفاصيل القطع</h2>
+    <div class="hint" style="margin-bottom: 10px;">حددي تفاصيل كل قطعة بكل سهولة، أو كرري اختيارات القطعة الأولى بضغطة واحدة.</div>
+    <div id="itemsContainer"></div>
+    <div class="actions">
+      <button class="btn btn-secondary" type="button" onclick="goStep(1)">رجوع</button>
+      <button class="btn btn-primary" type="button" onclick="goStep(3)">التالي: بيانات التوصيل <i class="fa-solid fa-arrow-left"></i></button>
+    </div>
+  </section>
+
+  <section class="panel" id="panel3">
+    <h2 class="section-heading"><i class="fa-solid fa-location-dot"></i> بيانات التوصيل</h2>
+    <div class="form-grid">
+      <div class="field"><label for="custName">الاسم بالكامل</label><input id="custName" type="text" autocomplete="name" placeholder="اكتبي الاسم بالكامل"></div>
+      <div class="field"><label for="custPhone">رقم الموبايل</label><input id="custPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="01xxxxxxxxx"></div>
+      <div class="field"><label for="custGov">المحافظة / المنطقة</label>
+        <select id="custGov" onchange="updateInvoice();saveState()">
+          <option value="">اختاري المحافظة</option>
+          <option>القاهرة</option><option>الجيزة</option><option>الصف والعياط</option><option>الإسكندرية</option><option>القليوبية</option><option>الدقهلية</option><option>الشرقية</option><option>الغربية</option><option>المنوفية</option><option>البحيرة</option><option>كفر الشيخ</option><option>دمياط</option><option>بورسعيد</option><option>الإسماعيلية</option><option>السويس</option><option>الفيوم</option><option>بني سويف</option><option>المنيا</option><option>أسيوط</option><option>سوهاج</option><option>قنا</option><option>أسوان</option><option>الأقصر</option><option>البحر الأحمر</option><option>مطروح</option><option>الوادي الجديد</option><option>شمال سيناء</option><option>جنوب سيناء</option>
+        </select>
+      </div>
+      <div class="field"><label for="custAddress">العنوان بالتفصيل</label><input id="custAddress" type="text" autocomplete="street-address" placeholder="المدينة والشارع ورقم العقار وأقرب علامة"></div>
+    </div>
+    <div class="invoice">
+      <h3><i class="fa-solid fa-receipt"></i> مراجعة الفاتورة قبل التأكيد</h3>
+      <div class="invoice-line"><span>عدد القطع</span><strong id="invCount">3 قطع</strong></div>
+      <div class="invoice-items" id="invItems"></div>
+      <div class="invoice-line"><span>سعر المنتجات</span><strong id="invProducts">450 جنيه</strong></div>
+      <div class="invoice-line"><span>مصاريف الشحن</span><strong id="invShipping">—</strong></div>
+      <div class="invoice-line invoice-total"><span>الإجمالي النهائي</span><strong id="invTotal">—</strong></div>
+      <div class="hint">راجعي التفاصيل، ويمكنك الرجوع لأي خطوة لتعديل اختياراتك قبل إرسال الطلب.</div>
+    </div>
+    <div class="actions">
+      <button class="btn btn-secondary" type="button" onclick="goStep(2)">رجوع للتعديل</button>
+      <button class="btn btn-primary" type="button" onclick="sendOrder()">تأكيد الطلب عبر واتساب</button>
+    </div>
+  </section>
+
+  <section class="contact-box">
+    <strong><i class="fa-brands fa-whatsapp"></i> عندك استفسار قبل الطلب؟</strong>
+    <p>تواصلي معنا مباشرة على واتساب بدون تسجيل طلب أو ملء بيانات.</p>
+    <a class="contact-link" href="https://wa.me/201080239769?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%B9%D9%86%D8%AF%D9%8A%20%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D9%85%D9%86%D8%AA%D8%AC%D8%A7%D8%AA%20VELORA" target="_blank" rel="noopener" onclick="trackEvent('whatsapp_contact_click')"><i class="fa-brands fa-whatsapp"></i> تواصل واتساب بدون طلب</a>
+  </section>
+  <div class="footer-note">VELORA · Elegance in Every Detail</div>
+</main>
+</div>
+
+<div class="sticky-bar">
+  <div class="sticky-summary">إجمالي المنتجات <b id="stickyPrice">450 جنيه</b></div>
+  <button type="button" id="stickyNext" onclick="stickyAction()">متابعة <i class="fa-solid fa-arrow-left"></i></button>
+</div>
+
+<script>
+const GA_MEASUREMENT_ID = "";
+if (GA_MEASUREMENT_ID) {
+  const gaScript = document.createElement('script');
+  gaScript.async = true;
+  gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_MEASUREMENT_ID;
+  document.head.appendChild(gaScript);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag = gtag;
+  gtag('js', new Date());
+  gtag('config', GA_MEASUREMENT_ID);
+}
+function trackEvent(name, params={}) {
+  if (typeof window.gtag === 'function') window.gtag('event', name, params);
+}
+
+const WHATSAPP_NUMBER = "201080239769";
+const models = ["مبطن سادة","مضلع مبطن","نقشة ورق الشجر"];
+const sizes = [{id:"M",label:"M · من 50 إلى 75 كجم"},{id:"L",label:"L · من 75 إلى 100 كجم"}];
+const colorMap = {
+  "مبطن سادة":["أسود","بني","كحلي","كافيه","بيج","رصاصي"],
+  "مضلع مبطن":["أسود","رصاصي"],
+  "نقشة ورق الشجر":["أسود","كحلي"]
+};
+let quantity = 3;
+let selections = [];
+let currentStep = 1;
+const group90 = ["الصف والعياط","الفيوم","بني سويف","المنيا","أسيوط","سوهاج","قنا","أسوان","الأقصر"];
+const group120 = ["البحر الأحمر","مطروح","الوادي الجديد","شمال سيناء","جنوب سيناء"];
+
+function productPrice(q){ if(q===1)return 199; if(q===2)return 350; return q*(q>=6?140:150); }
+function shippingPrice(gov){if(!gov)return 0;if(group120.includes(gov))return 120;if(group90.includes(gov))return 90;return 75;}
+function money(n){return n.toLocaleString('en-US')+" جنيه";}
+
+function ensureSelections(){
+  if(!selections || selections.length === 0){
+    selections = [{model:"مبطن سادة",color:"أسود",size:"M"}];
+  }
+  while(selections.length < quantity) {
+    selections.push({...selections[0]});
+  }
+  if(selections.length > quantity) {
+    selections = selections.slice(0, quantity);
+  }
+}
+
+function renderQuantity(){
+  document.getElementById('qtyValue').textContent=quantity;
+  document.getElementById('livePrice').textContent="إجمالي المنتجات: "+money(productPrice(quantity));
+  document.getElementById('stickyPrice').textContent=money(productPrice(quantity));
+  document.querySelectorAll('.offer').forEach(el=>el.classList.toggle('selected',Number(el.dataset.count)===(quantity===1||quantity===2?quantity:quantity>=6?6:3)));
+}
+
+function chooseOffer(q){quantity=q;ensureSelections();renderQuantity();renderItems();updateInvoice();saveState();}
+function changeQty(delta){quantity=Math.max(1,Math.min(50,quantity+delta));ensureSelections();renderQuantity();renderItems();updateInvoice();saveState();}
+
+function setSelection(i, key, valStr){
+  ensureSelections();
+  selections[i][key] = valStr;
+  if(key === "model" && !colorMap[valStr].includes(selections[i].color)) {
+    selections[i].color = colorMap[valStr][0];
+  }
+  renderItems();
+  updateInvoice();
+  saveState();
+}
+
+function repeatFirst(){
+  ensureSelections();
+  for(let i=1; i<quantity; i++){
+    selections[i] = {...selections[0]};
+  }
+  renderItems();
+  updateInvoice();
+  saveState();
+}
+
+function renderItems(){
+  ensureSelections();
+  const container = document.getElementById('itemsContainer');
+  let out = '';
+  if(quantity > 1) {
+    out += `<button class="repeat-btn" type="button" onclick="repeatFirst()"><i class="fa-solid fa-copy"></i> تكرار مواصفات القطعة الأولى على جميع القطع بضغطة واحدة</button>`;
+  }
+  for(let i=0; i<quantity; i++) {
+    out += `<div class="item-card"><h4>القطعة رقم ${i+1}</h4>${choiceMarkup(i, selections[i])}</div>`;
+  }
+  container.innerHTML = out;
+}
+
+function choiceMarkup(index, s){
+  const modelBtns = models.map(m => 
+    `<button type="button" class="chip ${s.model === m ? 'active' : ''}" onclick="setSelection(${index}, 'model', '${m}')">${m}</button>`
+  ).join('');
+
+  const currentColors = colorMap[s.model] || colorMap["مبطن سادة"];
+  const colorBtns = currentColors.map(c => 
+    `<button type="button" class="chip ${s.color === c ? 'active' : ''}" onclick="setSelection(${index}, 'color', '${c}')">${c}</button>`
+  ).join('');
+
+  const sizeBtns = sizes.map(z => 
+    `<button type="button" class="chip ${s.size === z.id ? 'active' : ''}" onclick="setSelection(${index}, 'size', '${z.id}')">${z.label}</button>`
+  ).join('');
+
+  return `<span class="field-label">الموديل</span><div class="chips">${modelBtns}</div>
+    <span class="field-label">اللون</span><div class="chips">${colorBtns}</div>
+    <span class="field-label">المقاس</span><div class="chips">${sizeBtns}</div>`;
+}
+
+function updateInvoice(){
+  ensureSelections();
+  const gov=document.getElementById('custGov')?.value||'';
+  const p=productPrice(quantity), sh=shippingPrice(gov);
+  document.getElementById('invCount').textContent=quantity+" قطعة";
+  document.getElementById('invProducts').textContent=money(p);
+  document.getElementById('invShipping').textContent=gov?money(sh):"اختاري المحافظة";
+  document.getElementById('invTotal').textContent=gov?money(p+sh):"—";
+  document.getElementById('invItems').innerHTML=selections.map((s,i)=>`القطعة ${i+1}: ${s.model} · ${s.color} · مقاس ${s.size}`).join('<br>');
+  document.getElementById('stickyPrice').textContent=money(p+(gov?sh:0));
+}
+
+function goStep(step){
+  if(step===2 && quantity<1){alert("اختاري عدد القطع أولًا.");return;}
+  if(step===3){trackEvent('add_shipping_info',{item_count:quantity});}
+  currentStep=step;
+  document.querySelectorAll('.panel').forEach((p,i)=>p.classList.toggle('active',i===step-1));
+  for(let i=1;i<=3;i++){
+    const el=document.getElementById('stepMark'+i);
+    el.classList.toggle('active',i===step);el.classList.toggle('done',i<step);
+  }
+  if(step===2)trackEvent('begin_checkout',{item_count:quantity});
+  if(step===3)updateInvoice();
+  document.getElementBy
