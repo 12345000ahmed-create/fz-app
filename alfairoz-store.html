@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مصنع الفيروز | اطلب عرض الليجن الشتوي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e293b;
+            --accent: #d97706;
+            --accent-gradient: linear-gradient(135deg, #f59e0b, #d97706);
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --whatsapp: #22c55e;
+        }
+        * {
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            padding: 20px 10px;
+            line-height: 1.6;
+        }
+        .wrapper {
+            max-width: 500px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+        .top-action {
+            background: #f1f5f9;
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .copy-btn {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(59, 130, 246, 0.3);
+        }
+        .header-brand {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 25px 20px;
+        }
+        .header-brand h1 {
+            font-size: 22px;
+            font-weight: 900;
+            margin-bottom: 5px;
+        }
+        .header-brand p {
+            font-size: 14px;
+            color: #94a3b8;
+        }
+        .badge {
+            display: inline-block;
+            background: var(--accent-gradient);
+            color: white;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+        .content-body {
+            padding: 20px;
+        }
+        .price-card {
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: 14px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .price-card h3 {
+            font-size: 15px;
+            color: #b45309;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        .price-card ul {
+            list-style: none;
+        }
+        .price-card li {
+            font-size: 13px;
+            color: #78350f;
+            margin-bottom: 4px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .form-group {
+            margin-bottom: 16px;
+        }
+        label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            color: #475569;
+            margin-bottom: 6px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 10px;
+            font-size: 14px;
+            background: #fff;
+            color: #0f172a;
+        }
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--accent);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.1);
+        }
+        .item-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 12px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            position: relative;
+        }
+        .item-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 8px;
+        }
+        .add-item-btn {
+            background: #e2e8f0;
+            color: #334155;
+            border: none;
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+        .add-item-btn:hover {
+            background: #cbd5e1;
+        }
+        .remove-btn {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 4px 10px;
+            font-size: 11px;
+            border-radius: 6px;
+            cursor: pointer;
+            float: left;
+        }
+        .submit-btn {
+            background-color: var(--whatsapp);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 15px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.35);
+            margin-top: 10px;
+        }
+        .footer-note {
+            text-align: center;
+            font-size: 12px;
+            color: #64748b;
+            margin-top: 15px;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="top-action">
+        <button class="copy-btn" onclick="copyLink()">📋 نسخ رابط الصفحة للإعلان</button>
+    </div>
+
+    <div class="header-brand">
+        <h1>مصنع الفيروز</h1>
+        <p>ليجن شتوي مبطن دافي ومريح بجودة ممتازة</p>
+        <span class="badge">🔥 تشكيل العرض براحتك</span>
+    </div>
+
+    <div class="content-body">
+        <div class="price-card">
+            <h3>💰 جدول أسعار العرض:</h3>
+            <ul>
+                <li><span>قطعة واحدة:</span> <strong>199 جنيه</strong></li>
+                <li><span>قطعتين:</span> <strong>320 جنيه</strong></li>
+                <li><span>3 قطع:</span> <strong>420 جنيه</strong></li>
+                <li><span>4 قطع:</span> <strong>560 جنيه</strong></li>
+                <li><span>🔥 5 قطع أو أكثر:</span> <strong style="color: #b45309;">القطعة بـ 130 ج</strong></li>
+            </ul>
+        </div>
+
+        <form id="orderForm" onsubmit="submitOrder(event)">
+            <div class="form-group">
+                <label>الاسم بالكامل:</label>
+                <input type="text" id="name" required placeholder="اكتب اسمك هنا...">
+            </div>
+
+            <div class="form-group">
+                <label>رقم الموبايل (لتأكيد الشحن):</label>
+                <input type="tel" id="phone" required placeholder="مثال: 010xxxxxxxx">
+            </div>
+
+            <div class="form-group">
+                <label>العنوان بالتفصيل (المحافظة - المدينة - الشارع):</label>
+                <textarea id="address" rows="2" required placeholder="اكتب عنوانك بالتفصيل..."></textarea>
+            </div>
+
+            <hr style="border: 0; border-top: 1px dashed #cbd5e1; margin: 15px 0;">
+            <label style="font-size: 15px; color: #1e293b; margin-bottom: 10px;">🛍️ حدد القطع والألوان اللي عايزها في العرض:</label>
+            
+            <div id="itemsContainer">
+                <!-- القطعة الأولى (تضاف تلقائياً) -->
+            </div>
+
+            <button type="button" class="add-item-btn" onclick="addItemRow()">➕ إضافة قطعة تانية (لتشكيل العرض)</button>
+
+            <div class="form-group">
+                <label>المقاس العام المطلوب:</label>
+                <select id="size" required>
+                    <option value="">-- حدد المقاس --</option>
+                    <option value="متوسط (من 50 لـ 70 كجم)">متوسط (من 50 لـ 70 كجم)</option>
+                    <option value="كبير (من 70 لـ 90 كجم)">كبير (من 70 لـ 90 كجم)</option>
+                    <option value="دبل كينج (من 90 لـ 110 كجم)">دبل كينج (من 90 لـ 110 كجم)</option>
+                </select>
+            </div>
+
+            <button type="submit" class="submit-btn">🛒 تأكيد الطلب وإرساله للواتساب</button>
+        </form>
+
+        <div class="footer-note">
+            ✅ شحن لجميع المحافظات • 🔍 معاينة قبل الاستلام
+        </div>
+    </div>
+</div>
+
+<script>
+    let itemCount = 0;
+
+    const modelsData = {
+        "سادة": ["أسود"],
+        "مضلع": ["أسود", "رصاصي", "كحلي", "بني", "بيج"],
+        "حفر ليزر ورق شجر": ["أسود", "كحلي"]
+    };
+
+    function addItemRow() {
+        itemCount++;
+        const container = document.getElementById("itemsContainer");
+        
+        const div = document.createElement("div");
+        div.className = "item-box";
+        div.id = `item-row-${itemCount}`;
+        
+        div.innerHTML = `
+            <div class="item-title">القطعة رقم ${itemCount} ${itemCount > 1 ? '<button type="button" class="remove-btn" onclick="removeItemRow(' + itemCount + ')">حذف</button>' : ''}</div>
+            <div class="form-group" style="margin-bottom: 10px;">
+                <label>الموديل:</label>
+                <select class="model-select" onchange="updateRowColors(${itemCount})" required>
+                    <option value="">-- اختار الموديل --</option>
+                    <option value="سادة">سادة (أسود)</option>
+                    <option value="مضلع">مضلع (متعدد الألوان)</option>
+                    <option value="حفر ليزر ورق شجر">حفر ليزر ورق شجر</option>
+                </select>
+            </div>
+            <div class="form-group" style="margin-bottom: 0;">
+                <label>اللون:</label>
+                <select class="color-select" required>
+                    <option value="">-- اختر الموديل أولاً --</option>
+                </select>
+            </div>
+        `;
+        container.appendChild(div);
+    }
+
+    function removeItemRow(id) {
+        const row = document.getElementById(`item-row-${id}`);
+        if(row) row.remove();
+    }
+
+    function updateRowColors(id) {
+        const row = document.getElementById(`item-row-${id}`);
+        const modelSelect = row.querySelector(".model-select");
+        const colorSelect = row.querySelector(".color-select");
+        const selectedModel = modelSelect.value;
+
+        colorSelect.innerHTML = '<option value="">-- اختار اللون --</option>';
+        
+        if (modelsData[selectedModel]) {
+            modelsData[selectedModel].forEach(c => {
+                const opt = document.createElement("option");
+                opt.value = c;
+                opt.textContent = c;
+                colorSelect.appendChild(opt);
+            });
+        }
+    }
+
+    // إضافة أول قطعة افتراضياً عند فتح الصفحة
+    window.onload = function() {
+        addItemRow();
+    };
+
+    function copyLink() {
+        const pageUrl = window.location.href;
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(pageUrl).then(() => {
+                alert("📋 تم نسخ اللينك بنجاح!\n" + pageUrl);
+            });
+        } else {
+            const dummy = document.createElement('input');
+            document.body.appendChild(dummy);
+            dummy.value = pageUrl;
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+            alert("📋 تم نسخ اللينك بنجاح!");
+        }
+    }
+
+    function submitOrder(e) {
+        e.preventDefault();
+        const name = document.getElementById("name").value;
+        const phone = document.getElementById("phone").value;
+        const address = document.getElementById("address").value;
+        const size = document.getElementById("size").value;
+
+        let itemsText = "";
+        const rows = document.querySelectorAll(".item-box");
+        
+        rows.forEach((row, index) => {
+            const model = row.querySelector(".model-select").value;
+            const color = row.querySelector(".color-select").value;
+            itemsText += `▫️ قطعة ${index + 1}: ${model} - لون (${color})\n`;
+        });
+
+        const text = `🔥 *أوردر جديد من متجر مصنع الفيروز* 🔥\n\n` +
+                     `👤 *الاسم:* ${name}\n` +
+                     `📞 *الموبايل:* ${phone}\n` +
+                     `📍 *العنوان:* ${address}\n\n` +
+                     `👗 *تفاصيل القطع المختارة في العرض:*\n` +
+                     itemsText + `\n` +
+                     `📏 *المقاس العام:* ${size}\n\n` +
+                     `✅ برجاء تأكيد الأوردر ومصاريف الشحن.`;
+
+        const url = `https://wa.me/201080239769?text=${encodeURIComponent(text)}`;
+        window.open(url, '_blank');
+    }
+</script>
+
+</body>
+</html>
