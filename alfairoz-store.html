@@ -38,7 +38,7 @@ details{border-top:2px dashed #E8B400;margin-top:10px} summary{background:#111A3
 .detailBox{padding:12px 2px} .detailBox label{font-size:12px;font-weight:800;color:#888;display:block;margin:10px 0 4px} .detailBox select,.detailBox input{width:100%;padding:12px;border:1.5px solid #E5E5E5;border-radius:12px;font-family:inherit;background:#fff}
 .offerRow{display:grid;grid-template-columns:1fr 1fr;gap:8px} .offerRow button{padding:11px;border:2px solid #FFE69C;background:#FFF8E1;border-radius:10px;font-family:inherit;font-weight:800;cursor:pointer} .offerRow button.sel{background:#111A3A;color:#fff;border-color:#111A3A} .offerRow button.sel b{color:#FFD700}
 .addBtn{width:100%;background:#25D366;color:#fff;border:none;padding:14px;border-radius:12px;font-weight:900;font-size:16px;cursor:pointer;margin-top:12px;font-family:inherit}
-.waBtn{display:block;text-align:center;background:#fff;border:1.5px solid #25D366;color:#111;padding:12px;border-radius:12px;font-weight:800;margin-top:8px}
+.colorWrap.hidden{display:none}
 .bundle{background:linear-gradient(135deg,#111A3A,#2A3F7A);color:#fff;border-radius:24px;padding:22px;margin:22px 0} .bundle h2{font-size:24px} .bundle p{color:#D9E2FF;margin:8px 0}
 .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:12px} @media(max-width:760px){.reviews{grid-template-columns:1fr}}
 .rev{background:#fff;border:1px solid #eee;border-radius:18px;padding:16px} .stars{color:#FFB400} .rev b{display:block;margin-top:8px} .rev span{font-size:12px;color:#888}
@@ -65,10 +65,9 @@ footer{background:#111A3A;color:#AAB4D6;text-align:center;padding:26px 14px;font
 <div class="heroText">
 <div class="badges"><span class="badge">⭐ 4.9 - تقييم العملاء</span><span class="badge">👀 المعاينة قبل الاستلام</span><span class="badge">🚚 شحن لكل المحافظات</span></div>
 <h1>أناقتك تبدأ من <span>الفيروز</span><br>قطن ليكرا ناعم، ومقاس مظبوط من 50 لـ 100 كيلو</h1>
-<p>أكتر من 12,000 عميلة طلبت مننا. دوسي على أي منتج، اختاري العرض ولون كل قطعة، ودوسي أضف للسلة.</p>
+<p>اختاري العرض اللي يناسبك، واختاري لون كل قطعة لوحدها. الـ 3D بدون اختيار لون.</p>
 <a class="btnMain" href="#products">تسوّقي العروض ↓</a>
 <a class="btnWa" href="#orderForm">🛒 سلة الطلب (<span id="cartBadge">0</span>)</a>
-<p style="font-size:12px;margin-top:10px">✅ بدون دفع مقدم • ✅ عايني الأوردر قبل ما تدفعي • ✅ استبدال سهل</p>
 </div>
 <div class="heroImg"><img src="https://drive.google.com/thumbnail?id=1KYGaZpezLXl0Vd9eqMVW87YHY2gBfwdQ&sz=w1000"><div class="floatPrice"><div><s>450ج</s> <b>300ج - 4 قطع ديربي</b><br><span style="font-size:12px;color:#666">الأكثر مبيعاً في مصر 🔥</span></div><span class="off">خصم 33%</span></div></div>
 </div>
@@ -83,120 +82,97 @@ footer{background:#111A3A;color:#AAB4D6;text-align:center;padding:26px 14px;font
 </div>
 
 <h2 class="secTitle" id="products">عروض الفيروز 🔥</h2>
-<p class="secSub">الطريقة الجديدة: دوسي على <b>▼ اختار العرض ولون كل قطعة</b> تحت المنتج، هتتفتحلك الاختيارات على طول من غير أي نافذة</p>
+<p class="secSub">الـ 3D بدون اختيار لون. الليجن شكل الجينز هو ليجن بخامة قطن ليكرا بشكل الجينز، مش بنطلون جينز.</p>
 
 <div class="grid">
 
-<!-- 3D -->
-<div class="card"><span class="tag">جديد 🔥</span><img src="https://drive.google.com/thumbnail?id=181QfEDhXCZuwiQb0v9tEBvrDmFAgX1g4&sz=w1000"><div class="cardBody"><h3>1️⃣ ليجن 3D</h3><p>قطن ليكرا ناعمة ومريحة • فري سايز 50 لـ 100 كيلو</p><div class="prices">قطعة <b>199ج</b> • قطعتين <b>350ج</b><br>3 قطع أو أكثر <b>150ج للقطعة</b></div>
-<details><summary>▼ اختار العرض ولون كل قطعة</summary><div class="detailBox">
+<div class="card"><span class="tag">جديد 🔥</span><img src="https://drive.google.com/thumbnail?id=181QfEDhXCZuwiQb0v9tEBvrDmFAgX1g4&sz=w1000"><div class="cardBody"><h3>1️⃣ ليجن 3D</h3><p>قطن ليكرا ناعمة ومريحة • فري سايز 50 لـ 100 كيلو • <b>بدون اختيار لون</b></p><div class="prices">قطعة <b>199ج</b> • قطعتين <b>350ج</b><br>3 قطع أو أكثر <b>150ج للقطعة</b></div><div class="colors">🎨 بدون اختيار لون - اللون حسب المتوفر</div>
+<details><summary>▼ اختار العرض</summary><div class="detailBox">
 <label>1️⃣ اختاري العرض</label><div class="offerRow" id="offers-3D"></div>
-<label>🎨 لون القطعة 1</label><select id="c-3D-0"></select>
-<label>🎨 لون القطعة 2</label><select id="c-3D-1"></select>
-<label>🎨 لون القطعة 3</label><select id="c-3D-2"></select>
-<label>🎨 لون القطعة 4</label><select id="c-3D-3"></select>
-<label>🎨 لون القطعة 5</label><select id="c-3D-4"></select>
+<p style="font-size:13px;color:#888;background:#F8F8F8;padding:10px;border-radius:10px;margin-top:10px">🎨 الـ 3D مفيش فيه اختيار ألوان، بتختاري العدد بس.</p>
 <div id="price-3D" style="background:#FFF8E1;padding:10px;border-radius:10px;font-weight:900;text-align:center;margin-top:10px"></div>
 <button type="button" class="addBtn" onclick="addSimple('3D')">🛒 أضف للسلة</button>
-<a class="waBtn" href="https://wa.me/201080239769?text=عايزة ليجن 3D" target="_blank">💬 اطلبي واتساب على طول</a>
 </div></details>
 </div></div>
 
-<!-- BRA -->
 <div class="card"><span class="tag tag2">باكت 3 قطع</span><img src="https://drive.google.com/thumbnail?id=18xsCFyfVcHZrrNow-JT0SAKO9NgCGUJ2&sz=w1000"><div class="cardBody"><h3>2️⃣ برا بوش أب الفيروز</h3><p>قطن ليكرا مستورد • بوش مبطن • الباكت 3 قطع</p><div class="prices">الباكت <b>300ج</b> <span class="old">350ج</span><br>اختيار الوزن: 50-75 / 75-100</div><div class="colors">🎨 ألوان متعددة حسب الباكت - بدون اختيار لون</div>
 <details><summary>▼ اختار العرض والوزن</summary><div class="detailBox">
 <label>1️⃣ اختاري العرض</label><div class="offerRow" id="offers-bra"></div>
 <label>⚖️ اختيار الوزن *</label><select id="w-bra"><option value="">اختاري الوزن</option><option>من 50 إلى 75 كيلو</option><option>من 75 إلى 100 كيلو</option></select>
 <div id="price-bra" style="background:#FFF8E1;padding:10px;border-radius:10px;font-weight:900;text-align:center;margin-top:10px"></div>
 <button type="button" class="addBtn" onclick="addSimple('bra')">🛒 أضف للسلة</button>
-<a class="waBtn" href="https://wa.me/201080239769?text=عايزة برا بوش اب" target="_blank">💬 اطلبي واتساب على طول</a>
 </div></details>
 </div></div>
 
-<!-- SHORT -->
-<div class="card"><img src="https://drive.google.com/thumbnail?id=18cHc1JZ7F7TecDX-2zrIdDeEKhYPJceK&sz=w1000"><div class="cardBody"><h3>3️⃣ شورت ديربي مضلع طويل</h3><p>شورت مضلع طويل عملي ومريح • قطن ليكرا</p><div class="prices">2 بـ <b>160ج</b> • 3 بـ <b>210ج</b><br>4 بـ <b>260ج</b> • 5+ <b>60ج للقطعة</b></div><div class="colors">اسود وابيض وبني وكحلي ورصاصي</div>
+<div class="card"><img src="https://drive.google.com/thumbnail?id=18cHc1JZ7F7TecDX-2zrIdDeEKhYPJceK&sz=w1000"><div class="cardBody"><h3>3️⃣ شورت ديربي مضلع طويل</h3><p>شورت مضلع طويل عملي ومريح • قطن ليكرا</p><div class="prices">قطعة <b>90ج</b> • 2 بـ <b>160ج</b> • 3 بـ <b>210ج</b><br>4 بـ <b>260ج</b> • 5+ <b>60ج للقطعة</b></div><div class="colors">اسود وابيض وبني وكحلي ورصاصي</div>
 <details><summary>▼ اختار العرض ولون كل قطعة</summary><div class="detailBox">
 <label>1️⃣ اختاري العرض</label><div class="offerRow" id="offers-short"></div>
-<label>🎨 لون القطعة 1</label><select id="c-short-0"></select>
-<label>🎨 لون القطعة 2</label><select id="c-short-1"></select>
-<label>🎨 لون القطعة 3</label><select id="c-short-2"></select>
-<label>🎨 لون القطعة 4</label><select id="c-short-3"></select>
-<label>🎨 لون القطعة 5</label><select id="c-short-4"></select>
+<div class="colorWrap" id="wrap-short-0"><label>🎨 لون القطعة 1</label><select id="c-short-0"></select></div>
+<div class="colorWrap" id="wrap-short-1"><label>🎨 لون القطعة 2</label><select id="c-short-1"></select></div>
+<div class="colorWrap" id="wrap-short-2"><label>🎨 لون القطعة 3</label><select id="c-short-2"></select></div>
+<div class="colorWrap" id="wrap-short-3"><label>🎨 لون القطعة 4</label><select id="c-short-3"></select></div>
+<div class="colorWrap" id="wrap-short-4"><label>🎨 لون القطعة 5</label><select id="c-short-4"></select></div>
+<div class="colorWrap" id="wrap-short-5"><label>🎨 لون القطعة 6</label><select id="c-short-5"></select></div>
+<div class="colorWrap" id="wrap-short-6"><label>🎨 لون القطعة 7</label><select id="c-short-6"></select></div>
+<div class="colorWrap" id="wrap-short-7"><label>🎨 لون القطعة 8</label><select id="c-short-7"></select></div>
+<div class="colorWrap" id="wrap-short-8"><label>🎨 لون القطعة 9</label><select id="c-short-8"></select></div>
+<div class="colorWrap" id="wrap-short-9"><label>🎨 لون القطعة 10</label><select id="c-short-9"></select></div>
 <div id="price-short" style="background:#FFF8E1;padding:10px;border-radius:10px;font-weight:900;text-align:center;margin-top:10px"></div>
 <button type="button" class="addBtn" onclick="addSimple('short')">🛒 أضف للسلة</button>
-<a class="waBtn" href="https://wa.me/201080239769?text=عايزة شورت ديربي" target="_blank">💬 اطلبي واتساب على طول</a>
 </div></details>
 </div></div>
 
-<!-- HEARTS -->
 <div class="card"><span class="tag">الأكثر طلباً ❤️</span><img src="https://drive.google.com/thumbnail?id=1gYos4r2DZpW69OKx2lYe8NGVmSlLikV5&sz=w1000"><div class="cardBody"><h3>4️⃣ ليجن قلوب ❤️</h3><p>قطن ليكرا • تصميم القلوب • فري سايز 50 لـ 100 كيلو</p><div class="prices">قطعة <b>150ج</b> • 2 بـ <b>220ج</b><br>3 بـ <b>270ج</b> • 4 بـ <b>320ج</b> • 5+ <b>75ج</b></div><div class="colors">اسود وكحلي وبني ورصاصي وبيج وازرق</div>
 <details><summary>▼ اختار العرض ولون كل قطعة</summary><div class="detailBox">
 <label>1️⃣ اختاري العرض</label><div class="offerRow" id="offers-hearts"></div>
-<label>🎨 لون القطعة 1</label><select id="c-hearts-0"></select>
-<label>🎨 لون القطعة 2</label><select id="c-hearts-1"></select>
-<label>🎨 لون القطعة 3</label><select id="c-hearts-2"></select>
-<label>🎨 لون القطعة 4</label><select id="c-hearts-3"></select>
-<label>🎨 لون القطعة 5</label><select id="c-hearts-4"></select>
+<div class="colorWrap" id="wrap-hearts-0"><label>🎨 لون القطعة 1</label><select id="c-hearts-0"></select></div>
+<div class="colorWrap" id="wrap-hearts-1"><label>🎨 لون القطعة 2</label><select id="c-hearts-1"></select></div>
+<div class="colorWrap" id="wrap-hearts-2"><label>🎨 لون القطعة 3</label><select id="c-hearts-2"></select></div>
+<div class="colorWrap" id="wrap-hearts-3"><label>🎨 لون القطعة 4</label><select id="c-hearts-3"></select></div>
+<div class="colorWrap" id="wrap-hearts-4"><label>🎨 لون القطعة 5</label><select id="c-hearts-4"></select></div>
+<div class="colorWrap" id="wrap-hearts-5"><label>🎨 لون القطعة 6</label><select id="c-hearts-5"></select></div>
+<div class="colorWrap" id="wrap-hearts-6"><label>🎨 لون القطعة 7</label><select id="c-hearts-6"></select></div>
+<div class="colorWrap" id="wrap-hearts-7"><label>🎨 لون القطعة 8</label><select id="c-hearts-7"></select></div>
+<div class="colorWrap" id="wrap-hearts-8"><label>🎨 لون القطعة 9</label><select id="c-hearts-8"></select></div>
+<div class="colorWrap" id="wrap-hearts-9"><label>🎨 لون القطعة 10</label><select id="c-hearts-9"></select></div>
 <div id="price-hearts" style="background:#FFF8E1;padding:10px;border-radius:10px;font-weight:900;text-align:center;margin-top:10px"></div>
 <button type="button" class="addBtn" onclick="addSimple('hearts')">🛒 أضف للسلة</button>
-<a class="waBtn" href="https://wa.me/201080239769?text=عايزة ليجن قلوب" target="_blank">💬 اطلبي واتساب على طول</a>
 </div></details>
 </div></div>
 
-<!-- DERBY -->
-<div class="card"><span class="tag">الأكثر مبيعاً 🔥</span><img src="https://drive.google.com/thumbnail?id=1KYGaZpezLXl0Vd9eqMVW87YHY2gBfwdQ&sz=w1000"><div class="cardBody"><h3>5️⃣ ليجن ديربي مضلع 🔥</h3><p>ريب مضلع طولي • ضد الوبر والانكماش • فري سايز</p><div class="prices">4 بـ <b>300ج</b> • 5 بـ <b>375ج</b><br>من 6+ <b>70ج</b> • من 10+ <b>65ج</b></div><div class="colors">اسود وابيض واوف وايت وكحلي وازرق وبيج وبني وكافيه ونبيتي وزيتي وبترولي وجنزاري وفوشيا ورصاصي وبيبي بينك</div>
+<div class="card"><span class="tag">الأكثر مبيعاً 🔥</span><img src="https://drive.google.com/thumbnail?id=1KYGaZpezLXl0Vd9eqMVW87YHY2gBfwdQ&sz=w1000"><div class="cardBody"><h3>5️⃣ ليجن ديربي مضلع 🔥</h3><p>ريب مضلع طولي • ضد الوبر والانكماش • فري سايز</p><div class="prices">قطعة <b>75ج</b> • 2 بـ <b>150ج</b><br>3 بـ <b>225ج</b> • 4 بـ <b>300ج</b><br>5 بـ <b>375ج</b> • 6+ <b>70ج</b> • 10+ <b>65ج</b></div><div class="colors">اسود وابيض واوف وايت وكحلي وازرق وبيج وبني وكافيه ونبيتي وزيتي وبترولي وجنزاري وفوشيا ورصاصي وبيبي بينك</div>
 <details><summary>▼ اختار العرض ولون كل قطعة</summary><div class="detailBox">
 <label>1️⃣ اختاري العرض</label><div class="offerRow" id="offers-derby"></div>
-<label>🎨 لون القطعة 1</label><select id="c-derby-0"></select>
-<label>🎨 لون القطعة 2</label><select id="c-derby-1"></select>
-<label>🎨 لون القطعة 3</label><select id="c-derby-2"></select>
-<label>🎨 لون القطعة 4</label><select id="c-derby-3"></select>
-<label>🎨 لون القطعة 5</label><select id="c-derby-4"></select>
+<div class="colorWrap" id="wrap-derby-0"><label>🎨 لون القطعة 1</label><select id="c-derby-0"></select></div>
+<div class="colorWrap" id="wrap-derby-1"><label>🎨 لون القطعة 2</label><select id="c-derby-1"></select></div>
+<div class="colorWrap" id="wrap-derby-2"><label>🎨 لون القطعة 3</label><select id="c-derby-2"></select></div>
+<div class="colorWrap" id="wrap-derby-3"><label>🎨 لون القطعة 4</label><select id="c-derby-3"></select></div>
+<div class="colorWrap" id="wrap-derby-4"><label>🎨 لون القطعة 5</label><select id="c-derby-4"></select></div>
+<div class="colorWrap" id="wrap-derby-5"><label>🎨 لون القطعة 6</label><select id="c-derby-5"></select></div>
+<div class="colorWrap" id="wrap-derby-6"><label>🎨 لون القطعة 7</label><select id="c-derby-6"></select></div>
+<div class="colorWrap" id="wrap-derby-7"><label>🎨 لون القطعة 8</label><select id="c-derby-7"></select></div>
+<div class="colorWrap" id="wrap-derby-8"><label>🎨 لون القطعة 9</label><select id="c-derby-8"></select></div>
+<div class="colorWrap" id="wrap-derby-9"><label>🎨 لون القطعة 10</label><select id="c-derby-9"></select></div>
 <div id="price-derby" style="background:#FFF8E1;padding:10px;border-radius:10px;font-weight:900;text-align:center;margin-top:10px"></div>
 <button type="button" class="addBtn" onclick="addSimple('derby')">🛒 أضف للسلة</button>
-<a class="waBtn" href="https://wa.me/201080239769?text=عايزة ليجن ديربي مضلع" target="_blank">💬 اطلبي واتساب على طول</a>
 </div></details>
 </div></div>
 
-<!-- JEANS -->
-<div class="card"><img src="https://drive.google.com/thumbnail?id=1hsmLb5R7OEBIowVfFOi7KpX11YgQFzd-&sz=w1000"><div class="cardBody"><h3>6️⃣ ليجن شكل الجينز</h3><p>شكل الجينز الأنيق بخامة مريحة ومرنة</p><div class="prices">قطعة <b>170ج</b> • 2 بـ <b>260ج</b><br>3 بـ <b>340ج</b> • 4 بـ <b>430ج</b></div><div class="colors">اسود ورصاصي وبني</div>
+<div class="card"><img src="https://drive.google.com/thumbnail?id=1hsmLb5R7OEBIowVfFOi7KpX11YgQFzd-&sz=w1000"><div class="cardBody"><h3>6️⃣ ليجن شكل الجينز</h3><p>ليجن بخامة قطن ليكرا مريحة <b>بشكل الجينز</b>، مش بنطلون جينز • مرن ومريح طول اليوم</p><div class="prices">قطعة <b>170ج</b> • 2 بـ <b>260ج</b><br>3 بـ <b>340ج</b> • 4 بـ <b>430ج</b> • 5+ <b>107ج</b></div><div class="colors">🎨 اسود ورصاصي وبني</div>
 <details><summary>▼ اختار العرض ولون كل قطعة</summary><div class="detailBox">
 <label>1️⃣ اختاري العرض</label><div class="offerRow" id="offers-jeans"></div>
-<label>🎨 لون القطعة 1</label><select id="c-jeans-0"></select>
-<label>🎨 لون القطعة 2</label><select id="c-jeans-1"></select>
-<label>🎨 لون القطعة 3</label><select id="c-jeans-2"></select>
-<label>🎨 لون القطعة 4</label><select id="c-jeans-3"></select>
+<div class="colorWrap" id="wrap-jeans-0"><label>🎨 لون القطعة 1</label><select id="c-jeans-0"></select></div>
+<div class="colorWrap" id="wrap-jeans-1"><label>🎨 لون القطعة 2</label><select id="c-jeans-1"></select></div>
+<div class="colorWrap" id="wrap-jeans-2"><label>🎨 لون القطعة 3</label><select id="c-jeans-2"></select></div>
+<div class="colorWrap" id="wrap-jeans-3"><label>🎨 لون القطعة 4</label><select id="c-jeans-3"></select></div>
+<div class="colorWrap" id="wrap-jeans-4"><label>🎨 لون القطعة 5</label><select id="c-jeans-4"></select></div>
 <div id="price-jeans" style="background:#FFF8E1;padding:10px;border-radius:10px;font-weight:900;text-align:center;margin-top:10px"></div>
 <button type="button" class="addBtn" onclick="addSimple('jeans')">🛒 أضف للسلة</button>
-<a class="waBtn" href="https://wa.me/201080239769?text=عايزة ليجن شكل الجينز" target="_blank">💬 اطلبي واتساب على طول</a>
 </div></details>
 </div></div>
 
-<!-- DAFAYA -->
 <div class="card"><span class="tag tag2">شتوي ❄️</span><img src="https://drive.google.com/thumbnail?id=1EJMM6MjhFR9qobgxUenAIv34qyZOwtGZ&sz=w1000"><div class="cardBody"><h3>7️⃣ ليجن الدفاية المبطن ❄️</h3><p>مبطن ودافئ • سادة - مضلع - ورق شجر</p><div class="prices">قطعة <b>199ج</b> • 2 بـ <b>320ج</b><br>3 بـ <b>420ج</b> • 4 بـ <b>560ج</b> • 5+ <b>130ج</b></div><div class="colors">سادة: اسود فقط • مضلع: اسود، رصاصي، كحلي، بني، بيج • ورق شجر: اسود، كحلي</div>
 <details><summary>▼ اختار العرض وموديل ولون كل قطعة</summary><div class="detailBox">
 <label>1️⃣ اختاري العرض</label><div class="offerRow" id="offers-dafaya"></div>
-<label>🧩 موديل القطعة 1</label><select id="v-dafaya-0" onchange="updDafayaColor(0)"><option value="sada">سادة</option><option value="modalla">مضلع</option><option value="laser">حفر ليزر ورق شجر</option></select>
-<label>🎨 لون القطعة 1</label><select id="c-dafaya-0"></select>
-<label>🧩 موديل القطعة 2</label><select id="v-dafaya-1" onchange="updDafayaColor(1)"><option value="sada">سادة</option><option value="modalla">مضلع</option><option value="laser">حفر ليزر ورق شجر</option></select>
-<label>🎨 لون القطعة 2</label><select id="c-dafaya-1"></select>
-<label>🧩 موديل القطعة 3</label><select id="v-dafaya-2" onchange="updDafayaColor(2)"><option value="sada">سادة</option><option value="modalla">مضلع</option><option value="laser">حفر ليزر ورق شجر</option></select>
-<label>🎨 لون القطعة 3</label><select id="c-dafaya-2"></select>
-<label>🧩 موديل القطعة 4</label><select id="v-dafaya-3" onchange="updDafayaColor(3)"><option value="sada">سادة</option><option value="modalla">مضلع</option><option value="laser">حفر ليزر ورق شجر</option></select>
-<label>🎨 لون القطعة 4</label><select id="c-dafaya-3"></select>
-<label>🧩 موديل القطعة 5</label><select id="v-dafaya-4" onchange="updDafayaColor(4)"><option value="sada">سادة</option><option value="modalla">مضلع</option><option value="laser">حفر ليزر ورق شجر</option></select>
-<label>🎨 لون القطعة 5</label><select id="c-dafaya-4"></select>
-<div id="price-dafaya" style="background:#FFF8E1;padding:10px;border-radius:10px;font-weight:900;text-align:center;margin-top:10px"></div>
-<button type="button" class="addBtn" onclick="addSimple('dafaya')">🛒 أضف للسلة</button>
-<a class="waBtn" href="https://wa.me/201080239769?text=عايزة ليجن الدفاية المبطن" target="_blank">💬 اطلبي واتساب على طول</a>
-</div></details>
-</div></div>
-
-</div>
-
-<div class="orderSection" id="orderForm">
-<h2>🛒 سلة الطلب</h2>
-<p class="sub">السلة فاضية دلوقتي. افتحي أي منتج فوق، اختاري العرض والألوان، ودوسي أضف للسلة</p>
-<div id="cartBox"></div>
-<form onsubmit="sendOrder(event)">
-<div class="formGrid" style="margin-top:16px"
+<div class="colorWrap" id="wrap-dafaya-0"><label>🧩 موديل القطعة 1</label><select id="v-dafaya-0" onchange="updDafayaColor(0)"><option value="sada">سادة</option><option value="modalla">مضلع</option><option value="laser">حفر ليزر ورق شجر</option></select><label>🎨 لون القطعة 1</label><select id="c-dafaya-0"></select></div>
+<div class="colorWrap" id="wrap-dafaya-1"><label>🧩 موديل 
