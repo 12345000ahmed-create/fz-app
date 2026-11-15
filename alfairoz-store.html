@@ -3,63 +3,58 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>الفيروز | ELFAIROZ - عروض وصلت</title>
+<title>الفيروز | ELFAIROZ - اطلبي بسهولة</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0} body{font-family:'Cairo',sans-serif;background:#FFFDF9;color:#1A1A1A;line-height:1.6}
 a{text-decoration:none}
 .topbar{background:#111A3A;color:#fff;text-align:center;padding:8px;font-size:13px;font-weight:700} .topbar b{color:#FFD700}
-header{position:sticky;top:0;z-index:99;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid #eee;padding:10px 14px;display:flex;justify-content:space-between;align-items:center}
+header{position:sticky;top:0;z-index:99;background:#fff;border-bottom:1px solid #eee;padding:10px 14px;display:flex;justify-content:space-between;align-items:center}
 .logo{font-weight:900;font-size:22px;color:#111A3A} .logo span{color:#C9A24B;font-size:11px;display:block;letter-spacing:4px}
 .ctaTop{background:#25D366;color:#fff;padding:9px 16px;border-radius:99px;font-weight:800;font-size:14px}
 .hero{max-width:1100px;margin:14px auto;padding:0 12px;display:grid;grid-template-columns:1.1fr .9fr;gap:16px;align-items:center}
 @media(max-width:760px){.hero{grid-template-columns:1fr}}
-.heroText h1{font-size:36px;line-height:1.2;font-weight:900} @media(max-width:760px){.heroText h1{font-size:29px}}
-.heroText h1 span{color:#D4A017} .heroText p{color:#666;margin:12px 0;font-size:16px}
+.heroText h1{font-size:32px;line-height:1.2;font-weight:900} @media(max-width:760px){.heroText h1{font-size:28px}}
+.heroText h1 span{color:#D4A017} .heroText p{color:#666;margin:12px 0}
 .badges{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0} .badge{background:#FFF3CD;border:1px solid #FFE69C;padding:6px 12px;border-radius:99px;font-size:12px;font-weight:800}
-.heroImg{position:relative;border-radius:24px;overflow:hidden} .heroImg img{width:100%;height:420px;object-fit:cover;display:block} @media(max-width:760px){.heroImg img{height:300px}}
-.floatPrice{position:absolute;bottom:14px;right:14px;left:14px;background:#fff;border-radius:16px;padding:12px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 10px 30px rgba(0,0,0,.15)}
+.heroImg{position:relative;border-radius:24px;overflow:hidden} .heroImg img{width:100%;height:380px;object-fit:cover;display:block} @media(max-width:760px){.heroImg img{height:280px}}
+.floatPrice{position:absolute;bottom:14px;right:14px;left:14px;background:#fff;border-radius:16px;padding:12px;display:flex;justify-content:space-between;align-items:center}
 .floatPrice b{font-size:18px} .floatPrice s{color:#999;font-size:13px} .off{background:#FF4757;color:#fff;padding:4px 8px;border-radius:8px;font-size:12px}
-.btnMain{display:inline-block;background:#111A3A;color:#fff;padding:15px 28px;border-radius:14px;font-weight:900;font-size:17px;margin-top:6px}
-.btnWa{display:inline-block;background:#25D366;color:#fff;padding:15px 28px;border-radius:14px;font-weight:900;font-size:17px;margin-top:6px;margin-right:8px}
+.btnMain{display:inline-block;background:#111A3A;color:#fff;padding:14px 26px;border-radius:14px;font-weight:900;margin-top:6px}
+.btnWa{display:inline-block;background:#25D366;color:#fff;padding:14px 26px;border-radius:14px;font-weight:900;margin-top:6px;margin-right:8px}
 .marquee{background:#111A3A;color:#FFD700;overflow:hidden;padding:10px 0;font-weight:800;white-space:nowrap} .marquee span{display:inline-block;padding:0 18px}
 .wrap{max-width:1100px;margin:auto;padding:14px}
 .secTitle{font-size:26px;font-weight:900;margin:28px 0 6px} .secSub{color:#777;margin-bottom:16px}
 .trust{display:grid;grid-template-columns:repeat(4,1fr);gap:12px} @media(max-width:760px){.trust{grid-template-columns:1fr 1fr}}
 .tcard{background:#fff;border:1px solid #eee;border-radius:18px;padding:16px;text-align:center} .tcard div{font-size:28px} .tcard b{display:block;margin:6px 0 2px} .tcard p{font-size:12px;color:#777}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px} @media(max-width:900px){.grid{grid-template-columns:1fr 1fr}} @media(max-width:560px){.grid{grid-template-columns:1fr}}
-.card{background:#fff;border:1px solid #eee;border-radius:22px;overflow:hidden;position:relative} .card img{width:100%;height:280px;object-fit:cover;display:block;background:#eee}
+.card{background:#fff;border:1px solid #eee;border-radius:22px;overflow:hidden;position:relative} .card img{width:100%;height:260px;object-fit:cover;display:block}
 .cardBody{padding:14px} .tag{position:absolute;top:12px;right:12px;background:#FF4757;color:#fff;padding:5px 10px;border-radius:99px;font-size:11px;font-weight:900} .tag2{background:#111A3A}
-.cardBody h3{font-size:19px} .cardBody p{font-size:13px;color:#666;min-height:42px}
+.cardBody h3{font-size:19px} .cardBody p{font-size:13px;color:#666}
 .prices{background:#FFF8E1;border-radius:14px;padding:11px;margin:10px 0;line-height:2;font-size:14px;font-weight:700} .prices b{color:#B77900}
 .old{color:#999;text-decoration:line-through;font-weight:400;font-size:12px}
 .colors{font-size:12px;color:#555;background:#F8F8F8;padding:9px;border-radius:10px;line-height:1.8}
-.btnOrder{display:block;text-align:center;background:#111A3A;color:#fff;padding:14px;border-radius:12px;font-weight:900;margin-top:8px;cursor:pointer;border:none;width:100%;font-family:inherit;font-size:16px}
-.expandBox{display:none;background:#FFFDF9;border-top:2px dashed #E8B400;padding:14px} .expandBox.open{display:block}
-.offerBtn{width:100%;text-align:right;background:#FFF8E1;border:2px solid #FFE69C;border-radius:12px;padding:12px;margin-bottom:8px;font-family:inherit;font-weight:800;cursor:pointer;display:flex;justify-content:space-between;align-items:center} .offerBtn.active{background:#111A3A;color:#fff;border-color:#111A3A} .offerBtn.active b{color:#FFD700}
-.pieceSelect{background:#fff;border:1px solid #EEE;border-radius:14px;padding:12px;margin-bottom:10px} .pieceSelect b{font-size:14px} .pieceSelect .row2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px} @media(max-width:500px){.pieceSelect .row2{grid-template-columns:1fr}} .pieceSelect label{font-size:11px;font-weight:800;color:#888} .pieceSelect select{width:100%;padding:11px;border:1.5px solid #E5E5E5;border-radius:10px;font-family:inherit;margin-top:3px}
-.bundle{background:linear-gradient(135deg,#111A3A,#2A3F7A);color:#fff;border-radius:24px;padding:22px;margin:22px 0;display:grid;grid-template-columns:1.2fr .8fr;gap:16px;align-items:center} @media(max-width:760px){.bundle{grid-template-columns:1fr}}
-.bundle h2{font-size:26px} .bundle p{color:#D9E2FF;margin:8px 0}
-.bundleBox{background:#fff;color:#111;border-radius:18px;padding:16px} .bundleBox h3{font-size:18px} .bundleBox ul{margin:10px 0;padding-right:18px;line-height:2;font-weight:700}
+details{border-top:2px dashed #E8B400;margin-top:10px} summary{background:#111A3A;color:#fff;padding:13px;border-radius:12px;font-weight:900;cursor:pointer;list-style:none;text-align:center;margin-top:10px} summary::-webkit-details-marker{display:none}
+.detailBox{padding:12px 2px} .detailBox label{font-size:12px;font-weight:800;color:#888;display:block;margin:10px 0 4px} .detailBox select,.detailBox input{width:100%;padding:12px;border:1.5px solid #E5E5E5;border-radius:12px;font-family:inherit;background:#fff}
+.offerRow{display:grid;grid-template-columns:1fr 1fr;gap:8px} .offerRow button{padding:11px;border:2px solid #FFE69C;background:#FFF8E1;border-radius:10px;font-family:inherit;font-weight:800;cursor:pointer} .offerRow button.sel{background:#111A3A;color:#fff;border-color:#111A3A} .offerRow button.sel b{color:#FFD700}
+.addBtn{width:100%;background:#25D366;color:#fff;border:none;padding:14px;border-radius:12px;font-weight:900;font-size:16px;cursor:pointer;margin-top:12px;font-family:inherit}
+.waBtn{display:block;text-align:center;background:#fff;border:1.5px solid #25D366;color:#111;padding:12px;border-radius:12px;font-weight:800;margin-top:8px}
+.bundle{background:linear-gradient(135deg,#111A3A,#2A3F7A);color:#fff;border-radius:24px;padding:22px;margin:22px 0} .bundle h2{font-size:24px} .bundle p{color:#D9E2FF;margin:8px 0}
 .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:12px} @media(max-width:760px){.reviews{grid-template-columns:1fr}}
 .rev{background:#fff;border:1px solid #eee;border-radius:18px;padding:16px} .stars{color:#FFB400} .rev b{display:block;margin-top:8px} .rev span{font-size:12px;color:#888}
-.faq{max-width:800px;margin:auto} .faq details{background:#fff;border:1px solid #eee;border-radius:14px;padding:14px;margin-bottom:10px} .faq summary{font-weight:800;cursor:pointer}
-.final{background:#FFF3CD;border:2px dashed #E8B400;border-radius:22px;padding:22px;text-align:center;margin:26px 0}
-.final h2{font-size:26px} .final p{margin:8px 0;color:#666}
-.orderSection{background:#fff;border:2px solid #111A3A;border-radius:24px;padding:22px;margin:28px 0;box-shadow:0 12px 35px rgba(17,26,58,.08)}
-.orderSection h2{font-size:26px;text-align:center} .orderSection p.sub{text-align:center;color:#666;margin:6px 0 16px}
+.faq{max-width:800px;margin:auto} .faq details{border:1px solid #eee;border-radius:14px;padding:0;margin-bottom:10px;border-top:1px solid #eee} .faq summary{background:#fff;color:#111;text-align:right} .faq details div{padding:12px}
+.final{background:#FFF3CD;border:2px dashed #E8B400;border-radius:22px;padding:22px;text-align:center;margin:26px 0} .final h2{font-size:26px}
+.orderSection{background:#fff;border:2px solid #111A3A;border-radius:24px;padding:20px;margin:28px 0}
+.orderSection h2{font-size:24px;text-align:center} .orderSection p.sub{text-align:center;color:#666;margin:6px 0 16px}
 .formGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px} @media(max-width:700px){.formGrid{grid-template-columns:1fr}}
-.field label{display:block;font-weight:800;font-size:13px;margin-bottom:5px} .field input,.field select,.field textarea{width:100%;padding:13px;border:1.5px solid #E5E5E5;border-radius:12px;font-family:inherit;font-size:15px;background:#FAFAFA} .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:#111A3A;background:#fff} .field.full{grid-column:1/-1}
+.field label{display:block;font-weight:800;font-size:13px;margin-bottom:5px} .field input,.field select{width:100%;padding:13px;border:1.5px solid #E5E5E5;border-radius:12px;font-family:inherit;background:#FAFAFA} .field.full{grid-column:1/-1}
 .cartItem{background:#FFFDF9;border:1.5px solid #EEE;border-radius:18px;padding:14px;margin-bottom:12px}
-.cartHead{display:flex;justify-content:space-between;align-items:center;gap:10px} .cartHead b{font-size:16px} .cartHead span{color:#B77900;font-weight:900}
+.cartHead{display:flex;justify-content:space-between;align-items:center} .cartHead b{font-size:16px} .cartHead span{color:#B77900;font-weight:900}
 .delBtn{background:#FFE8E8;color:#D32F2F;border:none;padding:6px 12px;border-radius:99px;font-weight:800;cursor:pointer;font-size:12px}
-.pieceRow{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;padding:10px;background:#fff;border:1px solid #EEE;border-radius:12px} @media(max-width:600px){.pieceRow{grid-template-columns:1fr}}
-.pieceRow label{font-size:11px;font-weight:800;color:#888} .pieceRow select{width:100%;padding:11px;border:1.5px solid #E5E5E5;border-radius:10px;font-family:inherit;margin-top:3px}
-.emptyCart{text-align:center;padding:22px;color:#888;background:#FAFAFA;border-radius:16px}
-.summary{background:#FFF8E1;border-radius:16px;padding:16px;margin-top:14px;line-height:2;font-weight:700} .summary .row{display:flex;justify-content:space-between} .summary .total{font-size:20px;border-top:1px dashed #E8B400;padding-top:8px;margin-top:8px} .summary .total b{color:#B77900} .summary small{font-weight:400;color:#666;font-size:12px;display:block;line-height:1.6}
+.summary{background:#FFF8E1;border-radius:16px;padding:16px;margin-top:14px;line-height:2;font-weight:700} .summary .row{display:flex;justify-content:space-between} .summary .total{font-size:19px;border-top:1px dashed #E8B400;padding-top:8px;margin-top:8px}
 .confirmBtn{width:100%;background:#25D366;color:#fff;border:none;padding:17px;border-radius:14px;font-size:19px;font-weight:900;cursor:pointer;margin-top:14px}
 .note{text-align:center;font-size:12px;color:#888;margin-top:8px}
-.floatWa{position:fixed;bottom:16px;left:16px;right:16px;z-index:99;background:#25D366;color:#fff;text-align:center;padding:15px;border-radius:99px;font-weight:900;font-size:17px;box-shadow:0 10px 30px rgba(37,211,102,.4);display:block}
+.floatWa{position:fixed;bottom:16px;left:16px;right:16px;z-index:99;background:#25D366;color:#fff;text-align:center;padding:15px;border-radius:99px;font-weight:900;font-size:17px;display:block}
 footer{background:#111A3A;color:#AAB4D6;text-align:center;padding:26px 14px;font-size:13px;line-height:2} footer b{color:#fff;font-size:18px}
 </style>
 </head>
@@ -70,14 +65,14 @@ footer{background:#111A3A;color:#AAB4D6;text-align:center;padding:26px 14px;font
 <div class="heroText">
 <div class="badges"><span class="badge">⭐ 4.9 - تقييم العملاء</span><span class="badge">👀 المعاينة قبل الاستلام</span><span class="badge">🚚 شحن لكل المحافظات</span></div>
 <h1>أناقتك تبدأ من <span>الفيروز</span><br>قطن ليكرا ناعم، ومقاس مظبوط من 50 لـ 100 كيلو</h1>
-<p>أكتر من 12,000 عميلة طلبت مننا. ليجن قطن ليكرا معالج ضد الوبر والانكماش، مرونة وراحة طول اليوم، وألوان ثابتة مش بتبهت.</p>
+<p>أكتر من 12,000 عميلة طلبت مننا. دوسي على أي منتج، اختاري العرض ولون كل قطعة، ودوسي أضف للسلة.</p>
 <a class="btnMain" href="#products">تسوّقي العروض ↓</a>
 <a class="btnWa" href="#orderForm">🛒 سلة الطلب (<span id="cartBadge">0</span>)</a>
 <p style="font-size:12px;margin-top:10px">✅ بدون دفع مقدم • ✅ عايني الأوردر قبل ما تدفعي • ✅ استبدال سهل</p>
 </div>
 <div class="heroImg"><img src="https://drive.google.com/thumbnail?id=1KYGaZpezLXl0Vd9eqMVW87YHY2gBfwdQ&sz=w1000"><div class="floatPrice"><div><s>450ج</s> <b>300ج - 4 قطع ديربي</b><br><span style="font-size:12px;color:#666">الأكثر مبيعاً في مصر 🔥</span></div><span class="off">خصم 33%</span></div></div>
 </div>
-<div class="marquee"><span>🔥 ليجن ديربي من 65ج للقطعة • ليجن قلوب من 75ج • شورت من 55ج • ليجن 3D بـ 199ج • برا باكت 300ج • مبطن من 130ج • شحن لكل المحافظات • المعاينة قبل الاستلام •</span></div>
+<div class="marquee"><span>🔥 ليجن ديربي من 65ج • قلوب من 75ج • شورت من 55ج • 3D بـ 199ج • برا باكت 300ج • مبطن من 130ج • المعاينة قبل الاستلام •</span></div>
 <div class="wrap">
 <h2 class="secTitle">ليه أكتر من 12,000 بنت اختارت الفيروز؟</h2><p class="secSub">مش مجرد ليجن، دي خامة هتحسي بالفرق فيها من أول لبسة</p>
 <div class="trust">
@@ -86,53 +81,122 @@ footer{background:#111A3A;color:#AAB4D6;text-align:center;padding:26px 14px;font
 <div class="tcard"><div>👀</div><b>عايني قبل ما تدفعي</b><p>افتحي الأوردر قدام المندوب واتأكدي</p></div>
 <div class="tcard"><div>🚚</div><b>شحن لكل المحافظات</b><p>القاهرة والجيزة والمحافظات والصعيد</p></div>
 </div>
-<h2 class="secTitle" id="products">عروض الفيروز 🔥</h2><p class="secSub">دوسي اختار العرض، العرض هيتفتح تحت المنتج على طول، اختاري العرض ولون كل قطعة، ودوسي أضف للسلة</p>
+
+<h2 class="secTitle" id="products">عروض الفيروز 🔥</h2>
+<p class="secSub">الطريقة الجديدة: دوسي على <b>▼ اختار العرض ولون كل قطعة</b> تحت المنتج، هتتفتحلك الاختيارات على طول من غير أي نافذة</p>
+
 <div class="grid">
-<div class="card" id="card-3D"><span class="tag">جديد 🔥</span><img src="https://drive.google.com/thumbnail?id=181QfEDhXCZuwiQb0v9tEBvrDmFAgX1g4&sz=w1000"><div class="cardBody"><h3>1️⃣ ليجن 3D</h3><p>قطن ليكرا ناعمة ومريحة • فري سايز من 50 لـ 100 كيلو</p><div class="prices">قطعة <b>199ج</b> • قطعتين <b>350ج</b><br>3 قطع أو أكثر <b>150ج للقطعة</b></div><button type="button" class="btnOrder" onclick="toggleProduct('3D')">اختار العرض ⚡</button></div><div class="expandBox" id="expand-3D"></div></div>
-<div class="card" id="card-bra"><span class="tag tag2">باكت 3 قطع</span><img src="https://drive.google.com/thumbnail?id=18xsCFyfVcHZrrNow-JT0SAKO9NgCGUJ2&sz=w1000"><div class="cardBody"><h3>2️⃣ برا بوش أب الفيروز</h3><p>قطن ليكرا مستورد • ناعم ومرن • بوش مبطن • باكت مغلق 3 قطع</p><div class="prices">الباكت <b>300ج</b> <span class="old">350ج</span><br>اختيار الوزن: 50-75 / 75-100</div><div class="colors">🎨 ألوان متعددة حسب الباكت - بدون اختيار لون</div><button type="button" class="btnOrder" onclick="toggleProduct('bra')">اختار العرض ⚡</button></div><div class="expandBox" id="expand-bra"></div></div>
-<div class="card" id="card-short"><img src="https://drive.google.com/thumbnail?id=18cHc1JZ7F7TecDX-2zrIdDeEKhYPJceK&sz=w1000"><div class="cardBody"><h3>3️⃣ شورت ديربي مضلع طويل</h3><p>شورت مضلع طويل عملي ومريح • قطن ليكرا</p><div class="prices">2 بـ <b>160ج</b> • 3 بـ <b>210ج</b><br>4 بـ <b>260ج</b> • 5+ <b>60ج للقطعة</b></div><div class="colors">اسود وابيض وبني وكحلي ورصاصي</div><button type="button" class="btnOrder" onclick="toggleProduct('short')">اختار العرض ⚡</button></div><div class="expandBox" id="expand-short"></div></div>
-<div class="card" id="card-hearts"><span class="tag">الأكثر طلباً ❤️</span><img src="https://drive.google.com/thumbnail?id=1gYos4r2DZpW69OKx2lYe8NGVmSlLikV5&sz=w1000"><div class="cardBody"><h3>4️⃣ ليجن قلوب ❤️</h3><p>قطن ليكرا • تصميم القلوب المميز • فري سايز 50 لـ 100 كيلو</p><div class="prices">قطعة <b>150ج</b> • 2 بـ <b>220ج</b><br>3 بـ <b>270ج</b> • 4 بـ <b>320ج</b><br>من 5+ <b>75ج للقطعة</b></div><div class="colors">اسود وكحلي وبني ورصاصي وبيج وازرق</div><button type="button" class="btnOrder" onclick="toggleProduct('hearts')">اختار العرض ⚡</button></div><div class="expandBox" id="expand-hearts"></div></div>
-<div class="card" id="card-derby"><span class="tag">الأكثر مبيعاً 🔥</span><img src="https://drive.google.com/thumbnail?id=1KYGaZpezLXl0Vd9eqMVW87YHY2gBfwdQ&sz=w1000"><div class="cardBody"><h3>5️⃣ ليجن ديربي مضلع 🔥</h3><p>ريب مضلع طولي • معالجة ضد الوبر والانكماش • فري سايز</p><div class="prices">4 بـ <b>300ج</b> • 5 بـ <b>375ج</b><br>من 6+ <b>70ج</b> • من 10+ <b>65ج</b></div><div class="colors">اسود وابيض واوف وايت وكحلي وازرق وبيج وبني وكافيه ونبيتي وزيتي وبترولي وجنزاري وفوشيا ورصاصي وبيبي بينك</div><button type="button" class="btnOrder" onclick="toggleProduct('derby')">اختار العرض ⚡</button></div><div class="expandBox" id="expand-derby"></div></div>
-<div class="card" id="card-jeans"><img src="https://drive.google.com/thumbnail?id=1hsmLb5R7OEBIowVfFOi7KpX11YgQFzd-&sz=w1000"><div class="cardBody"><h3>6️⃣ ليجن شكل الجينز</h3><p>شكل الجينز الأنيق بخامة مريحة ومرنة</p><div class="prices">قطعة <b>170ج</b> • 2 بـ <b>260ج</b><br>3 بـ <b>340ج</b> • 4 بـ <b>430ج</b></div><div class="colors">اسود ورصاصي وبني</div><button type="button" class="btnOrder" onclick="toggleProduct('jeans')">اختار العرض ⚡</button></div><div class="expandBox" id="expand-jeans"></div></div>
-<div class="card" id="card-dafaya"><span class="tag tag2">شتوي ❄️</span><img src="https://drive.google.com/thumbnail?id=1EJMM6MjhFR9qobgxUenAIv34qyZOwtGZ&sz=w1000"><div class="cardBody"><h3>7️⃣ ليجن الدفاية الشتوي المبطن ❄️</h3><p>مبطن ودافئ للشتاء • 3 موديلات: سادة - مضلع - ورق شجر</p><div class="prices">قطعة <b>199ج</b> • 2 بـ <b>320ج</b><br>3 بـ <b>420ج</b> • 4 بـ <b>560ج</b><br>من 5+ <b>130ج للقطعة</b></div><div class="colors">سادة: اسود فقط<br>مضلع: اسود، رصاصي، كحلي، بني، بيج<br>ورق شجر: اسود، كحلي</div><button type="button" class="btnOrder" onclick="toggleProduct('dafaya')">اختار العرض ⚡</button></div><div class="expandBox" id="expand-dafaya"></div></div>
+
+<!-- 3D -->
+<div class="card"><span class="tag">جديد 🔥</span><img src="https://drive.google.com/thumbnail?id=181QfEDhXCZuwiQb0v9tEBvrDmFAgX1g4&sz=w1000"><div class="cardBody"><h3>1️⃣ ليجن 3D</h3><p>قطن ليكرا ناعمة ومريحة • فري سايز 50 لـ 100 كيلو</p><div class="prices">قطعة <b>199ج</b> • قطعتين <b>350ج</b><br>3 قطع أو أكثر <b>150ج للقطعة</b></div>
+<details><summary>▼ اختار العرض ولون كل قطعة</summary><div class="detailBox">
+<label>1️⃣ اختاري العرض</label><div class="offerRow" id="offers-3D"></div>
+<label>🎨 لون القطعة 1</label><select id="c-3D-0"></select>
+<label>🎨 لون القطعة 2</label><select id="c-3D-1"></select>
+<label>🎨 لون القطعة 3</label><select id="c-3D-2"></select>
+<label>🎨 لون القطعة 4</label><select id="c-3D-3"></select>
+<label>🎨 لون القطعة 5</label><select id="c-3D-4"></select>
+<div id="price-3D" style="background:#FFF8E1;padding:10px;border-radius:10px;font-weight:900;text-align:center;margin-top:10px"></div>
+<button type="button" class="addBtn" onclick="addSimple('3D')">🛒 أضف للسلة</button>
+<a class="waBtn" href="https://wa.me/201080239769?text=عايزة ليجن 3D" target="_blank">💬 اطلبي واتساب على طول</a>
+</div></details>
+</div></div>
+
+<!-- BRA -->
+<div class="card"><span class="tag tag2">باكت 3 قطع</span><img src="https://drive.google.com/thumbnail?id=18xsCFyfVcHZrrNow-JT0SAKO9NgCGUJ2&sz=w1000"><div class="cardBody"><h3>2️⃣ برا بوش أب الفيروز</h3><p>قطن ليكرا مستورد • بوش مبطن • الباكت 3 قطع</p><div class="prices">الباكت <b>300ج</b> <span class="old">350ج</span><br>اختيار الوزن: 50-75 / 75-100</div><div class="colors">🎨 ألوان متعددة حسب الباكت - بدون اختيار لون</div>
+<details><summary>▼ اختار العرض والوزن</summary><div class="detailBox">
+<label>1️⃣ اختاري العرض</label><div class="offerRow" id="offers-bra"></div>
+<label>⚖️ اختيار الوزن *</label><select id="w-bra"><option value="">اختاري الوزن</option><option>من 50 إلى 75 كيلو</option><option>من 75 إلى 100 كيلو</option></select>
+<div id="price-bra" style="background:#FFF8E1;padding:10px;border-radius:10px;font-weight:900;text-align:center;margin-top:10px"></div>
+<button type="button" class="addBtn" onclick="addSimple('bra')">🛒 أضف للسلة</button>
+<a class="waBtn" href="https://wa.me/201080239769?text=عايزة برا بوش اب" target="_blank">💬 اطلبي واتساب على طول</a>
+</div></details>
+</div></div>
+
+<!-- SHORT -->
+<div class="card"><img src="https://drive.google.com/thumbnail?id=18cHc1JZ7F7TecDX-2zrIdDeEKhYPJceK&sz=w1000"><div class="cardBody"><h3>3️⃣ شورت ديربي مضلع طويل</h3><p>شورت مضلع طويل عملي ومريح • قطن ليكرا</p><div class="prices">2 بـ <b>160ج</b> • 3 بـ <b>210ج</b><br>4 بـ <b>260ج</b> • 5+ <b>60ج للقطعة</b></div><div class="colors">اسود وابيض وبني وكحلي ورصاصي</div>
+<details><summary>▼ اختار العرض ولون كل قطعة</summary><div class="detailBox">
+<label>1️⃣ اختاري العرض</label><div class="offerRow" id="offers-short"></div>
+<label>🎨 لون القطعة 1</label><select id="c-short-0"></select>
+<label>🎨 لون القطعة 2</label><select id="c-short-1"></select>
+<label>🎨 لون القطعة 3</label><select id="c-short-2"></select>
+<label>🎨 لون القطعة 4</label><select id="c-short-3"></select>
+<label>🎨 لون القطعة 5</label><select id="c-short-4"></select>
+<div id="price-short" style="background:#FFF8E1;padding:10px;border-radius:10px;font-weight:900;text-align:center;margin-top:10px"></div>
+<button type="button" class="addBtn" onclick="addSimple('short')">🛒 أضف للسلة</button>
+<a class="waBtn" href="https://wa.me/201080239769?text=عايزة شورت ديربي" target="_blank">💬 اطلبي واتساب على طول</a>
+</div></details>
+</div></div>
+
+<!-- HEARTS -->
+<div class="card"><span class="tag">الأكثر طلباً ❤️</span><img src="https://drive.google.com/thumbnail?id=1gYos4r2DZpW69OKx2lYe8NGVmSlLikV5&sz=w1000"><div class="cardBody"><h3>4️⃣ ليجن قلوب ❤️</h3><p>قطن ليكرا • تصميم القلوب • فري سايز 50 لـ 100 كيلو</p><div class="prices">قطعة <b>150ج</b> • 2 بـ <b>220ج</b><br>3 بـ <b>270ج</b> • 4 بـ <b>320ج</b> • 5+ <b>75ج</b></div><div class="colors">اسود وكحلي وبني ورصاصي وبيج وازرق</div>
+<details><summary>▼ اختار العرض ولون كل قطعة</summary><div class="detailBox">
+<label>1️⃣ اختاري العرض</label><div class="offerRow" id="offers-hearts"></div>
+<label>🎨 لون القطعة 1</label><select id="c-hearts-0"></select>
+<label>🎨 لون القطعة 2</label><select id="c-hearts-1"></select>
+<label>🎨 لون القطعة 3</label><select id="c-hearts-2"></select>
+<label>🎨 لون القطعة 4</label><select id="c-hearts-3"></select>
+<label>🎨 لون القطعة 5</label><select id="c-hearts-4"></select>
+<div id="price-hearts" style="background:#FFF8E1;padding:10px;border-radius:10px;font-weight:900;text-align:center;margin-top:10px"></div>
+<button type="button" class="addBtn" onclick="addSimple('hearts')">🛒 أضف للسلة</button>
+<a class="waBtn" href="https://wa.me/201080239769?text=عايزة ليجن قلوب" target="_blank">💬 اطلبي واتساب على طول</a>
+</div></details>
+</div></div>
+
+<!-- DERBY -->
+<div class="card"><span class="tag">الأكثر مبيعاً 🔥</span><img src="https://drive.google.com/thumbnail?id=1KYGaZpezLXl0Vd9eqMVW87YHY2gBfwdQ&sz=w1000"><div class="cardBody"><h3>5️⃣ ليجن ديربي مضلع 🔥</h3><p>ريب مضلع طولي • ضد الوبر والانكماش • فري سايز</p><div class="prices">4 بـ <b>300ج</b> • 5 بـ <b>375ج</b><br>من 6+ <b>70ج</b> • من 10+ <b>65ج</b></div><div class="colors">اسود وابيض واوف وايت وكحلي وازرق وبيج وبني وكافيه ونبيتي وزيتي وبترولي وجنزاري وفوشيا ورصاصي وبيبي بينك</div>
+<details><summary>▼ اختار العرض ولون كل قطعة</summary><div class="detailBox">
+<label>1️⃣ اختاري العرض</label><div class="offerRow" id="offers-derby"></div>
+<label>🎨 لون القطعة 1</label><select id="c-derby-0"></select>
+<label>🎨 لون القطعة 2</label><select id="c-derby-1"></select>
+<label>🎨 لون القطعة 3</label><select id="c-derby-2"></select>
+<label>🎨 لون القطعة 4</label><select id="c-derby-3"></select>
+<label>🎨 لون القطعة 5</label><select id="c-derby-4"></select>
+<div id="price-derby" style="background:#FFF8E1;padding:10px;border-radius:10px;font-weight:900;text-align:center;margin-top:10px"></div>
+<button type="button" class="addBtn" onclick="addSimple('derby')">🛒 أضف للسلة</button>
+<a class="waBtn" href="https://wa.me/201080239769?text=عايزة ليجن ديربي مضلع" target="_blank">💬 اطلبي واتساب على طول</a>
+</div></details>
+</div></div>
+
+<!-- JEANS -->
+<div class="card"><img src="https://drive.google.com/thumbnail?id=1hsmLb5R7OEBIowVfFOi7KpX11YgQFzd-&sz=w1000"><div class="cardBody"><h3>6️⃣ ليجن شكل الجينز</h3><p>شكل الجينز الأنيق بخامة مريحة ومرنة</p><div class="prices">قطعة <b>170ج</b> • 2 بـ <b>260ج</b><br>3 بـ <b>340ج</b> • 4 بـ <b>430ج</b></div><div class="colors">اسود ورصاصي وبني</div>
+<details><summary>▼ اختار العرض ولون كل قطعة</summary><div class="detailBox">
+<label>1️⃣ اختاري العرض</label><div class="offerRow" id="offers-jeans"></div>
+<label>🎨 لون القطعة 1</label><select id="c-jeans-0"></select>
+<label>🎨 لون القطعة 2</label><select id="c-jeans-1"></select>
+<label>🎨 لون القطعة 3</label><select id="c-jeans-2"></select>
+<label>🎨 لون القطعة 4</label><select id="c-jeans-3"></select>
+<div id="price-jeans" style="background:#FFF8E1;padding:10px;border-radius:10px;font-weight:900;text-align:center;margin-top:10px"></div>
+<button type="button" class="addBtn" onclick="addSimple('jeans')">🛒 أضف للسلة</button>
+<a class="waBtn" href="https://wa.me/201080239769?text=عايزة ليجن شكل الجينز" target="_blank">💬 اطلبي واتساب على طول</a>
+</div></details>
+</div></div>
+
+<!-- DAFAYA -->
+<div class="card"><span class="tag tag2">شتوي ❄️</span><img src="https://drive.google.com/thumbnail?id=1EJMM6MjhFR9qobgxUenAIv34qyZOwtGZ&sz=w1000"><div class="cardBody"><h3>7️⃣ ليجن الدفاية المبطن ❄️</h3><p>مبطن ودافئ • سادة - مضلع - ورق شجر</p><div class="prices">قطعة <b>199ج</b> • 2 بـ <b>320ج</b><br>3 بـ <b>420ج</b> • 4 بـ <b>560ج</b> • 5+ <b>130ج</b></div><div class="colors">سادة: اسود فقط • مضلع: اسود، رصاصي، كحلي، بني، بيج • ورق شجر: اسود، كحلي</div>
+<details><summary>▼ اختار العرض وموديل ولون كل قطعة</summary><div class="detailBox">
+<label>1️⃣ اختاري العرض</label><div class="offerRow" id="offers-dafaya"></div>
+<label>🧩 موديل القطعة 1</label><select id="v-dafaya-0" onchange="updDafayaColor(0)"><option value="sada">سادة</option><option value="modalla">مضلع</option><option value="laser">حفر ليزر ورق شجر</option></select>
+<label>🎨 لون القطعة 1</label><select id="c-dafaya-0"></select>
+<label>🧩 موديل القطعة 2</label><select id="v-dafaya-1" onchange="updDafayaColor(1)"><option value="sada">سادة</option><option value="modalla">مضلع</option><option value="laser">حفر ليزر ورق شجر</option></select>
+<label>🎨 لون القطعة 2</label><select id="c-dafaya-1"></select>
+<label>🧩 موديل القطعة 3</label><select id="v-dafaya-2" onchange="updDafayaColor(2)"><option value="sada">سادة</option><option value="modalla">مضلع</option><option value="laser">حفر ليزر ورق شجر</option></select>
+<label>🎨 لون القطعة 3</label><select id="c-dafaya-2"></select>
+<label>🧩 موديل القطعة 4</label><select id="v-dafaya-3" onchange="updDafayaColor(3)"><option value="sada">سادة</option><option value="modalla">مضلع</option><option value="laser">حفر ليزر ورق شجر</option></select>
+<label>🎨 لون القطعة 4</label><select id="c-dafaya-3"></select>
+<label>🧩 موديل القطعة 5</label><select id="v-dafaya-4" onchange="updDafayaColor(4)"><option value="sada">سادة</option><option value="modalla">مضلع</option><option value="laser">حفر ليزر ورق شجر</option></select>
+<label>🎨 لون القطعة 5</label><select id="c-dafaya-4"></select>
+<div id="price-dafaya" style="background:#FFF8E1;padding:10px;border-radius:10px;font-weight:900;text-align:center;margin-top:10px"></div>
+<button type="button" class="addBtn" onclick="addSimple('dafaya')">🛒 أضف للسلة</button>
+<a class="waBtn" href="https://wa.me/201080239769?text=عايزة ليجن الدفاية المبطن" target="_blank">💬 اطلبي واتساب على طول</a>
+</div></details>
+</div></div>
+
 </div>
 
 <div class="orderSection" id="orderForm">
-<h2>🛒 سلة الطلب - راجعي أوردرك</h2>
-<p class="sub">السلة فاضية دلوقتي. دوسي على أي منتج فوق، واختاري العرض ولون كل قطعة، وهتتضاف هنا</p>
+<h2>🛒 سلة الطلب</h2>
+<p class="sub">السلة فاضية دلوقتي. افتحي أي منتج فوق، اختاري العرض والألوان، ودوسي أضف للسلة</p>
 <div id="cartBox"></div>
-<form id="orderFormEl" onsubmit="sendOrder(event)">
-<div class="formGrid" style="margin-top:16px">
-<div class="field"><label>👤 الاسم *</label><input id="fName" required placeholder="مثال: سارة أحمد"></div>
-<div class="field"><label>📱 رقم الهاتف *</label><input id="fPhone" required type="tel" placeholder="01xxxxxxxxx" pattern="01[0-9]{9}"></div>
-<div class="field"><label>📍 المحافظة *</label><select id="fGov" required onchange="calcTotal()">
-<option value="">اختاري المحافظة</option><option>القاهرة</option><option>الجيزة</option><option>القليوبية</option><option>الإسكندرية</option><option>البحيرة</option><option>كفر الشيخ</option><option>دمياط</option><option>الدقهلية</option><option>الشرقية</option><option>الغربية</option><option>المنوفية</option><option>بورسعيد</option><option>الإسماعيلية</option><option>السويس</option><option>الفيوم</option><option>بني سويف</option><option>المنيا</option><option>أسيوط</option><option>سوهاج</option><option>قنا</option><option>الأقصر</option><option>أسوان</option><option>البحر الأحمر</option><option>مطروح</option><option>شمال سيناء</option><option>جنوب سيناء</option><option>الوادي الجديد</option>
-</select></div>
-<div class="field"><label>🏠 العنوان بالتفصيل *</label><input id="fAddress" required placeholder="الشارع - العمارة - الدور - الشقة - علامة مميزة"></div>
-<div class="field full"><label>📝 ملاحظات (اختياري)</label><input id="fNote" placeholder="مثال: كلميني قبل الشحن"></div>
-</div>
-<div class="summary">
-<div id="summaryLines"></div>
-<div class="row"><span>إجمالي المنتجات:</span><span id="sumProducts">0ج</span></div>
-<div class="row"><span>الشحن (<span id="sumGov">اختاري المحافظة</span>):</span><span id="sumShip">--</span></div>
-<div class="row total"><span>الإجمالي النهائي (الدفع عند الاستلام):</span><span id="sumTotal">--</span></div>
-<small>💡 الشحن: القاهرة والجيزة 50ج، الإسكندرية والقليوبية 60ج، باقي المحافظات 70ج، الصعيد والبحر الأحمر ومطروح وسيناء 85ج.</small>
-</div>
-<button type="submit" class="confirmBtn">✅ إرسال الطلب - واتساب الفيروز</button>
-<p class="note">هيفتح واتساب برسالة فيها كل القطع والألوان والموديلات والأسعار، دوسي إرسال ❤️</p>
-</form>
-</div>
-
-<div class="bundle"><div><h2>عرض الجملة للتاجرات 👩‍💼</h2><p>بتجهزي محل أو بتبيعي أونلاين؟ خدي أسعار الجملة بتاعتنا واكسبي أكتر.</p><a class="btnWa" href="https://wa.me/201080239769?text=عايزة اسعار الجملة للتاجرات" target="_blank" style="background:#FFD700;color:#111">اطلبي أسعار الجملة 💰</a></div><div class="bundleBox"><h3>أسعار الجملة:</h3><ul><li>ديربي من 10 قطع: 65ج للقطعة</li><li>قلوب من 5 قطع: 75ج للقطعة</li><li>شورت من 10 قطع: 55ج للقطعة</li></ul><p style="font-size:13px;color:#666">ابعتي "جملة" على واتساب وهنبعتلك كل التفاصيل</p></div></div>
-<h2 class="secTitle">عميلاتنا بيقولوا إيه؟ 💬</h2>
-<div class="reviews">
-<div class="rev"><div class="stars">★★★★★</div><p>"الخامة تحفة بجد، طلبت 4 ديربي وطلعوا مظبوطين ومش بيحرروا خالص، وهطلب تاني"</p><b>سارة - مدينة نصر</b><span>طلبت ليجن ديربي</span></div>
-<div class="rev"><div class="stars">★★★★★</div><p>"عاينت الأوردر قبل الاستلام والالوان زي الصور بالظبط، التعامل ذوق جدا"</p><b>منة - فيصل</b><span>طلبت ليجن قلوب</span></div>
-<div class="rev"><div class="stars">★★★★★</div><p>"ببيع منهم في محلي والزباين بترجع تطلب تاني، سعر الجملة ممتاز"</p><b>أم يوسف - طنطا</b><span>تاجرة جملة</span></div>
-</div>
-<h2 class="secTitle" style="text-align:center">أسئلة بتتسأل كتير</h2>
-<div class="faq"><details><summary>المقاس بييجي مظبوط؟</summary><p>اه، فري سايز من 50 لـ 100 كيلو، ولو المقاس مش مظبوط بنبدلهولك.</p></details><details><summary>أقدر أعاين قبل الاستلام؟</summary><p>اه طبعا، افتحي الأوردر قدام المندوب واتأكدي من الخامة واللون قبل ما تدفعي.</p></details><details><summary>الشحن بياخد قد إيه؟</summary><p>القاهرة والجيزة 2-3 أيام، المحافظات 3-5 أيام، والصعيد 4-6 أيام.</p></details><details><summary>الدفع ازاي؟</summary><p>الدفع عند الاستلام كاش، مفيش دفع مقدم خالص.</p></details></div>
-<div class="final"><h2>🔥 متستنيش العرض يخلص</h2><p>الكمية محدودة والألوان بتخلص بسرعة، ابعتي دلوقتي واحجزي أوردرك</p><a class="btnWa" href="#orderForm">اطلبي من الموقع دلوقتي ⚡</a></div>
-</div>
-<footer><b>الفيروز - ELFAIROZ</b><br>قطن ليكرا • فري سايز 50 - 100 كيلو • الدفع عند الاستلام • المعاينة قبل الاستلام<br>واتساب: 01080239769<br>© 2026 الفيروز - جميع الحقوق محفوظة</footer>
-<a class="floatWa" href="#orderForm">🛒 سلة الطلب - اطلبي دلوقتي - 01080239769<
+<form onsubmit="sendOrder(event)">
+<div class="formGrid" style="margin-top:16px"
