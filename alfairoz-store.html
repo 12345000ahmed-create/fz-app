@@ -18,76 +18,465 @@
 --white:#fff;
 --green:#16834a
 }
+
 *{box-sizing:border-box}
-body{margin:0;background:#f7f7f9;color:var(--ink);font-family:Tahoma,Arial,sans-serif}
-header{background:linear-gradient(135deg,#0d1532,#26345f);color:white;padding:20px 16px 28px}
-.top{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.logo{font-size:25px;font-weight:900;letter-spacing:.5px}
+
+body{
+margin:0;
+background:#f7f7f9;
+color:var(--ink);
+font-family:Tahoma,Arial,sans-serif
+}
+
+header{
+background:linear-gradient(135deg,#0d1532,#26345f);
+color:white;
+padding:20px 16px 28px
+}
+
+.top{
+max-width:1100px;
+margin:auto;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px
+}
+
+.logo{
+font-size:25px;
+font-weight:900;
+letter-spacing:.5px
+}
+
 .logo span{color:#e6c783}
-.tag{font-size:12px;color:#e8e2d5;margin-top:5px}
-.badge{border:1px solid #d4b36f;border-radius:30px;padding:8px 12px;font-size:12px;color:#f4dfb3}
-.hero{max-width:1100px;margin:25px auto 0;display:flex;align-items:center;justify-content:space-between;gap:18px}
-.hero h1{font-size:clamp(25px,5vw,42px);line-height:1.35;margin:0 0 10px}
-.hero p{color:#e1e4ef;line-height:1.8;margin:0;max-width:580px}
-.hero-mark{font-size:70px;opacity:.9}
-.perks{max-width:1100px;margin:14px auto 0;display:flex;gap:8px;flex-wrap:wrap}
-.perks span{background:#ffffff16;border:1px solid #ffffff30;border-radius:20px;padding:7px 11px;font-size:12px}
-main{max-width:1100px;margin:24px auto;padding:0 14px 60px}
-.section-title{display:flex;justify-content:space-between;align-items:end;margin:25px 0 14px;gap:10px}
-.section-title h2{margin:0;color:var(--navy);font-size:22px}
+
+.tag{
+font-size:12px;
+color:#e8e2d5;
+margin-top:5px
+}
+
+.badge{
+border:1px solid #d4b36f;
+border-radius:30px;
+padding:8px 12px;
+font-size:12px;
+color:#f4dfb3
+}
+
+.hero{
+max-width:1100px;
+margin:25px auto 0;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:18px
+}
+
+.hero h1{
+font-size:clamp(25px,5vw,42px);
+line-height:1.35;
+margin:0 0 10px
+}
+
+.hero p{
+color:#e1e4ef;
+line-height:1.8;
+margin:0;
+max-width:580px
+}
+
+.hero-mark{
+font-size:70px;
+opacity:.9
+}
+
+.perks{
+max-width:1100px;
+margin:14px auto 0;
+display:flex;
+gap:8px;
+flex-wrap:wrap
+}
+
+.perks span{
+background:#ffffff16;
+border:1px solid #ffffff30;
+border-radius:20px;
+padding:7px 11px;
+font-size:12px
+}
+
+main{
+max-width:1100px;
+margin:24px auto;
+padding:0 14px 60px
+}
+
+.section-title{
+display:flex;
+justify-content:space-between;
+align-items:end;
+margin:25px 0 14px;
+gap:10px
+}
+
+.section-title h2{
+margin:0;
+color:var(--navy);
+font-size:22px
+}
+
 .section-title small{color:var(--muted)}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.card{background:white;border:1px solid var(--line);border-radius:17px;overflow:hidden;box-shadow:0 5px 18px #18234a0a}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(2,minmax(0,1fr));
+gap:14px
+}
+
+.card{
+background:white;
+border:1px solid var(--line);
+border-radius:17px;
+overflow:hidden;
+box-shadow:0 5px 18px #18234a0a
+}
+
+/* تحسين صور المنتجات */
+
 .photo{
 width:100%;
 aspect-ratio:1/1;
-background:linear-gradient(135deg,#f2f0eb,#e6e5e3);
+background:#fff;
 display:flex;
 align-items:center;
 justify-content:center;
-overflow:hidden
+overflow:hidden;
+padding:5px;
+cursor:zoom-in;
+position:relative
 }
-.photo img{width:100%;height:100%;object-fit:contain;display:block}
-.noimg{color:#8b8d98;font-size:13px}
+
+.photo img{
+width:100%;
+height:100%;
+object-fit:contain;
+object-position:center;
+display:block;
+transition:transform .3s ease
+}
+
+.photo:hover img{
+transform:scale(1.04)
+}
+
+.noimg{
+color:#8b8d98;
+font-size:13px
+}
+
+/* نافذة تكبير الصور */
+
+.image-viewer{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.94);
+z-index:9999;
+align-items:center;
+justify-content:center;
+padding:15px;
+cursor:zoom-out
+}
+
+.image-viewer.show{
+display:flex
+}
+
+.image-viewer img{
+max-width:100%;
+max-height:90vh;
+width:auto;
+height:auto;
+object-fit:contain;
+border-radius:8px;
+cursor:default
+}
+
+.image-viewer button{
+position:absolute;
+top:15px;
+left:18px;
+background:#fff;
+color:#111;
+border:0;
+border-radius:50%;
+width:44px;
+height:44px;
+font-size:28px;
+cursor:pointer;
+z-index:2
+}
+
 .info{padding:13px}
-.info h3{margin:0 0 6px;font-size:17px;color:var(--navy)}
-.desc{font-size:12px;color:var(--muted);margin-bottom:10px;line-height:1.6}
-.offer-label{font-size:12px;font-weight:bold;color:#6e5830;margin:8px 0}
-.offers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
-.offer{border:1px solid #e5dfd1;background:#fffdf8;color:#453b2b;border-radius:10px;padding:9px 5px;font:inherit;cursor:pointer;text-align:center;line-height:1.5}
-.offer b{display:block;font-size:14px;color:var(--navy)}
-.offer small{font-size:11px;color:#777}
-.offer.active{border:2px solid var(--gold);background:#fff8e9;box-shadow:0 0 0 2px #c9a45c20}
-.select-area{margin-top:12px;padding-top:10px;border-top:1px solid var(--line)}
-.field-label{display:block;font-size:12px;font-weight:bold;margin:8px 0 6px;color:#42465a}
-select,input,textarea{font:inherit;width:100%;border:1px solid #dedee5;border-radius:9px;padding:11px;background:#fff;color:var(--ink);outline:none}
-select:focus,input:focus,textarea:focus{border-color:var(--gold)}
-.colors{display:flex;flex-wrap:wrap;gap:7px}
-.color{border:1px solid #d7d7dc;background:#fff;border-radius:18px;padding:6px 10px;font-size:11px;cursor:pointer}
-.color.selected{border:2px solid var(--navy);background:#edf0fa;font-weight:bold}
-.piecebox{background:#faf9f6;border-radius:10px;padding:9px;margin-top:8px}
-.piecebox strong{font-size:12px}
-.piecebox .colors{margin-top:7px}
-.counter{font-size:11px;color:var(--muted);margin-top:8px}
-.add{width:100%;margin-top:12px;border:0;border-radius:10px;background:var(--navy);color:white;padding:12px;font-weight:bold;font-size:14px;cursor:pointer}
-.add:disabled{opacity:.4;cursor:not-allowed}
-.panel{background:#fff;border:1px solid var(--line);border-radius:17px;padding:16px;margin-top:22px}
-.panel h2{margin:0 0 12px;color:var(--navy);font-size:20px}
-.cart-empty{color:var(--muted);font-size:13px;padding:12px 0}
-.cart-item{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid var(--line);padding:10px 0;font-size:13px}
-.cart-item strong{display:block;color:var(--navy);margin-bottom:4px}
-.cart-item small{color:var(--muted);line-height:1.8}
-.remove{border:0;background:#fff0f0;color:#b33;border-radius:8px;padding:6px 9px;height:max-content;cursor:pointer}
-.total{display:flex;justify-content:space-between;padding-top:12px;font-weight:bold;color:var(--navy)}
-.note{font-size:12px;color:var(--muted);line-height:1.7;margin-top:8px}
-.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.wide{grid-column:1/-1}
-.submit{width:100%;background:#16834a;color:white;border:0;border-radius:11px;padding:14px;font-size:16px;font-weight:bold;margin-top:12px;cursor:pointer}
-footer{text-align:center;background:var(--navy);color:#d9dce8;padding:22px 12px;font-size:12px;line-height:2}
-.float{position:fixed;bottom:15px;left:14px;background:#16834a;color:#fff;border-radius:30px;padding:12px 16px;text-decoration:none;font-weight:bold;box-shadow:0 5px 18px #0003;z-index:5}
-@media(min-width:760px){
-.grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+.info h3{
+margin:0 0 6px;
+font-size:17px;
+color:var(--navy)
 }
+
+.desc{
+font-size:12px;
+color:var(--muted);
+margin-bottom:10px;
+line-height:1.6
+}
+
+.offer-label{
+font-size:12px;
+font-weight:bold;
+color:#6e5830;
+margin:8px 0
+}
+
+.offers{
+display:grid;
+grid-template-columns:repeat(2,minmax(0,1fr));
+gap:7px
+}
+
+.offer{
+border:1px solid #e5dfd1;
+background:#fffdf8;
+color:#453b2b;
+border-radius:10px;
+padding:9px 5px;
+font:inherit;
+cursor:pointer;
+text-align:center;
+line-height:1.5
+}
+
+.offer b{
+display:block;
+font-size:14px;
+color:var(--navy)
+}
+
+.offer small{
+font-size:11px;
+color:#777
+}
+
+.offer.active{
+border:2px solid var(--gold);
+background:#fff8e9;
+box-shadow:0 0 0 2px #c9a45c20
+}
+
+.select-area{
+margin-top:12px;
+padding-top:10px;
+border-top:1px solid var(--line)
+}
+
+.field-label{
+display:block;
+font-size:12px;
+font-weight:bold;
+margin:8px 0 6px;
+color:#42465a
+}
+
+select,input,textarea{
+font:inherit;
+width:100%;
+border:1px solid #dedee5;
+border-radius:9px;
+padding:11px;
+background:#fff;
+color:var(--ink);
+outline:none
+}
+
+select:focus,input:focus,textarea:focus{
+border-color:var(--gold)
+}
+
+.colors{
+display:flex;
+flex-wrap:wrap;
+gap:7px
+}
+
+.color{
+border:1px solid #d7d7dc;
+background:#fff;
+border-radius:18px;
+padding:6px 10px;
+font-size:11px;
+cursor:pointer
+}
+
+.color.selected{
+border:2px solid var(--navy);
+background:#edf0fa;
+font-weight:bold
+}
+
+.piecebox{
+background:#faf9f6;
+border-radius:10px;
+padding:9px;
+margin-top:8px
+}
+
+.piecebox strong{font-size:12px}
+
+.piecebox .colors{margin-top:7px}
+
+.counter{
+font-size:11px;
+color:var(--muted);
+margin-top:8px
+}
+
+.add{
+width:100%;
+margin-top:12px;
+border:0;
+border-radius:10px;
+background:var(--navy);
+color:white;
+padding:12px;
+font-weight:bold;
+font-size:14px;
+cursor:pointer
+}
+
+.add:disabled{
+opacity:.4;
+cursor:not-allowed
+}
+
+.panel{
+background:#fff;
+border:1px solid var(--line);
+border-radius:17px;
+padding:16px;
+margin-top:22px
+}
+
+.panel h2{
+margin:0 0 12px;
+color:var(--navy);
+font-size:20px
+}
+
+.cart-empty{
+color:var(--muted);
+font-size:13px;
+padding:12px 0
+}
+
+.cart-item{
+display:flex;
+justify-content:space-between;
+gap:10px;
+border-bottom:1px solid var(--line);
+padding:10px 0;
+font-size:13px
+}
+
+.cart-item strong{
+display:block;
+color:var(--navy);
+margin-bottom:4px
+}
+
+.cart-item small{
+color:var(--muted);
+line-height:1.8
+}
+
+.remove{
+border:0;
+background:#fff0f0;
+color:#b33;
+border-radius:8px;
+padding:6px 9px;
+height:max-content;
+cursor:pointer
+}
+
+.total{
+display:flex;
+justify-content:space-between;
+padding-top:12px;
+font-weight:bold;
+color:var(--navy)
+}
+
+.note{
+font-size:12px;
+color:var(--muted);
+line-height:1.7;
+margin-top:8px
+}
+
+.formgrid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px
+}
+
+.wide{grid-column:1/-1}
+
+.submit{
+width:100%;
+background:#16834a;
+color:white;
+border:0;
+border-radius:11px;
+padding:14px;
+font-size:16px;
+font-weight:bold;
+margin-top:12px;
+cursor:pointer
+}
+
+footer{
+text-align:center;
+background:var(--navy);
+color:#d9dce8;
+padding:22px 12px;
+font-size:12px;
+line-height:2
+}
+
+.float{
+position:fixed;
+bottom:15px;
+left:14px;
+background:#16834a;
+color:#fff;
+border-radius:30px;
+padding:12px 16px;
+text-decoration:none;
+font-weight:bold;
+box-shadow:0 5px 18px #0003;
+z-index:5
+}
+
+@media(min-width:760px){
+.grid{
+grid-template-columns:repeat(3,minmax(0,1fr))
+}
+}
+
 @media(max-width:420px){
 .grid{gap:9px}
 .info{padding:10px}
@@ -102,6 +491,7 @@ footer{text-align:center;background:var(--navy);color:#d9dce8;padding:22px 12px;
 <body>
 
 <header>
+
 <div class="top">
 <div>
 <div class="logo">EL <span>FAYROUZ</span></div>
@@ -123,6 +513,7 @@ footer{text-align:center;background:var(--navy);color:#d9dce8;padding:22px 12px;
 <span>✓ فري سايز حسب الموديل</span>
 <span>✓ المعاينة قبل الاستلام</span>
 </div>
+
 </header>
 
 <main>
@@ -136,13 +527,16 @@ footer{text-align:center;background:var(--navy);color:#d9dce8;padding:22px 12px;
 
 <section class="panel">
 <h2>🛍️ سلة مشترياتك</h2>
+
 <div id="cart">
 <div class="cart-empty">لسه ما ضفتيش منتجات للسلة.</div>
 </div>
+
 <div class="total">
 <span>إجمالي المنتجات</span>
 <span id="subtotal">0 جنيه</span>
 </div>
+
 <div class="note">تكلفة الشحن يتم تأكيدها حسب المحافظة قبل تثبيت الطلب.</div>
 </section>
 
@@ -150,6 +544,7 @@ footer{text-align:center;background:var(--navy);color:#d9dce8;padding:22px 12px;
 <h2>بيانات التوصيل</h2>
 
 <form id="orderForm" onsubmit="sendOrder(event)">
+
 <div class="formgrid">
 
 <div>
@@ -164,6 +559,7 @@ footer{text-align:center;background:var(--navy);color:#d9dce8;padding:22px 12px;
 
 <div>
 <label class="field-label">المحافظة</label>
+
 <select id="gov" required>
 <option value="">اختاري المحافظة</option>
 <option>القاهرة</option>
@@ -214,8 +610,10 @@ footer{text-align:center;background:var(--navy);color:#d9dce8;padding:22px 12px;
 </div>
 
 <button class="submit" type="submit">إرسال الطلب على واتساب</button>
+
 </form>
 </section>
+
 </main>
 
 <footer>
@@ -225,82 +623,109 @@ footer{text-align:center;background:var(--navy);color:#d9dce8;padding:22px 12px;
 
 <a class="float" href="https://wa.me/201080239769" target="_blank">تواصل واتساب</a>
 
+<!-- نافذة تكبير الصور -->
+
+<div class="image-viewer" id="imageViewer" onclick="closeImage(event)">
+<button type="button" onclick="closeImage(event)">×</button>
+<img id="largeImage" src="" alt="صورة المنتج">
+</div>
+
 <script>
+
 const WA='201080239769';
 
 const products=[
 
 /* الليجن الشتوي */
+
 {
 id:'warm',
 name:'ليجن شتوي مبطن ببطانة ناعمة',
 desc:'دفء وراحة • 3 موديلات مختلفة • اختاري الموديل واللون لكل قطعة',
 img:'https://drive.google.com/thumbnail?id=1EJMM6MjhFR9qobgxUenAIv34qyZOwtGZ&sz=w1000',
+
 models:{
 'مضلع مبطن':['أسود','كحلي','بني','بيج','رصاصي'],
 'حفر ليزر':['أسود','كحلي'],
 'سادة':['أسود','كحلي','كافيه','أبيض','زيتي','رمادي']
 },
+
 offers:[
 {label:'قطعة واحدة',qty:1,price:199},
 {label:'قطعتين',qty:2,price:320},
 {label:'3 قطع',qty:3,price:420},
 {label:'4 قطع',qty:4,price:560}
 ],
+
 custom:{from:5,unit:130}
 },
 
 /* ليجن 3D */
+
 {
 id:'3d',
 name:'ليجن 3D',
 desc:'قطن ليكرا ناعم ومريح • فري سايز من 50 لـ100 كيلو',
 img:'https://drive.google.com/thumbnail?id=181QfEDhXCZuwiQb0v9tEBvrDmFAgX1g4&sz=w1000',
+
 colors:['أسود','كحلي','بني','رصاصي'],
+
 offers:[
 {label:'قطعة واحدة',qty:1,price:199},
 {label:'قطعتين',qty:2,price:350},
 {label:'3 قطع',qty:3,price:450}
 ],
+
 custom:{from:3,unit:150}
 },
 
 /* البرا */
+
 {
 id:'bra',
 name:'برا بوش أب الفيروز',
 desc:'باكت 3 قطع • ألوان متعددة حسب المقاس',
 img:'https://drive.google.com/thumbnail?id=18xsCFyfVcHZrrNow-JT0SAKO9NgCGUJ2&sz=w1000',
+
 colors:['أسود','أبيض','بيج','ألوان متنوعة'],
+
 offers:[
 {label:'باكت 3 قطع',qty:3,price:300}
 ],
+
 bra:true
 },
 
 /* الشورت */
+
 {
 id:'short',
 name:'شورت ديربي مضلع طويل',
 desc:'قطن ليكرا • مريح وعملي',
 img:'https://drive.google.com/thumbnail?id=18cHc1JZ7F7TecDX-2zrIdDeEKhYPJceK&sz=w1000',
+
 colors:['أبيض','أسود','كحلي','بني','رصاصي','أزرق'],
+
 offers:[
 {label:'2 قطعة',qty:2,price:160},
 {label:'3 قطع',qty:3,price:210},
 {label:'4 قطع',qty:4,price:260},
 {label:'5 قطع',qty:5,price:300}
 ],
+
 custom:{from:5,unit:60}
 },
 
 /* القلوب */
+
 {
 id:'hearts',
 name:'ليجن قلوب',
 desc:'قطن ليكرا • فري سايز من 50 لـ100 كيلو',
 img:'https://drive.google.com/thumbnail?id=1gYos4r2DZpW69OKx2lYe8NGVmSlLikV5&sz=w1000',
+
 colors:['أسود','أزرق','كحلي','بني','بيج','رصاصي'],
+
 offers:[
 {label:'قطعة',qty:1,price:150},
 {label:'قطعتين',qty:2,price:220},
@@ -308,34 +733,43 @@ offers:[
 {label:'4 قطع',qty:4,price:320},
 {label:'5 قطع',qty:5,price:375}
 ],
+
 custom:{from:5,unit:75}
 },
 
 /* الديربي */
+
 {
 id:'derby',
 name:'ليجن ديربي مضلع',
 desc:'قطن ليكرا • اختاري ألوانك • عروض الكميات',
 img:'https://drive.google.com/thumbnail?id=1KYGaZpezLXl0Vd9eqMVW87YHY2gBfwdQ&sz=w1000',
+
 colors:['أسود','أبيض','أوف وايت','كحلي','أزرق','كشمير','بيبي بينك','بنفسجي','بني','كافيه','زيتي','بترولي','جنزاري','فوشيا','بيج','رصاصي'],
+
 offers:[
 {label:'4 قطع',qty:4,price:300},
 {label:'5 قطع',qty:5,price:375},
 {label:'6 قطع',qty:6,price:420}
 ],
+
 custom:{from:7,unit:70},
+
 priceFunction:function(qty){
 return qty>=10?qty*65:qty*70;
 }
 },
 
 /* شكل الجينز */
+
 {
 id:'jeans',
 name:'ليجن شكل الجينز',
 desc:'قطن ليكرا بشكل الجينز • مريح وعملي',
 img:'https://drive.google.com/thumbnail?id=1hsmLb5R7OEBIowVfFOi7KpX11YgQFzd-&sz=w1000',
+
 colors:['أسود','رصاصي','كحلي'],
+
 offers:[
 {label:'قطعة',qty:1,price:170},
 {label:'قطعتين',qty:2,price:260},
@@ -343,6 +777,7 @@ offers:[
 {label:'4 قطع',qty:4,price:430},
 {label:'5 قطع',qty:5,price:535}
 ],
+
 custom:{from:5,unit:107}
 }
 
@@ -352,10 +787,58 @@ let cart=[];
 
 const money=n=>n.toLocaleString('en-US')+' جنيه';
 
+/* تكبير الصور */
+
+function openImage(src,alt){
+
+document.getElementById('largeImage').src=src;
+document.getElementById('largeImage').alt=alt;
+
+document.getElementById('imageViewer').classList.add('show');
+
+document.body.style.overflow='hidden';
+
+}
+
+function closeImage(event){
+
+if(
+event.target.id==='imageViewer' ||
+event.target.tagName==='BUTTON'
+){
+
+document.getElementById('imageViewer').classList.remove('show');
+
+document.getElementById('largeImage').src='';
+
+document.body.style.overflow='';
+
+}
+
+}
+
+document.addEventListener('keydown',function(e){
+
+if(e.key==='Escape'){
+
+document.getElementById('imageViewer').classList.remove('show');
+
+document.getElementById('largeImage').src='';
+
+document.body.style.overflow='';
+
+}
+
+});
+
 function getPrice(p,qty){
+
 if(p.priceFunction)return p.priceFunction(qty);
+
 if(p.custom)return qty*p.custom.unit;
+
 return 0;
+
 }
 
 function render(){
@@ -364,48 +847,82 @@ document.getElementById('products').innerHTML=products.map(p=>`
 
 <article class="card" id="card-${p.id}">
 
-<div class="photo">
-<img src="${p.img}" alt="${p.name}"
-onerror="this.style.display='none';this.parentNode.innerHTML='<span class=noimg>صورة المنتج</span>'">
+<div class="photo" onclick="openImage('${p.img}','${p.name}')">
+
+<img
+src="${p.img}"
+alt="${p.name}"
+loading="lazy"
+onerror="this.style.display='none';this.parentNode.innerHTML='<span class=noimg>صورة المنتج غير متاحة</span>'"
+>
+
 </div>
 
 <div class="info">
 
 <h3>${p.name}</h3>
+
 <div class="desc">${p.desc}</div>
 
 <div class="offer-label">اختاري العرض المناسب</div>
 
 <div class="offers">
+
 ${p.offers.map((o,i)=>`
+
 <button class="offer" type="button" onclick="choose('${p.id}',${i},this)">
+
 <b>${money(o.price)}</b>
+
 <small>${o.label}</small>
+
 </button>
+
 `).join('')}
+
 </div>
 
 ${p.custom?`
+
 <div class="offer-label">كمية أكبر؟</div>
+
 <div style="display:flex;gap:6px">
-<input type="number" id="custom-${p.id}" min="${p.custom.from}" max="30" placeholder="من ${p.custom.from} قطع" style="min-width:0">
-<button class="offer" type="button" onclick="customChoose('${p.id}')">احسبي السعر</button>
+
+<input
+type="number"
+id="custom-${p.id}"
+min="${p.custom.from}"
+max="30"
+placeholder="من ${p.custom.from} قطع"
+style="min-width:0"
+>
+
+<button class="offer" type="button" onclick="customChoose('${p.id}')">
+احسبي السعر
+</button>
+
 </div>
+
 `:''}
 
 <div class="select-area" id="selection-${p.id}">
+
 <div class="note">اختاري العرض علشان تظهر اختيارات الألوان.</div>
+
 </div>
 
 </div>
+
 </article>
 
 `).join('');
+
 }
 
 function choose(id,i,btn){
 
 let p=products.find(x=>x.id===id);
+
 let o=p.offers[i];
 
 document.querySelectorAll(`#card-${id} .offer`).forEach(x=>x.classList.remove('active'));
@@ -413,16 +930,21 @@ document.querySelectorAll(`#card-${id} .offer`).forEach(x=>x.classList.remove('a
 btn.classList.add('active');
 
 showChoices(p,o.qty,o.price);
+
 }
 
 function customChoose(id){
 
 let p=products.find(x=>x.id===id);
+
 let qty=Number(document.getElementById('custom-'+id).value);
 
 if(!qty||qty<p.custom.from||qty>30){
+
 alert(`الكمية تبدأ من ${p.custom.from} وبحد أقصى 30 قطعة`);
+
 return;
+
 }
 
 document.querySelectorAll(`#card-${id} .offer`).forEach(x=>x.classList.remove('active'));
@@ -430,27 +952,37 @@ document.querySelectorAll(`#card-${id} .offer`).forEach(x=>x.classList.remove('a
 let price=getPrice(p,qty);
 
 showChoices(p,qty,price);
+
 }
 
 function showChoices(p,qty,price){
 
 let area=document.getElementById('selection-'+p.id);
+
 let html='';
 
 if(p.bra){
 
 html+=`
+
 <label class="field-label">اختاري الوزن المناسب</label>
+
 <select id="weight-${p.id}">
+
 <option value="">اختاري الوزن</option>
+
 <option>من 50 إلى 75 كيلو</option>
+
 <option>من 75 إلى 100 كيلو</option>
+
 </select>
+
 `;
 
 }
 
 html+=`<div class="field-label">اختاري تفاصيل كل قطعة</div>`;
+
 html+=`<div id="pieces-${p.id}">`;
 
 for(let n=1;n<=qty;n++){
@@ -458,31 +990,47 @@ for(let n=1;n<=qty;n++){
 if(p.models){
 
 html+=`
+
 <div class="piecebox">
+
 <strong>القطعة ${n}</strong>
 
 <label class="field-label">اختاري الموديل</label>
 
 <select class="model-select" onchange="updateWinterColors(this)">
+
 <option value="">اختاري الموديل</option>
+
 ${Object.keys(p.models).map(m=>`<option value="${m}">${m}</option>`).join('')}
+
 </select>
 
 <div class="colors winter-colors"></div>
+
 </div>
+
 `;
 
 }else{
 
 html+=`
+
 <div class="piecebox">
+
 <strong>القطعة ${n}</strong>
+
 <div class="colors">
+
 ${p.colors.map(c=>`
+
 <button type="button" class="color" onclick="pickColor(this)">${c}</button>
+
 `).join('')}
+
 </div>
+
 </div>
+
 `;
 
 }
@@ -492,10 +1040,17 @@ ${p.colors.map(c=>`
 html+=`</div>`;
 
 html+=`
-<div class="counter" id="count-${p.id}">تم اختيار 0 من ${qty} قطعة</div>
+
+<div class="counter" id="count-${p.id}">
+تم اختيار 0 من ${qty} قطعة
+</div>
+
 <button class="add" type="button" onclick="addCart('${p.id}',${qty},${price})">
+
 أضيفي للسلة • ${money(price)}
+
 </button>
+
 `;
 
 area.innerHTML=html;
@@ -505,34 +1060,47 @@ area.innerHTML=html;
 function updateWinterColors(select){
 
 let p=products.find(x=>x.id==='warm');
+
 let model=select.value;
+
 let box=select.closest('.piecebox');
+
 let colorsBox=box.querySelector('.winter-colors');
 
 if(!model){
+
 colorsBox.innerHTML='';
+
 updateCounter(box);
+
 return;
+
 }
 
 colorsBox.innerHTML=p.models[model].map(c=>`
+
 <button type="button" class="color" onclick="pickColor(this)">${c}</button>
+
 `).join('');
 
 updateCounter(box);
+
 }
 
 function pickColor(btn){
 
 btn.parentElement.querySelectorAll('.color').forEach(b=>b.classList.remove('selected'));
+
 btn.classList.add('selected');
 
 updateCounter(btn.closest('.piecebox'));
+
 }
 
 function updateCounter(box){
 
 let area=box.closest('.select-area');
+
 let pieces=[...area.querySelectorAll('.piecebox')];
 
 let chosen=pieces.filter(piece=>{
@@ -540,7 +1108,9 @@ let chosen=pieces.filter(piece=>{
 let model=piece.querySelector('.model-select');
 
 if(model){
+
 return model.value!=='' && !!piece.querySelector('.color.selected');
+
 }
 
 return !!piece.querySelector('.color.selected');
@@ -550,7 +1120,9 @@ return !!piece.querySelector('.color.selected');
 let counter=area.querySelector('.counter');
 
 if(counter){
+
 counter.textContent=`تم اختيار ${chosen} من ${pieces.length} قطعة`;
+
 }
 
 }
@@ -568,6 +1140,7 @@ if(p.models){
 details=boxes.map(box=>{
 
 let model=box.querySelector('.model-select')?.value;
+
 let color=box.querySelector('.color.selected')?.textContent;
 
 return {model,color};
@@ -575,8 +1148,11 @@ return {model,color};
 });
 
 if(details.some(x=>!x.model||!x.color)){
+
 alert('اختاري الموديل واللون لكل قطعة');
+
 return;
+
 }
 
 }else{
@@ -584,8 +1160,11 @@ return;
 let colors=boxes.map(b=>b.querySelector('.selected')?.textContent);
 
 if(colors.some(x=>!x)){
+
 alert('اختاري لون كل قطعة قبل الإضافة');
+
 return;
+
 }
 
 details=colors.map(color=>({color}));
@@ -593,25 +1172,37 @@ details=colors.map(color=>({color}));
 }
 
 if(p.bra&&!document.getElementById('weight-'+id).value){
+
 alert('اختاري الوزن المناسب');
+
 return;
+
 }
 
 let weight=p.bra?document.getElementById('weight-'+id).value:'';
 
 cart.push({
+
 name:p.name,
+
 qty,
+
 price,
+
 details,
+
 weight
+
 });
 
 renderCart();
 
 document.getElementById('cart').scrollIntoView({
+
 behavior:'smooth',
+
 block:'nearest'
+
 });
 
 }
@@ -651,6 +1242,7 @@ return text;
 }).join('<br>')}
 
 <br>
+
 السعر: ${money(x.price)}
 
 </small>
@@ -666,6 +1258,7 @@ return text;
 }
 
 document.getElementById('subtotal').textContent=
+
 money(cart.reduce((s,x)=>s+x.price,0));
 
 }
@@ -673,6 +1266,7 @@ money(cart.reduce((s,x)=>s+x.price,0));
 function removeItem(i){
 
 cart.splice(i,1);
+
 renderCart();
 
 }
@@ -682,67 +1276,19 @@ function sendOrder(e){
 e.preventDefault();
 
 if(!cart.length){
+
 alert('ضيفي منتج واحد على الأقل للسلة');
+
 return;
+
 }
 
 let name=document.getElementById('customer').value;
+
 let phone=document.getElementById('phone').value;
+
 let gov=document.getElementById('gov').value;
+
 let address=document.getElementById('address').value;
-let alt=document.getElementById('altphone').value;
-let notes=document.getElementById('notes').value;
 
-let lines=cart.map((x,i)=>{
-
-let details=x.details.map((d,n)=>{
-
-let text=`القطعة ${n+1}: `;
-
-if(d.model)text+=d.model+' - ';
-
-text+=d.color;
-
-return text;
-
-}).join('\n');
-
-return `${i+1}) ${x.name}
-الكمية: ${x.qty}
-${details}
-${x.weight?'الوزن: '+x.weight+'\n':''}
-السعر: ${x.price} جنيه`;
-
-}).join('\n\n');
-
-let total=cart.reduce((s,x)=>s+x.price,0);
-
-let msg=`طلب جديد من متجر الفيروز
-
-${lines}
-
-إجمالي المنتجات: ${total} جنيه
-الشحن: يتم تأكيده حسب المحافظة
-
-بيانات العميل:
-الاسم: ${name}
-الموبايل: ${phone}
-رقم بديل: ${alt||'غير متوفر'}
-المحافظة: ${gov}
-العنوان: ${address}
-ملاحظات: ${notes||'لا يوجد'}
-
-المعاينة قبل الاستلام`;
-
-window.open(
-`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`,
-'_blank'
-);
-
-}
-
-render();
-
-</script>
-</body>
-</html>
+let 
