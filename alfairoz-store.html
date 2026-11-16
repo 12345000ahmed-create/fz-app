@@ -34,9 +34,13 @@ color:white;
 padding:20px 16px 28px
 }
 
-.top{
+.top,.hero,.perks{
 max-width:1100px;
-margin:auto;
+margin-left:auto;
+margin-right:auto
+}
+
+.top{
 display:flex;
 align-items:center;
 justify-content:space-between;
@@ -66,8 +70,7 @@ color:#f4dfb3
 }
 
 .hero{
-max-width:1100px;
-margin:25px auto 0;
+margin-top:25px;
 display:flex;
 align-items:center;
 justify-content:space-between;
@@ -93,8 +96,7 @@ opacity:.9
 }
 
 .perks{
-max-width:1100px;
-margin:14px auto 0;
+margin-top:14px;
 display:flex;
 gap:8px;
 flex-wrap:wrap
@@ -141,10 +143,9 @@ background:white;
 border:1px solid var(--line);
 border-radius:17px;
 overflow:hidden;
-box-shadow:0 5px 18px #18234a0a
+box-shadow:0 5px 18px #18234a0a;
+position:relative
 }
-
-/* صور المنتجات */
 
 .photo{
 width:100%;
@@ -168,9 +169,7 @@ display:block;
 transition:transform .3s ease
 }
 
-.photo:hover img{
-transform:scale(1.04)
-}
+.photo:hover img{transform:scale(1.04)}
 
 .noimg{
 color:#8b8d98;
@@ -191,9 +190,7 @@ padding:15px;
 cursor:zoom-out
 }
 
-.image-viewer.show{
-display:flex
-}
+.image-viewer.show{display:flex}
 
 .image-viewer img{
 max-width:100%;
@@ -277,6 +274,81 @@ background:#fff8e9;
 box-shadow:0 0 0 2px #c9a45c20
 }
 
+.popular{
+position:absolute;
+top:10px;
+right:10px;
+z-index:2;
+background:#b58b3d;
+color:#fff;
+border-radius:20px;
+padding:6px 10px;
+font-size:11px;
+font-weight:bold;
+box-shadow:0 3px 10px #0002
+}
+
+/* عروض الكميات */
+
+.tier-box{
+background:#f6f4ee;
+border:1px dashed #c9a45c;
+border-radius:11px;
+padding:10px;
+margin-top:10px;
+font-size:12px;
+line-height:1.8;
+color:#51452f
+}
+
+.tier-box strong{color:var(--navy)}
+
+.tier-entry{
+display:flex;
+gap:6px;
+margin-top:8px
+}
+
+.tier-entry input{
+min-width:0;
+flex:1
+}
+
+.tier-entry button{
+white-space:nowrap;
+border:0;
+border-radius:9px;
+background:var(--navy);
+color:white;
+padding:0 12px;
+font-weight:bold
+}
+
+.live-price{
+font-size:12px;
+line-height:1.8;
+margin-top:8px;
+color:var(--green);
+font-weight:bold;
+min-height:22px
+}
+
+.progress-wrap{
+margin-top:8px;
+background:#e9e7e1;
+border-radius:20px;
+height:9px;
+overflow:hidden
+}
+
+.progress-bar{
+height:100%;
+width:0;
+background:linear-gradient(90deg,#c9a45c,#16834a);
+border-radius:20px;
+transition:width .25s
+}
+
 .select-area{
 margin-top:12px;
 padding-top:10px;
@@ -357,10 +429,7 @@ font-size:14px;
 cursor:pointer
 }
 
-.add:disabled{
-opacity:.4;
-cursor:not-allowed
-}
+/* السلة */
 
 .panel{
 background:#fff;
@@ -436,6 +505,50 @@ line-height:1.7;
 margin-top:8px
 }
 
+.savings{
+background:#eff8f1;
+border:1px solid #cce8d4;
+color:#17663c;
+padding:10px;
+border-radius:10px;
+margin-top:12px;
+font-size:12px;
+line-height:1.7
+}
+
+.suggest-box{
+display:none;
+background:#fff9eb;
+border:1px solid #ead7aa;
+border-radius:12px;
+padding:12px;
+margin-top:14px
+}
+
+.suggest-box.show{display:block}
+
+.suggest-box strong{
+color:var(--navy);
+font-size:13px
+}
+
+.suggest-box p{
+font-size:12px;
+line-height:1.7;
+margin:6px 0
+}
+
+.suggest-box button{
+border:0;
+border-radius:8px;
+background:#c9a45c;
+color:#1b1b1b;
+padding:8px 12px;
+font-weight:bold
+}
+
+/* نموذج الطلب */
+
 .formgrid{
 display:grid;
 grid-template-columns:1fr 1fr;
@@ -481,9 +594,7 @@ z-index:5
 }
 
 @media(min-width:760px){
-.grid{
-grid-template-columns:repeat(3,minmax(0,1fr))
-}
+.grid{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
 
 @media(max-width:420px){
@@ -493,6 +604,7 @@ grid-template-columns:repeat(3,minmax(0,1fr))
 .offer{font-size:11px}
 .hero-mark{font-size:48px}
 .formgrid{grid-template-columns:1fr}
+.tier-entry button{font-size:11px;padding:0 8px}
 }
 </style>
 </head>
@@ -500,6 +612,7 @@ grid-template-columns:repeat(3,minmax(0,1fr))
 <body>
 
 <header>
+
 <div class="top">
 <div>
 <div class="logo">EL <span>FAYROUZ</span></div>
@@ -511,7 +624,7 @@ grid-template-columns:repeat(3,minmax(0,1fr))
 <div class="hero">
 <div>
 <h1>اختاري عرضك<br>وكمّلي طلبك بسهولة</h1>
-<p>عروض واضحة وأسعار مباشرة، اختاري الموديل والكمية والألوان المناسبة ليكي، وابعتي طلبك على واتساب.</p>
+<p>كل ما تزودي الكمية، سعر القطعة يقل! اختاري الموديل والكمية والألوان المناسبة ليكي، وابعتي طلبك على واتساب.</p>
 </div>
 <div class="hero-mark">✦</div>
 </div>
@@ -520,7 +633,9 @@ grid-template-columns:repeat(3,minmax(0,1fr))
 <span>✓ قطن ليكرا ناعم ومريح</span>
 <span>✓ فري سايز حسب الموديل</span>
 <span>✓ المعاينة قبل الاستلام</span>
+<span>✓ عروض كمية وتوفير أكبر</span>
 </div>
+
 </header>
 
 <main>
@@ -533,10 +648,19 @@ grid-template-columns:repeat(3,minmax(0,1fr))
 <div class="grid" id="products"></div>
 
 <section class="panel">
+
 <h2>🛍️ سلة مشترياتك</h2>
 
 <div id="cart">
 <div class="cart-empty">لسه ما ضفتيش منتجات للسلة.</div>
+</div>
+
+<div class="savings" id="cartSavings" style="display:none"></div>
+
+<div class="suggest-box" id="suggestBox">
+<strong id="suggestTitle"></strong>
+<p id="suggestText"></p>
+<button type="button" id="suggestButton">شوفي المنتج</button>
 </div>
 
 <div class="total">
@@ -557,9 +681,11 @@ grid-template-columns:repeat(3,minmax(0,1fr))
 <div class="note">
 70 جنيه لجميع المحافظات • 95 جنيه للصعيد والفيوم والصف والعياط • 120 جنيه للوادي الجديد والبحر الأحمر ومطروح والعلمين.
 </div>
+
 </section>
 
 <section class="panel">
+
 <h2>بيانات التوصيل</h2>
 
 <form id="orderForm" onsubmit="sendOrder(event)">
@@ -639,9 +765,7 @@ grid-template-columns:repeat(3,minmax(0,1fr))
 المعاينة قبل الاستلام • الشحن متاح لجميع المحافظات
 </footer>
 
-<a class="float" href="https://wa.me/201080239769" target="_blank">تواصل واتساب</a>
-
-<!-- نافذة تكبير الصور -->
+<a class="float" href="https://wa.me/201080239769" target="_blank" rel="noopener">تواصل واتساب</a>
 
 <div class="image-viewer" id="imageViewer" onclick="closeImage(event)">
 <button type="button" onclick="closeImage(event)">×</button>
@@ -670,7 +794,8 @@ offers:[
 {label:'3 قطع',qty:3,price:420},
 {label:'4 قطع',qty:4,price:560}
 ],
-custom:{from:5,unit:130}
+custom:{from:5,unit:130},
+customText:'من 5 قطع فأكثر: القطعة بـ 130 جنيه.'
 },
 
 {
@@ -684,7 +809,8 @@ offers:[
 {label:'قطعتين',qty:2,price:350},
 {label:'3 قطع',qty:3,price:450}
 ],
-custom:{from:3,unit:150}
+custom:{from:3,unit:150},
+customText:'من 3 قطع فأكثر: القطعة بـ 150 جنيه.'
 },
 
 {
@@ -711,7 +837,8 @@ offers:[
 {label:'4 قطع',qty:4,price:260},
 {label:'5 قطع',qty:5,price:300}
 ],
-custom:{from:5,unit:60}
+custom:{from:5,unit:60},
+customText:'من 5 قطع فأكثر: القطعة بـ 60 جنيه.'
 },
 
 {
@@ -727,13 +854,14 @@ offers:[
 {label:'4 قطع',qty:4,price:320},
 {label:'5 قطع',qty:5,price:375}
 ],
-custom:{from:5,unit:75}
+custom:{from:5,unit:75},
+customText:'من 5 قطع فأكثر: القطعة بـ 75 جنيه.'
 },
 
 {
 id:'derby',
 name:'ليجن ديربي مضلع',
-desc:'قطن ليكرا • اختاري ألوانك • عروض الكميات',
+desc:'قطن ليكرا • اختاري ألوانك • كل ما تزودي العدد، سعر القطعة يقل',
 img:'https://drive.google.com/thumbnail?id=1KYGaZpezLXl0Vd9eqMVW87YHY2gBfwdQ&sz=w1000',
 colors:['أسود','أبيض','أوف وايت','كحلي','أزرق','كشمير','بيبي بينك','بنفسجي','بني','كافيه','زيتي','بترولي','جنزاري','فوشيا','بيج','رصاصي'],
 offers:[
@@ -742,9 +870,9 @@ offers:[
 {label:'6 قطع',qty:6,price:420}
 ],
 custom:{from:7,unit:70},
-priceFunction:function(qty){
-return qty>=10?qty*65:qty*70;
-}
+priceFunction:q=>q>=10?q*65:q*70,
+customText:'من 7 لـ 9 قطع: القطعة بـ 70 جنيه. من 10 قطع فأكثر: القطعة بـ 65 جنيه فقط!',
+popular:true
 },
 
 {
@@ -760,16 +888,19 @@ offers:[
 {label:'4 قطع',qty:4,price:430},
 {label:'5 قطع',qty:5,price:535}
 ],
-custom:{from:5,unit:107}
+custom:{from:5,unit:107},
+customText:'من 5 قطع فأكثر: القطعة بـ 107 جنيه.'
 }
 
 ];
 
 let cart=[];
 
-const money=n=>n.toLocaleString('en-US')+' جنيه';
+const money=n=>Number(n).toLocaleString('en-US')+' جنيه';
 
-/* حساب مصاريف الشحن */
+const STORE_KEY='elfayrouz_cart_v2';
+
+/* حساب الشحن */
 
 function getShipping(){
 
@@ -787,28 +918,17 @@ let south=[
 'أسوان'
 ];
 
-let highShipping=[
+let high=[
 'الوادي الجديد',
 'البحر الأحمر',
 'مطروح'
 ];
 
-if(highShipping.includes(gov)){
+if(high.includes(gov)||address.includes('العلمين')){
 return 120;
 }
 
-if(address.includes('العلمين')){
-return 120;
-}
-
-if(south.includes(gov)){
-return 95;
-}
-
-if(
-address.includes('الصف') ||
-address.includes('العياط')
-){
+if(south.includes(gov)||address.includes('الصف')||address.includes('العياط')){
 return 95;
 }
 
@@ -816,76 +936,7 @@ return 70;
 
 }
 
-/* تحديث إجمالي السلة والشحن */
-
-function updateTotals(){
-
-let subtotal=cart.reduce((s,x)=>s+x.price,0);
-
-let gov=document.getElementById('gov').value;
-
-document.getElementById('subtotal').textContent=money(subtotal);
-
-if(!gov){
-document.getElementById('shipping').textContent='اختاري المحافظة';
-document.getElementById('grandTotal').textContent=money(subtotal);
-return;
-}
-
-let shipping=getShipping();
-
-document.getElementById('shipping').textContent=money(shipping);
-
-document.getElementById('grandTotal').textContent=
-money(subtotal+shipping);
-
-}
-
-/* فتح الصورة بالحجم الكبير */
-
-function openImage(src,alt){
-
-document.getElementById('largeImage').src=src;
-document.getElementById('largeImage').alt=alt;
-
-document.getElementById('imageViewer').classList.add('show');
-
-document.body.style.overflow='hidden';
-
-}
-
-/* إغلاق الصورة */
-
-function closeImage(event){
-
-if(
-event.target.id==='imageViewer' ||
-event.target.tagName==='BUTTON'
-){
-
-document.getElementById('imageViewer').classList.remove('show');
-
-document.getElementById('largeImage').src='';
-
-document.body.style.overflow='';
-
-}
-
-}
-
-document.addEventListener('keydown',function(e){
-
-if(e.key==='Escape'){
-
-document.getElementById('imageViewer').classList.remove('show');
-
-document.getElementById('largeImage').src='';
-
-document.body.style.overflow='';
-
-}
-
-});
+/* حساب سعر الكمية */
 
 function getPrice(p,qty){
 
@@ -904,6 +955,8 @@ function render(){
 document.getElementById('products').innerHTML=products.map(p=>`
 
 <article class="card" id="card-${p.id}">
+
+${p.popular?'<div class="popular">⭐ عرض مميز</div>':''}
 
 <div class="photo" onclick="openImage('${p.img}','${p.name}')">
 
@@ -936,11 +989,41 @@ ${p.offers.map((o,i)=>`
 </div>
 
 ${p.custom?`
-<div class="offer-label">كمية أكبر؟</div>
-<div style="display:flex;gap:6px">
-<input type="number" id="custom-${p.id}" min="${p.custom.from}" max="30" placeholder="من ${p.custom.from} قطع" style="min-width:0">
-<button class="offer" type="button" onclick="customChoose('${p.id}')">احسبي السعر</button>
+
+<div class="tier-box">
+
+<strong>💰 عروض الكمية والتوفير</strong>
+
+<br>${p.customText}
+
+<div class="tier-entry">
+
+<input
+type="number"
+id="custom-${p.id}"
+min="${p.custom.from}"
+max="30"
+placeholder="اكتبي عدد القطع"
+>
+
+<button type="button" onclick="customChoose('${p.id}')">
+احسبي العرض
+</button>
+
 </div>
+
+<div class="live-price" id="live-${p.id}">
+اكتبي الكمية عشان تعرفي الإجمالي والتوفير.
+</div>
+
+<div class="progress-wrap">
+<div class="progress-bar" id="bar-${p.id}"></div>
+</div>
+
+<div class="live-price" id="nudge-${p.id}"></div>
+
+</div>
+
 `:''}
 
 <div class="select-area" id="selection-${p.id}">
@@ -952,17 +1035,92 @@ ${p.custom?`
 
 `).join('');
 
+products.filter(p=>p.custom).forEach(p=>{
+
+const input=document.getElementById('custom-'+p.id);
+
+input.addEventListener('input',()=>{
+previewCustom(p.id);
+});
+
+});
+
 }
 
-/* اختيار عرض */
+/* معاينة سعر الكمية قبل الاختيار */
+
+function previewCustom(id){
+
+const p=products.find(x=>x.id===id);
+
+const q=Number(document.getElementById('custom-'+id).value);
+
+const live=document.getElementById('live-'+id);
+const nudge=document.getElementById('nudge-'+id);
+const bar=document.getElementById('bar-'+id);
+
+if(!q){
+
+live.textContent='اكتبي الكمية عشان تعرفي الإجمالي والتوفير.';
+nudge.textContent='';
+bar.style.width='0%';
+return;
+
+}
+
+if(q<p.custom.from||q>30){
+
+live.textContent=`الكمية المتاحة من ${p.custom.from} إلى 30 قطعة.`;
+nudge.textContent='';
+bar.style.width='0%';
+return;
+
+}
+
+const total=getPrice(p,q);
+const unit=total/q;
+
+live.textContent=
+`${q} قطعة × ${money(unit)} = ${money(total)} إجمالي العرض.`;
+
+if(id==='derby'){
+
+if(q<7){
+
+nudge.textContent='ابدئي بـ 7 قطع عشان تستفيدي من عرض الـ 70 جنيه للقطعة.';
+
+}else if(q<10){
+
+nudge.textContent=`🎁 زوّدي ${10-q} ${10-q===1?'قطعة':'قطع'} وخدي كل قطعة بـ 65 جنيه بدل 70!`;
+
+}else{
+
+nudge.textContent='🔥 مبروك! وصلتي لأقل سعر: 65 جنيه للقطعة.';
+
+}
+
+bar.style.width=Math.min(100,q/10*100)+'%';
+
+}else{
+
+nudge.textContent=`سعر القطعة الواحدة في الكمية دي ${money(unit)}.`;
+
+bar.style.width='100%';
+
+}
+
+}
+
+/* اختيار عرض جاهز */
 
 function choose(id,i,btn){
 
 let p=products.find(x=>x.id===id);
-
 let o=p.offers[i];
 
-document.querySelectorAll(`#card-${id} .offer`).forEach(x=>x.classList.remove('active'));
+document.querySelectorAll(`#card-${id} .offer`).forEach(x=>{
+x.classList.remove('active');
+});
 
 btn.classList.add('active');
 
@@ -970,7 +1128,7 @@ showChoices(p,o.qty,o.price);
 
 }
 
-/* حساب الكمية الكبيرة */
+/* اختيار كمية كبيرة */
 
 function customChoose(id){
 
@@ -986,7 +1144,9 @@ return;
 
 }
 
-document.querySelectorAll(`#card-${id} .offer`).forEach(x=>x.classList.remove('active'));
+document.querySelectorAll(`#card-${id} .offer`).forEach(x=>{
+x.classList.remove('active');
+});
 
 let price=getPrice(p,qty);
 
@@ -1005,6 +1165,7 @@ let html='';
 if(p.bra){
 
 html+=`
+
 <label class="field-label">اختاري الوزن المناسب</label>
 
 <select id="weight-${p.id}">
@@ -1012,6 +1173,7 @@ html+=`
 <option>من 50 إلى 75 كيلو</option>
 <option>من 75 إلى 100 كيلو</option>
 </select>
+
 `;
 
 }
@@ -1025,6 +1187,7 @@ for(let n=1;n<=qty;n++){
 if(p.models){
 
 html+=`
+
 <div class="piecebox">
 
 <strong>القطعة ${n}</strong>
@@ -1039,11 +1202,13 @@ ${Object.keys(p.models).map(m=>`<option value="${m}">${m}</option>`).join('')}
 <div class="colors winter-colors"></div>
 
 </div>
+
 `;
 
 }else{
 
 html+=`
+
 <div class="piecebox">
 
 <strong>القطعة ${n}</strong>
@@ -1057,6 +1222,7 @@ ${p.colors.map(c=>`
 </div>
 
 </div>
+
 `;
 
 }
@@ -1066,6 +1232,7 @@ ${p.colors.map(c=>`
 html+=`</div>`;
 
 html+=`
+
 <div class="counter" id="count-${p.id}">
 تم اختيار 0 من ${qty} قطعة
 </div>
@@ -1073,13 +1240,14 @@ html+=`
 <button class="add" type="button" onclick="addCart('${p.id}',${qty},${price})">
 أضيفي للسلة • ${money(price)}
 </button>
+
 `;
 
 area.innerHTML=html;
 
 }
 
-/* ألوان الليجن الشتوي حسب الموديل */
+/* ألوان الليجن الشتوي */
 
 function updateWinterColors(select){
 
@@ -1094,15 +1262,17 @@ let colorsBox=box.querySelector('.winter-colors');
 if(!model){
 
 colorsBox.innerHTML='';
-
 updateCounter(box);
-
 return;
 
 }
 
 colorsBox.innerHTML=p.models[model].map(c=>`
-<button type="button" class="color" onclick="pickColor(this)">${c}</button>
+
+<button type="button" class="color" onclick="pickColor(this)">
+${c}
+</button>
+
 `).join('');
 
 updateCounter(box);
@@ -1113,7 +1283,9 @@ updateCounter(box);
 
 function pickColor(btn){
 
-btn.parentElement.querySelectorAll('.color').forEach(b=>b.classList.remove('selected'));
+btn.parentElement.querySelectorAll('.color').forEach(b=>{
+b.classList.remove('selected');
+});
 
 btn.classList.add('selected');
 
@@ -1135,7 +1307,8 @@ let model=piece.querySelector('.model-select');
 
 if(model){
 
-return model.value!=='' && !!piece.querySelector('.color.selected');
+return model.value!=='' &&
+!!piece.querySelector('.color.selected');
 
 }
 
@@ -1147,13 +1320,14 @@ let counter=area.querySelector('.counter');
 
 if(counter){
 
-counter.textContent=`تم اختيار ${chosen} من ${pieces.length} قطعة`;
+counter.textContent=
+`تم اختيار ${chosen} من ${pieces.length} قطعة`;
 
 }
 
 }
 
-/* إضافة المنتج للسلة */
+/* إضافة للسلة */
 
 function addCart(id,qty,price){
 
@@ -1178,19 +1352,19 @@ return {model,color};
 if(details.some(x=>!x.model||!x.color)){
 
 alert('اختاري الموديل واللون لكل قطعة');
-
 return;
 
 }
 
 }else{
 
-let colors=boxes.map(b=>b.querySelector('.selected')?.textContent);
+let colors=boxes.map(b=>
+b.querySelector('.selected')?.textContent
+);
 
 if(colors.some(x=>!x)){
 
 alert('اختاري لون كل قطعة قبل الإضافة');
-
 return;
 
 }
@@ -1202,14 +1376,15 @@ details=colors.map(color=>({color}));
 if(p.bra&&!document.getElementById('weight-'+id).value){
 
 alert('اختاري الوزن المناسب');
-
 return;
 
 }
 
-let weight=p.bra?document.getElementById('weight-'+id).value:'';
+let weight=p.bra?
+document.getElementById('weight-'+id).value:'';
 
 cart.push({
+id,
 name:p.name,
 qty,
 price,
@@ -1217,12 +1392,49 @@ details,
 weight
 });
 
+saveCart();
+
 renderCart();
 
 document.getElementById('cart').scrollIntoView({
 behavior:'smooth',
 block:'nearest'
 });
+
+}
+
+/* حفظ السلة في الموبايل */
+
+function saveCart(){
+
+try{
+
+localStorage.setItem(
+'elfayrouz_cart_v2',
+JSON.stringify(cart)
+);
+
+}catch(e){}
+
+}
+
+/* استرجاع السلة */
+
+function loadCart(){
+
+try{
+
+const saved=JSON.parse(
+localStorage.getItem('elfayrouz_cart_v2')||'[]'
+);
+
+if(Array.isArray(saved))cart=saved;
+
+}catch(e){
+
+cart=[];
+
+}
 
 }
 
@@ -1234,7 +1446,8 @@ let el=document.getElementById('cart');
 
 if(!cart.length){
 
-el.innerHTML='<div class="cart-empty">لسه ما ضفتيش منتجات للسلة.</div>';
+el.innerHTML=
+'<div class="cart-empty">لسه ما ضفتيش منتجات للسلة.</div>';
 
 }else{
 
@@ -1250,13 +1463,13 @@ el.innerHTML=cart.map((x,i)=>`
 
 ${x.weight?x.weight+'<br>':''}
 
-${x.details.map((d,n)=>{
+${(x.details||[]).map((d,n)=>{
 
 let text=`القطعة ${n+1}: `;
 
 if(d.model)text+=d.model+' - ';
 
-text+=d.color;
+text+=d.color||'';
 
 return text;
 
@@ -1270,7 +1483,9 @@ return text;
 
 </div>
 
-<button class="remove" onclick="removeItem(${i})">حذف</button>
+<button class="remove" onclick="removeItem(${i})">
+حذف
+</button>
 
 </div>
 
@@ -1280,19 +1495,189 @@ return text;
 
 updateTotals();
 
+updateSuggestions();
+
+const savings=document.getElementById('cartSavings');
+
+const count=cart.reduce((s,x)=>s+x.qty,0);
+
+if(cart.length){
+
+savings.style.display='block';
+
+savings.textContent=
+`🛍️ معاكي ${count} قطعة في السلة. راجعي العروض قبل تأكيد الطلب عشان تستفيدي من أفضل سعر.`;
+
+}else{
+
+savings.style.display='none';
+
 }
 
-/* حذف منتج من السلة */
+}
+
+/* حذف منتج */
 
 function removeItem(i){
 
 cart.splice(i,1);
 
+saveCart();
+
 renderCart();
 
 }
 
-/* تحديث الشحن عند اختيار المحافظة أو كتابة العنوان */
+/* تحديث الإجمالي والشحن */
+
+function updateTotals(){
+
+let subtotal=cart.reduce((s,x)=>s+x.price,0);
+
+let gov=document.getElementById('gov').value;
+
+document.getElementById('subtotal').textContent=money(subtotal);
+
+if(!gov){
+
+document.getElementById('shipping').textContent='اختاري المحافظة';
+
+document.getElementById('grandTotal').textContent=money(subtotal);
+
+return;
+
+}
+
+let shipping=getShipping();
+
+document.getElementById('shipping').textContent=money(shipping);
+
+document.getElementById('grandTotal').textContent=
+money(subtotal+shipping);
+
+}
+
+/* اقتراح منتجات مكملة */
+
+function updateSuggestions(){
+
+const box=document.getElementById('suggestBox');
+
+const title=document.getElementById('suggestTitle');
+
+const text=document.getElementById('suggestText');
+
+const button=document.getElementById('suggestButton');
+
+if(!cart.length){
+
+box.classList.remove('show');
+return;
+
+}
+
+const hasLeggings=cart.some(x=>
+['warm','3d','hearts','derby','jeans'].includes(x.id)
+);
+
+const hasShort=cart.some(x=>x.id==='short');
+
+let target=null;
+
+if(hasLeggings&&!hasShort){
+
+target=products.find(p=>p.id==='short');
+
+}else if(hasShort&&!hasLeggings){
+
+target=products.find(p=>p.id==='derby');
+
+}else if(!cart.some(x=>x.id==='bra')){
+
+target=products.find(p=>p.id==='bra');
+
+}
+
+if(!target){
+
+box.classList.remove('show');
+return;
+
+}
+
+title.textContent='💡 اقتراح ليكي';
+
+text.textContent=
+`ممكن تكمّلي طلبك مع ${target.name} وتشوفي عرضه قبل تأكيد الأوردر.`;
+
+button.onclick=()=>{
+
+document.getElementById('card-'+target.id).scrollIntoView({
+behavior:'smooth',
+block:'center'
+});
+
+document.getElementById('card-'+target.id).style.outline=
+'2px solid #c9a45c';
+
+setTimeout(()=>{
+
+document.getElementById('card-'+target.id).style.outline='';
+
+},1800);
+
+};
+
+box.classList.add('show');
+
+}
+
+/* تكبير الصور */
+
+function openImage(src,alt){
+
+document.getElementById('largeImage').src=src;
+
+document.getElementById('largeImage').alt=alt;
+
+document.getElementById('imageViewer').classList.add('show');
+
+document.body.style.overflow='hidden';
+
+}
+
+function closeImage(event){
+
+if(
+event.target.id==='imageViewer'||
+event.target.tagName==='BUTTON'
+){
+
+document.getElementById('imageViewer').classList.remove('show');
+
+document.getElementById('largeImage').src='';
+
+document.body.style.overflow='';
+
+}
+
+}
+
+document.addEventListener('keydown',function(e){
+
+if(e.key==='Escape'){
+
+document.getElementById('imageViewer').classList.remove('show');
+
+document.getElementById('largeImage').src='';
+
+document.body.style.overflow='';
+
+}
+
+});
+
+/* تحديث الشحن */
 
 document.getElementById('gov').addEventListener('change',updateTotals);
 
@@ -1307,7 +1692,6 @@ e.preventDefault();
 if(!cart.length){
 
 alert('ضيفي منتج واحد على الأقل للسلة');
-
 return;
 
 }
@@ -1327,7 +1711,6 @@ let notes=document.getElementById('notes').value.trim();
 if(!gov){
 
 alert('اختاري المحافظة');
-
 return;
 
 }
@@ -1364,9 +1747,10 @@ message+=`الوزن: ${item.weight}\n`;
 
 }
 
-item.details.forEach((d,n)=>{
+(item.details||[]).forEach((d,n)=>{
 
-message+=`القطعة ${n+1}: ${d.model?d.model+' - ':''}${d.color}\n`;
+message+=
+`القطعة ${n+1}: ${d.model?d.model+' - ':''}${d.color||''}\n`;
 
 });
 
@@ -1380,7 +1764,8 @@ message+=`
 ملاحظات: ${notes||'لا يوجد'}
 `;
 
-let url=`https://wa.me/${WA}?text=${encodeURIComponent(message)}`;
+let url=
+`https://wa.me/${WA}?text=${encodeURIComponent(message)}`;
 
 window.open(url,'_blank');
 
@@ -1389,6 +1774,8 @@ window.open(url,'_blank');
 /* تشغيل المتجر */
 
 render();
+
+loadCart();
 
 renderCart();
 
