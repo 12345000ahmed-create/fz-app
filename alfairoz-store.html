@@ -144,7 +144,7 @@ overflow:hidden;
 box-shadow:0 5px 18px #18234a0a
 }
 
-/* تحسين صور المنتجات */
+/* صور المنتجات */
 
 .photo{
 width:100%;
@@ -177,7 +177,7 @@ color:#8b8d98;
 font-size:13px
 }
 
-/* نافذة تكبير الصور */
+/* تكبير الصور */
 
 .image-viewer{
 display:none;
@@ -417,7 +417,16 @@ display:flex;
 justify-content:space-between;
 padding-top:12px;
 font-weight:bold;
-color:var(--navy)
+color:var(--navy);
+gap:10px
+}
+
+.grand-total{
+font-size:19px;
+color:var(--green);
+border-top:1px solid var(--line);
+margin-top:12px;
+padding-top:14px
 }
 
 .note{
@@ -491,7 +500,6 @@ grid-template-columns:repeat(3,minmax(0,1fr))
 <body>
 
 <header>
-
 <div class="top">
 <div>
 <div class="logo">EL <span>FAYROUZ</span></div>
@@ -513,7 +521,6 @@ grid-template-columns:repeat(3,minmax(0,1fr))
 <span>✓ فري سايز حسب الموديل</span>
 <span>✓ المعاينة قبل الاستلام</span>
 </div>
-
 </header>
 
 <main>
@@ -537,7 +544,19 @@ grid-template-columns:repeat(3,minmax(0,1fr))
 <span id="subtotal">0 جنيه</span>
 </div>
 
-<div class="note">تكلفة الشحن يتم تأكيدها حسب المحافظة قبل تثبيت الطلب.</div>
+<div class="total">
+<span>مصاريف الشحن</span>
+<span id="shipping">اختاري المحافظة</span>
+</div>
+
+<div class="total grand-total">
+<span>الإجمالي شامل الشحن</span>
+<span id="grandTotal">0 جنيه</span>
+</div>
+
+<div class="note">
+70 جنيه لجميع المحافظات • 95 جنيه للصعيد والفيوم والصف والعياط • 120 جنيه للوادي الجديد والبحر الأحمر ومطروح والعلمين.
+</div>
 </section>
 
 <section class="panel">
@@ -559,7 +578,6 @@ grid-template-columns:repeat(3,minmax(0,1fr))
 
 <div>
 <label class="field-label">المحافظة</label>
-
 <select id="gov" required>
 <option value="">اختاري المحافظة</option>
 <option>القاهرة</option>
@@ -636,96 +654,72 @@ const WA='201080239769';
 
 const products=[
 
-/* الليجن الشتوي */
-
 {
 id:'warm',
 name:'ليجن شتوي مبطن ببطانة ناعمة',
 desc:'دفء وراحة • 3 موديلات مختلفة • اختاري الموديل واللون لكل قطعة',
 img:'https://drive.google.com/thumbnail?id=1EJMM6MjhFR9qobgxUenAIv34qyZOwtGZ&sz=w1000',
-
 models:{
 'مضلع مبطن':['أسود','كحلي','بني','بيج','رصاصي'],
 'حفر ليزر':['أسود','كحلي'],
 'سادة':['أسود','كحلي','كافيه','أبيض','زيتي','رمادي']
 },
-
 offers:[
 {label:'قطعة واحدة',qty:1,price:199},
 {label:'قطعتين',qty:2,price:320},
 {label:'3 قطع',qty:3,price:420},
 {label:'4 قطع',qty:4,price:560}
 ],
-
 custom:{from:5,unit:130}
 },
-
-/* ليجن 3D */
 
 {
 id:'3d',
 name:'ليجن 3D',
 desc:'قطن ليكرا ناعم ومريح • فري سايز من 50 لـ100 كيلو',
 img:'https://drive.google.com/thumbnail?id=181QfEDhXCZuwiQb0v9tEBvrDmFAgX1g4&sz=w1000',
-
 colors:['أسود','كحلي','بني','رصاصي'],
-
 offers:[
 {label:'قطعة واحدة',qty:1,price:199},
 {label:'قطعتين',qty:2,price:350},
 {label:'3 قطع',qty:3,price:450}
 ],
-
 custom:{from:3,unit:150}
 },
-
-/* البرا */
 
 {
 id:'bra',
 name:'برا بوش أب الفيروز',
 desc:'باكت 3 قطع • ألوان متعددة حسب المقاس',
 img:'https://drive.google.com/thumbnail?id=18xsCFyfVcHZrrNow-JT0SAKO9NgCGUJ2&sz=w1000',
-
 colors:['أسود','أبيض','بيج','ألوان متنوعة'],
-
 offers:[
 {label:'باكت 3 قطع',qty:3,price:300}
 ],
-
 bra:true
 },
-
-/* الشورت */
 
 {
 id:'short',
 name:'شورت ديربي مضلع طويل',
 desc:'قطن ليكرا • مريح وعملي',
 img:'https://drive.google.com/thumbnail?id=18cHc1JZ7F7TecDX-2zrIdDeEKhYPJceK&sz=w1000',
-
 colors:['أبيض','أسود','كحلي','بني','رصاصي','أزرق'],
-
 offers:[
 {label:'2 قطعة',qty:2,price:160},
 {label:'3 قطع',qty:3,price:210},
 {label:'4 قطع',qty:4,price:260},
 {label:'5 قطع',qty:5,price:300}
 ],
-
 custom:{from:5,unit:60}
 },
-
-/* القلوب */
 
 {
 id:'hearts',
 name:'ليجن قلوب',
 desc:'قطن ليكرا • فري سايز من 50 لـ100 كيلو',
 img:'https://drive.google.com/thumbnail?id=1gYos4r2DZpW69OKx2lYe8NGVmSlLikV5&sz=w1000',
-
 colors:['أسود','أزرق','كحلي','بني','بيج','رصاصي'],
-
 offers:[
 {label:'قطعة',qty:1,price:150},
 {label:'قطعتين',qty:2,price:220},
@@ -733,43 +727,32 @@ offers:[
 {label:'4 قطع',qty:4,price:320},
 {label:'5 قطع',qty:5,price:375}
 ],
-
 custom:{from:5,unit:75}
 },
-
-/* الديربي */
 
 {
 id:'derby',
 name:'ليجن ديربي مضلع',
 desc:'قطن ليكرا • اختاري ألوانك • عروض الكميات',
 img:'https://drive.google.com/thumbnail?id=1KYGaZpezLXl0Vd9eqMVW87YHY2gBfwdQ&sz=w1000',
-
 colors:['أسود','أبيض','أوف وايت','كحلي','أزرق','كشمير','بيبي بينك','بنفسجي','بني','كافيه','زيتي','بترولي','جنزاري','فوشيا','بيج','رصاصي'],
-
 offers:[
 {label:'4 قطع',qty:4,price:300},
 {label:'5 قطع',qty:5,price:375},
 {label:'6 قطع',qty:6,price:420}
 ],
-
 custom:{from:7,unit:70},
-
 priceFunction:function(qty){
 return qty>=10?qty*65:qty*70;
 }
 },
-
-/* شكل الجينز */
 
 {
 id:'jeans',
 name:'ليجن شكل الجينز',
 desc:'قطن ليكرا بشكل الجينز • مريح وعملي',
 img:'https://drive.google.com/thumbnail?id=1hsmLb5R7OEBIowVfFOi7KpX11YgQFzd-&sz=w1000',
-
 colors:['أسود','رصاصي','كحلي'],
-
 offers:[
 {label:'قطعة',qty:1,price:170},
 {label:'قطعتين',qty:2,price:260},
@@ -777,7 +760,6 @@ offers:[
 {label:'4 قطع',qty:4,price:430},
 {label:'5 قطع',qty:5,price:535}
 ],
-
 custom:{from:5,unit:107}
 }
 
@@ -787,7 +769,79 @@ let cart=[];
 
 const money=n=>n.toLocaleString('en-US')+' جنيه';
 
-/* تكبير الصور */
+/* حساب مصاريف الشحن */
+
+function getShipping(){
+
+let gov=document.getElementById('gov').value;
+let address=document.getElementById('address').value;
+
+let south=[
+'الفيوم',
+'بني سويف',
+'المنيا',
+'أسيوط',
+'سوهاج',
+'قنا',
+'الأقصر',
+'أسوان'
+];
+
+let highShipping=[
+'الوادي الجديد',
+'البحر الأحمر',
+'مطروح'
+];
+
+if(highShipping.includes(gov)){
+return 120;
+}
+
+if(address.includes('العلمين')){
+return 120;
+}
+
+if(south.includes(gov)){
+return 95;
+}
+
+if(
+address.includes('الصف') ||
+address.includes('العياط')
+){
+return 95;
+}
+
+return 70;
+
+}
+
+/* تحديث إجمالي السلة والشحن */
+
+function updateTotals(){
+
+let subtotal=cart.reduce((s,x)=>s+x.price,0);
+
+let gov=document.getElementById('gov').value;
+
+document.getElementById('subtotal').textContent=money(subtotal);
+
+if(!gov){
+document.getElementById('shipping').textContent='اختاري المحافظة';
+document.getElementById('grandTotal').textContent=money(subtotal);
+return;
+}
+
+let shipping=getShipping();
+
+document.getElementById('shipping').textContent=money(shipping);
+
+document.getElementById('grandTotal').textContent=
+money(subtotal+shipping);
+
+}
+
+/* فتح الصورة بالحجم الكبير */
 
 function openImage(src,alt){
 
@@ -799,6 +853,8 @@ document.getElementById('imageViewer').classList.add('show');
 document.body.style.overflow='hidden';
 
 }
+
+/* إغلاق الصورة */
 
 function closeImage(event){
 
@@ -841,6 +897,8 @@ return 0;
 
 }
 
+/* عرض المنتجات */
+
 function render(){
 
 document.getElementById('products').innerHTML=products.map(p=>`
@@ -869,55 +927,34 @@ onerror="this.style.display='none';this.parentNode.innerHTML='<span class=noimg>
 <div class="offers">
 
 ${p.offers.map((o,i)=>`
-
 <button class="offer" type="button" onclick="choose('${p.id}',${i},this)">
-
 <b>${money(o.price)}</b>
-
 <small>${o.label}</small>
-
 </button>
-
 `).join('')}
 
 </div>
 
 ${p.custom?`
-
 <div class="offer-label">كمية أكبر؟</div>
-
 <div style="display:flex;gap:6px">
-
-<input
-type="number"
-id="custom-${p.id}"
-min="${p.custom.from}"
-max="30"
-placeholder="من ${p.custom.from} قطع"
-style="min-width:0"
->
-
-<button class="offer" type="button" onclick="customChoose('${p.id}')">
-احسبي السعر
-</button>
-
+<input type="number" id="custom-${p.id}" min="${p.custom.from}" max="30" placeholder="من ${p.custom.from} قطع" style="min-width:0">
+<button class="offer" type="button" onclick="customChoose('${p.id}')">احسبي السعر</button>
 </div>
-
 `:''}
 
 <div class="select-area" id="selection-${p.id}">
-
 <div class="note">اختاري العرض علشان تظهر اختيارات الألوان.</div>
-
 </div>
 
 </div>
-
 </article>
 
 `).join('');
 
 }
+
+/* اختيار عرض */
 
 function choose(id,i,btn){
 
@@ -932,6 +969,8 @@ btn.classList.add('active');
 showChoices(p,o.qty,o.price);
 
 }
+
+/* حساب الكمية الكبيرة */
 
 function customChoose(id){
 
@@ -955,6 +994,8 @@ showChoices(p,qty,price);
 
 }
 
+/* إظهار اختيارات القطع */
+
 function showChoices(p,qty,price){
 
 let area=document.getElementById('selection-'+p.id);
@@ -964,19 +1005,13 @@ let html='';
 if(p.bra){
 
 html+=`
-
 <label class="field-label">اختاري الوزن المناسب</label>
 
 <select id="weight-${p.id}">
-
 <option value="">اختاري الوزن</option>
-
 <option>من 50 إلى 75 كيلو</option>
-
 <option>من 75 إلى 100 كيلو</option>
-
 </select>
-
 `;
 
 }
@@ -990,7 +1025,6 @@ for(let n=1;n<=qty;n++){
 if(p.models){
 
 html+=`
-
 <div class="piecebox">
 
 <strong>القطعة ${n}</strong>
@@ -998,23 +1032,18 @@ html+=`
 <label class="field-label">اختاري الموديل</label>
 
 <select class="model-select" onchange="updateWinterColors(this)">
-
 <option value="">اختاري الموديل</option>
-
 ${Object.keys(p.models).map(m=>`<option value="${m}">${m}</option>`).join('')}
-
 </select>
 
 <div class="colors winter-colors"></div>
 
 </div>
-
 `;
 
 }else{
 
 html+=`
-
 <div class="piecebox">
 
 <strong>القطعة ${n}</strong>
@@ -1022,15 +1051,12 @@ html+=`
 <div class="colors">
 
 ${p.colors.map(c=>`
-
 <button type="button" class="color" onclick="pickColor(this)">${c}</button>
-
 `).join('')}
 
 </div>
 
 </div>
-
 `;
 
 }
@@ -1040,22 +1066,20 @@ ${p.colors.map(c=>`
 html+=`</div>`;
 
 html+=`
-
 <div class="counter" id="count-${p.id}">
 تم اختيار 0 من ${qty} قطعة
 </div>
 
 <button class="add" type="button" onclick="addCart('${p.id}',${qty},${price})">
-
 أضيفي للسلة • ${money(price)}
-
 </button>
-
 `;
 
 area.innerHTML=html;
 
 }
+
+/* ألوان الليجن الشتوي حسب الموديل */
 
 function updateWinterColors(select){
 
@@ -1078,14 +1102,14 @@ return;
 }
 
 colorsBox.innerHTML=p.models[model].map(c=>`
-
 <button type="button" class="color" onclick="pickColor(this)">${c}</button>
-
 `).join('');
 
 updateCounter(box);
 
 }
+
+/* اختيار اللون */
 
 function pickColor(btn){
 
@@ -1096,6 +1120,8 @@ btn.classList.add('selected');
 updateCounter(btn.closest('.piecebox'));
 
 }
+
+/* عداد اختيار القطع */
 
 function updateCounter(box){
 
@@ -1126,6 +1152,8 @@ counter.textContent=`تم اختيار ${chosen} من ${pieces.length} قطعة`
 }
 
 }
+
+/* إضافة المنتج للسلة */
 
 function addCart(id,qty,price){
 
@@ -1182,30 +1210,23 @@ return;
 let weight=p.bra?document.getElementById('weight-'+id).value:'';
 
 cart.push({
-
 name:p.name,
-
 qty,
-
 price,
-
 details,
-
 weight
-
 });
 
 renderCart();
 
 document.getElementById('cart').scrollIntoView({
-
 behavior:'smooth',
-
 block:'nearest'
-
 });
 
 }
+
+/* عرض السلة */
 
 function renderCart(){
 
@@ -1257,11 +1278,11 @@ return text;
 
 }
 
-document.getElementById('subtotal').textContent=
-
-money(cart.reduce((s,x)=>s+x.price,0));
+updateTotals();
 
 }
+
+/* حذف منتج من السلة */
 
 function removeItem(i){
 
@@ -1270,6 +1291,14 @@ cart.splice(i,1);
 renderCart();
 
 }
+
+/* تحديث الشحن عند اختيار المحافظة أو كتابة العنوان */
+
+document.getElementById('gov').addEventListener('change',updateTotals);
+
+document.getElementById('address').addEventListener('input',updateTotals);
+
+/* إرسال الطلب على واتساب */
 
 function sendOrder(e){
 
@@ -1283,12 +1312,87 @@ return;
 
 }
 
-let name=document.getElementById('customer').value;
+let name=document.getElementById('customer').value.trim();
 
-let phone=document.getElementById('phone').value;
+let phone=document.getElementById('phone').value.trim();
 
 let gov=document.getElementById('gov').value;
 
-let address=document.getElementById('address').value;
+let address=document.getElementById('address').value.trim();
 
-let 
+let altphone=document.getElementById('altphone').value.trim();
+
+let notes=document.getElementById('notes').value.trim();
+
+if(!gov){
+
+alert('اختاري المحافظة');
+
+return;
+
+}
+
+let subtotal=cart.reduce((s,x)=>s+x.price,0);
+
+let shipping=getShipping();
+
+let grandTotal=subtotal+shipping;
+
+let message=`طلب جديد من متجر الفيروز 🛍️
+
+الاسم: ${name}
+رقم الهاتف: ${phone}
+رقم بديل: ${altphone||'غير متوفر'}
+
+المحافظة: ${gov}
+العنوان: ${address}
+
+تفاصيل الطلب:
+`;
+
+cart.forEach((item,i)=>{
+
+message+=`
+${i+1}- ${item.name}
+الكمية: ${item.qty} قطعة
+السعر: ${item.price} جنيه
+`;
+
+if(item.weight){
+
+message+=`الوزن: ${item.weight}\n`;
+
+}
+
+item.details.forEach((d,n)=>{
+
+message+=`القطعة ${n+1}: ${d.model?d.model+' - ':''}${d.color}\n`;
+
+});
+
+});
+
+message+=`
+إجمالي المنتجات: ${subtotal} جنيه
+مصاريف الشحن: ${shipping} جنيه
+الإجمالي شامل الشحن: ${grandTotal} جنيه
+
+ملاحظات: ${notes||'لا يوجد'}
+`;
+
+let url=`https://wa.me/${WA}?text=${encodeURIComponent(message)}`;
+
+window.open(url,'_blank');
+
+}
+
+/* تشغيل المتجر */
+
+render();
+
+renderCart();
+
+</script>
+
+</body>
+</html>
